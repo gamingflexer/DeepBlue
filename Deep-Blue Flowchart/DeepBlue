@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-10-13T10:48:09.612Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36" etag="UvI9C1oyqOlxsC7Dt9cb" version="15.5.2" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2021-10-13T10:49:59.855Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36" etag="9yJIkDE6JSLKsVzFOZsQ" version="15.5.2" type="github" pages="3">
   <diagram id="HHdNFOmVoAOGlk3xXSU4" name="Approach">
     <mxGraphModel dx="1422" dy="757" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -472,6 +472,9 @@
         </mxCell>
         <mxCell id="rakXX9vp1ywZmgO9_qjn-32" value="APP (SELF)" style="whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
           <mxGeometry x="-220" y="1410" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rakXX9vp1ywZmgO9_qjn-34" value="2-2 COLLAB" style="whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
+          <mxGeometry x="-830" y="140" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
