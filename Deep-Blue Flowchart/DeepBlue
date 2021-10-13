@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-10-13T10:03:03.730Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36" etag="6xUqiwQKCfbnOCC3CzHb" version="15.5.2" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2021-10-13T10:05:55.673Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36" etag="JbVjkxY9oX13Sl_apZO1" version="15.5.2" type="github" pages="3">
   <diagram id="HHdNFOmVoAOGlk3xXSU4" name="Approach">
     <mxGraphModel dx="1422" dy="806" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -308,14 +308,55 @@
         <mxCell id="WuNEgj5FS-Ddx8HPA112-41" value="APPS" style="whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
           <mxGeometry x="280" y="420" width="120" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="WuNEgj5FS-Ddx8HPA112-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WuNEgj5FS-Ddx8HPA112-1" source="WuNEgj5FS-Ddx8HPA112-43">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="WuNEgj5FS-Ddx8HPA112-43" value="BASIC PACK" style="whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
           <mxGeometry x="910" y="210" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="WuNEgj5FS-Ddx8HPA112-44" value="MODERATE PACK" style="whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
           <mxGeometry x="1120" y="210" width="120" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="WuNEgj5FS-Ddx8HPA112-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WuNEgj5FS-Ddx8HPA112-1" source="WuNEgj5FS-Ddx8HPA112-45" target="WuNEgj5FS-Ddx8HPA112-51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="WuNEgj5FS-Ddx8HPA112-45" value="ADVANCE PACK" style="whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
           <mxGeometry x="1320" y="210" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WuNEgj5FS-Ddx8HPA112-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WuNEgj5FS-Ddx8HPA112-1" source="WuNEgj5FS-Ddx8HPA112-47" target="WuNEgj5FS-Ddx8HPA112-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WuNEgj5FS-Ddx8HPA112-47" value="SOCAIL MEDIA STARING&amp;nbsp;&lt;br&gt;ACCOUNT" style="whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
+          <mxGeometry x="910" y="310" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WuNEgj5FS-Ddx8HPA112-48" value="WEBSITE (SIMPLE)" style="whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
+          <mxGeometry x="910" y="400" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WuNEgj5FS-Ddx8HPA112-50" value="" style="whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
+          <mxGeometry x="1120" y="310" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WuNEgj5FS-Ddx8HPA112-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WuNEgj5FS-Ddx8HPA112-1" source="WuNEgj5FS-Ddx8HPA112-51" target="WuNEgj5FS-Ddx8HPA112-52">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WuNEgj5FS-Ddx8HPA112-51" value="SOCAIL MEDIA ACCOUNT&amp;nbsp;" style="whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
+          <mxGeometry x="1320" y="310" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WuNEgj5FS-Ddx8HPA112-56" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WuNEgj5FS-Ddx8HPA112-1" source="WuNEgj5FS-Ddx8HPA112-52" target="WuNEgj5FS-Ddx8HPA112-53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WuNEgj5FS-Ddx8HPA112-52" value="CONENT CREATION (6 month)" style="whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
+          <mxGeometry x="1320" y="400" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WuNEgj5FS-Ddx8HPA112-53" value="ADVANCED WEBSITE" style="whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
+          <mxGeometry x="1320" y="480" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WuNEgj5FS-Ddx8HPA112-57" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;gradientColor=none;direction=west;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
+          <mxGeometry x="1590" y="160" width="150" height="450" as="geometry" />
+        </mxCell>
+        <mxCell id="WuNEgj5FS-Ddx8HPA112-58" value="INFLUNCER MARKETING" style="whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
+          <mxGeometry x="1740" y="355" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
