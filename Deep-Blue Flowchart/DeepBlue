@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-10-13T09:47:15.628Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36" etag="u2MK5j5IQJS3TfDt1fPe" version="15.5.2" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2021-10-13T09:47:47.729Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36" etag="2CH4mqKKRljTYpIhAooB" version="15.5.2" type="github" pages="3">
   <diagram id="HHdNFOmVoAOGlk3xXSU4" name="Approach">
     <mxGraphModel dx="1422" dy="806" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -195,10 +195,13 @@
     </mxGraphModel>
   </diagram>
   <diagram id="Wtu-X32pZsH2dJINXtFF" name="Page-3">
-    <mxGraphModel dx="1422" dy="806" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2272" dy="806" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="WuNEgj5FS-Ddx8HPA112-0" />
         <mxCell id="WuNEgj5FS-Ddx8HPA112-1" parent="WuNEgj5FS-Ddx8HPA112-0" />
+        <mxCell id="WuNEgj5FS-Ddx8HPA112-2" value="Business model" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
+          <mxGeometry x="-70" y="330" width="120" height="60" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
