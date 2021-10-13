@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-10-13T10:13:05.390Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36" etag="ps28z929Glm_f7Va6vcs" version="15.5.2" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2021-10-13T10:39:52.170Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36" etag="LJgOeJmkq2I80J6b8iiQ" version="15.5.2" type="github" pages="3">
   <diagram id="HHdNFOmVoAOGlk3xXSU4" name="Approach">
     <mxGraphModel dx="1422" dy="757" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -370,6 +370,11 @@
         <mxCell id="WuNEgj5FS-Ddx8HPA112-57" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;gradientColor=none;direction=west;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
           <mxGeometry x="1590" y="160" width="150" height="450" as="geometry" />
         </mxCell>
+        <mxCell id="rakXX9vp1ywZmgO9_qjn-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WuNEgj5FS-Ddx8HPA112-1" source="WuNEgj5FS-Ddx8HPA112-58">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1800" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="WuNEgj5FS-Ddx8HPA112-58" value="INFLUNCER MARKETING" style="whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
           <mxGeometry x="1740" y="355" width="120" height="60" as="geometry" />
         </mxCell>
@@ -384,6 +389,38 @@
         </mxCell>
         <mxCell id="rakXX9vp1ywZmgO9_qjn-1" value="PACKS" style="whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
           <mxGeometry x="-440" y="140" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rakXX9vp1ywZmgO9_qjn-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WuNEgj5FS-Ddx8HPA112-1" source="rakXX9vp1ywZmgO9_qjn-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="1250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rakXX9vp1ywZmgO9_qjn-3" value="CAKE SHOP" style="whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
+          <mxGeometry x="-60" y="1100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rakXX9vp1ywZmgO9_qjn-4" value="Ex" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
+          <mxGeometry x="-100" y="1080" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rakXX9vp1ywZmgO9_qjn-6" value="SOCAIL MEDIA" style="whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
+          <mxGeometry x="-60" y="1250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rakXX9vp1ywZmgO9_qjn-7" value="POST" style="whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
+          <mxGeometry x="120" y="1250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rakXX9vp1ywZmgO9_qjn-8" value="STORIES" style="whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
+          <mxGeometry x="120" y="1320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rakXX9vp1ywZmgO9_qjn-9" value="THINGS TO INFLUNCER HOME" style="whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
+          <mxGeometry x="-60" y="1340" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rakXX9vp1ywZmgO9_qjn-10" value="100 K cake send" style="whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
+          <mxGeometry x="-60" y="1420" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rakXX9vp1ywZmgO9_qjn-12" value="INSTAGRAM ACC" style="whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
+          <mxGeometry x="1740" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rakXX9vp1ywZmgO9_qjn-13" value="VLOGGER" style="whiteSpace=wrap;html=1;" vertex="1" parent="WuNEgj5FS-Ddx8HPA112-1">
+          <mxGeometry x="1740" y="530" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
