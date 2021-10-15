@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-10-15T07:54:29.429Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36" etag="IYohKbiyH6GxSvltSToB" version="15.5.2" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2021-10-15T07:57:43.459Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36" etag="bkBwsgeErnfRryVhCzJI" version="15.5.2" type="github" pages="2">
   <diagram id="VW5LPrACnkIFLucvH3J6" name="Page-7">
     <mxGraphModel dx="1422" dy="1906" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -109,6 +109,9 @@
             <mxPoint x="570" y="600" as="targetPoint" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="6yq1hyyVoBi7szEFriC6-22" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.025;entryY=0.212;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=11;fontColor=default;" edge="1" parent="hnWGfaP_TE1rImXRO845-1" source="hnWGfaP_TE1rImXRO845-4" target="6yq1hyyVoBi7szEFriC6-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="hnWGfaP_TE1rImXRO845-4" value="Profile" style="html=1;strokeColor=none;fillColor=#0079D6;labelPosition=center;verticalLabelPosition=middle;verticalAlign=top;align=center;fontSize=12;outlineConnect=0;spacingTop=-6;fontColor=#FFFFFF;sketch=0;shape=mxgraph.sitemap.profile;" parent="hnWGfaP_TE1rImXRO845-1" vertex="1">
           <mxGeometry x="417.5" y="350" width="75" height="50" as="geometry" />
         </mxCell>
@@ -167,6 +170,12 @@
         </mxCell>
         <mxCell id="6yq1hyyVoBi7szEFriC6-16" value="&lt;b&gt;RANKING&lt;/b&gt;" style="whiteSpace=wrap;html=1;sketch=0;fontColor=default;strokeColor=#000000;fillColor=default;gradientColor=none;align=center;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="hnWGfaP_TE1rImXRO845-1">
           <mxGeometry x="520" y="600" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6yq1hyyVoBi7szEFriC6-17" value="Attributes" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="hnWGfaP_TE1rImXRO845-1">
+          <mxGeometry x="60" y="310" width="160" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="6yq1hyyVoBi7szEFriC6-18" value="NAME&#xa;EMAIL&#xa;PHONE&#xa;&#xa;ROLES&#xa;SKILL&#xa;PERIOD EXPERIENCE&#xa;EDUCATION (TABLE)&#xa;COMPANIES WORKED&#xa;&#xa;LINKS&#xa;&#xa;&#xa;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=11;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="6yq1hyyVoBi7szEFriC6-17">
+          <mxGeometry y="30" width="160" height="170" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
