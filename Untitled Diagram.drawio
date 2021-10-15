@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-10-15T07:51:52.460Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36" etag="1376eyyvplfJP5H1IFmy" version="15.5.2" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2021-10-15T07:54:29.429Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36" etag="IYohKbiyH6GxSvltSToB" version="15.5.2" type="github" pages="2">
   <diagram id="VW5LPrACnkIFLucvH3J6" name="Page-7">
     <mxGraphModel dx="1422" dy="1906" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -99,6 +99,16 @@
       <root>
         <mxCell id="hnWGfaP_TE1rImXRO845-0" />
         <mxCell id="hnWGfaP_TE1rImXRO845-1" parent="hnWGfaP_TE1rImXRO845-0" />
+        <mxCell id="6yq1hyyVoBi7szEFriC6-12" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;fontColor=default;" edge="1" parent="hnWGfaP_TE1rImXRO845-1" source="hnWGfaP_TE1rImXRO845-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6yq1hyyVoBi7szEFriC6-13" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;fontColor=default;" edge="1" parent="hnWGfaP_TE1rImXRO845-1" source="hnWGfaP_TE1rImXRO845-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="570" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="hnWGfaP_TE1rImXRO845-4" value="Profile" style="html=1;strokeColor=none;fillColor=#0079D6;labelPosition=center;verticalLabelPosition=middle;verticalAlign=top;align=center;fontSize=12;outlineConnect=0;spacingTop=-6;fontColor=#FFFFFF;sketch=0;shape=mxgraph.sitemap.profile;" parent="hnWGfaP_TE1rImXRO845-1" vertex="1">
           <mxGeometry x="417.5" y="350" width="75" height="50" as="geometry" />
         </mxCell>
@@ -132,7 +142,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="hnWGfaP_TE1rImXRO845-16" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://static.thenounproject.com/png/2475108-200.png;" parent="hnWGfaP_TE1rImXRO845-1" vertex="1">
-          <mxGeometry x="420" y="20" width="70" height="70" as="geometry" />
+          <mxGeometry x="425" y="20" width="70" height="70" as="geometry" />
         </mxCell>
         <mxCell id="6yq1hyyVoBi7szEFriC6-3" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontColor=default;" edge="1" parent="hnWGfaP_TE1rImXRO845-1" source="hnWGfaP_TE1rImXRO845-17" target="hnWGfaP_TE1rImXRO845-7">
           <mxGeometry relative="1" as="geometry" />
@@ -150,7 +160,13 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="6yq1hyyVoBi7szEFriC6-5" value="&lt;div&gt;&lt;span&gt;&lt;b&gt;GitHub&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;-Activity&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;-Open source contributions&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;-Project stars&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;b&gt;Likendin&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;- Certifications&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;b&gt;Leetcode&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;-problems solved&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;-Acceptance rate&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=13;fontColor=#000000;align=left;" vertex="1" parent="hnWGfaP_TE1rImXRO845-1">
-          <mxGeometry x="680" y="275" width="120" height="200" as="geometry" />
+          <mxGeometry x="690" y="275" width="120" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="6yq1hyyVoBi7szEFriC6-15" value="&lt;b&gt;SUMMARY&lt;/b&gt;" style="whiteSpace=wrap;html=1;sketch=0;fontColor=default;strokeColor=#000000;fillColor=default;gradientColor=none;align=center;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="hnWGfaP_TE1rImXRO845-1">
+          <mxGeometry x="297.5" y="600" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6yq1hyyVoBi7szEFriC6-16" value="&lt;b&gt;RANKING&lt;/b&gt;" style="whiteSpace=wrap;html=1;sketch=0;fontColor=default;strokeColor=#000000;fillColor=default;gradientColor=none;align=center;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="hnWGfaP_TE1rImXRO845-1">
+          <mxGeometry x="520" y="600" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
