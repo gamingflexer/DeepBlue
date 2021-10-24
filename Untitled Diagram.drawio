@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-10-16T06:49:55.739Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36" etag="o6z29M85slYn2vk9Tnk2" version="15.5.2" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2021-10-24T05:14:39.468Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36" etag="xLyHkEijow2u7XvpwMh3" version="15.5.8" type="github" pages="2">
   <diagram id="VW5LPrACnkIFLucvH3J6" name="Page-7">
     <mxGraphModel dx="1662" dy="1906" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -95,7 +95,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="cuUnuu8qVJEb749d6Opi" name="Page-2">
-    <mxGraphModel dx="4174" dy="2622" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2512" dy="1906" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="hnWGfaP_TE1rImXRO845-0" />
         <mxCell id="hnWGfaP_TE1rImXRO845-1" parent="hnWGfaP_TE1rImXRO845-0" />
@@ -112,7 +112,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="hnWGfaP_TE1rImXRO845-5" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#000000;shape=mxgraph.azure.cloud_services_configuration_file;pointerEvents=1;" parent="hnWGfaP_TE1rImXRO845-1" vertex="1">
-          <mxGeometry x="30" y="40" width="47.5" height="50" as="geometry" />
+          <mxGeometry x="6.25" y="40" width="47.5" height="50" as="geometry" />
         </mxCell>
         <mxCell id="hnWGfaP_TE1rImXRO845-7" value="&lt;b&gt;PARSED&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="hnWGfaP_TE1rImXRO845-1" vertex="1">
           <mxGeometry x="415" y="495" width="60" height="20" as="geometry" />
@@ -121,7 +121,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="hnWGfaP_TE1rImXRO845-9" value="" style="shape=image;html=1;verticalLabelPosition=bottom;verticalAlign=top;imageAspect=1;aspect=fixed;image=img/clipart/Gear_128x128.png" parent="hnWGfaP_TE1rImXRO845-1" vertex="1">
-          <mxGeometry x="190" y="45" width="34.1" height="40" as="geometry" />
+          <mxGeometry x="137.95" y="45" width="34.1" height="40" as="geometry" />
         </mxCell>
         <mxCell id="hnWGfaP_TE1rImXRO845-13" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://cdn4.iconfinder.com/data/icons/customer-engagement-color/64/research-marketing-study-explore-analysis-512.png;" parent="hnWGfaP_TE1rImXRO845-1" vertex="1">
           <mxGeometry x="940" y="515" width="70" height="70" as="geometry" />
@@ -177,10 +177,10 @@
           <mxGeometry x="425" y="605" width="40" height="60" as="geometry" />
         </mxCell>
         <mxCell id="6yq1hyyVoBi7szEFriC6-29" value="&lt;b&gt;INPUT FILES&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontColor=default;" parent="hnWGfaP_TE1rImXRO845-1" vertex="1">
-          <mxGeometry x="13.75" y="100" width="80" height="20" as="geometry" />
+          <mxGeometry x="-10" y="100" width="80" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="6yq1hyyVoBi7szEFriC6-30" value="&lt;b&gt;FILE CONVERSION&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontColor=default;" parent="hnWGfaP_TE1rImXRO845-1" vertex="1">
-          <mxGeometry x="147.05" y="90" width="120" height="20" as="geometry" />
+        <mxCell id="6yq1hyyVoBi7szEFriC6-30" value="&lt;b&gt;FILE &lt;br&gt;CONVERSION&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontColor=default;" parent="hnWGfaP_TE1rImXRO845-1" vertex="1">
+          <mxGeometry x="110" y="90" width="90" height="30" as="geometry" />
         </mxCell>
         <mxCell id="6yq1hyyVoBi7szEFriC6-31" value="&lt;b&gt;Machine learning&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontColor=default;" parent="hnWGfaP_TE1rImXRO845-1" vertex="1">
           <mxGeometry x="395" y="10" width="110" height="20" as="geometry" />
@@ -261,7 +261,10 @@
           <mxGeometry x="1056.25" y="855" width="80" height="20" as="geometry" />
         </mxCell>
         <mxCell id="6yq1hyyVoBi7szEFriC6-71" value="" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;sketch=0;fontSize=16;fontColor=default;strokeColor=#000000;strokeWidth=4;fillColor=none;gradientColor=none;align=center;" parent="hnWGfaP_TE1rImXRO845-1" vertex="1">
-          <mxGeometry x="-90" y="-350" width="1310" height="1750" as="geometry" />
+          <mxGeometry x="1220" y="-350" width="220" height="1750" as="geometry" />
+        </mxCell>
+        <mxCell id="X3IZCHfUDybh0FsN--GO-0" value="TEXT SEGMENTATION -PREPROCESSING" style="whiteSpace=wrap;html=1;" vertex="1" parent="hnWGfaP_TE1rImXRO845-1">
+          <mxGeometry x="240" y="40" width="115" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
