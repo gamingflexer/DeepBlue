@@ -1,4 +1,4 @@
-# Doptech
+# DeepBlue
 
 Availability of skilled resources is always a challenge for any industry. More so for the IT industry. Potential Hires
 to Job Description matching was done manually in old days. With the advancement of Machine Learning and
