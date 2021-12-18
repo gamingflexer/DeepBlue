@@ -1,9 +1,6 @@
-from selenium import webdriver
-from linkedin_scraper import Person,actions
 import time
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
 
+from selenium import webdriver
 
 PATH = 'D:\\Py New\\Py Softwares\\Selenium\\chromedriver.exe'
 driver = webdriver.Chrome(PATH)
