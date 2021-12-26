@@ -1,0 +1,10 @@
+from fpdf import FPDF
+pdf= FPDF()
+pdf.add_page()
+fpdf = FPDF('L', 'cm', (500, 550))
+pdf.set_font("Arial",size=30)
+f = open("resume.txt",'r')
+for x in f:
+    pdf.cell(200,10,txt=x,ln=1,align='L')
+
+pdf.output("txttoppdf6.pdf")
