@@ -1,8 +1,5 @@
 from selenium import webdriver
-import githubFunctions as gf
-from selenium.webdriver.common.by import By
-import time
-import os
+from selenium.webdriver.common.keys import Keys
 PATH = 'D:\\Py New\\Py Softwares\\Selenium\\chromedriver.exe'
 driver = webdriver.Chrome(PATH)
 
