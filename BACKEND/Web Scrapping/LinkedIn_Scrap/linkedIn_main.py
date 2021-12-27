@@ -11,8 +11,8 @@ driver.get("https://www.linkedin.com/login")
 driver.implicitly_wait(2)
 
 # get username , password tag
-driver.find_element(By.ID, "username").send_keys("adwaitg02@gmail.com")
-driver.find_element(By.ID, "password").send_keys("aA15042002!")
+driver.find_element(By.ID, "username").send_keys("")
+driver.find_element(By.ID, "password").send_keys("")
 
 # Cilck on sign in button
 driver.find_element(By.XPATH, "//button[@type='submit']").click()
