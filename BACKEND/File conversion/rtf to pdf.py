@@ -4,8 +4,8 @@ import comtypes.client
 
 wdFormatPDF = 17
 
-input_dir = 'input directory'
-output_dir = 'output directory'
+input_dir = r"C:\Users\COSMOS\Desktop\DEEPBLUE\Doptech\BACKEND\File conversion\resume.rtf"
+output_dir = r"C:\Users\COSMOS\Desktop\DEEPBLUE\Doptech\BACKEND\File conversion"
 
 for subdir, dirs, files in os.walk(input_dir):
     for file in files:
