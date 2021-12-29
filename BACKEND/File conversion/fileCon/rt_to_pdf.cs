@@ -6,11 +6,11 @@ using System.Text;
 
 namespace iDiTect.Converter.Demo
 {
-    public static class RtfToPdfHelper
+    class Program
     {
-        public static void Convert()
+        static void Main(string[] args)
         {
-            RtfToPdfConverter converter = new RtfToPdfConverter();
+            Program converter = new Program();
 
             //Load rtf document from stream
             using (Stream stream = File.OpenRead("resume.rtf"))
@@ -20,6 +20,10 @@ namespace iDiTect.Converter.Demo
 
             //Convert rtf to pdf, and save it to byte array
             File.WriteAllBytes("convert.pdf", converter.SaveAsBytes());
+
         }
+
+        
     }
 }
+

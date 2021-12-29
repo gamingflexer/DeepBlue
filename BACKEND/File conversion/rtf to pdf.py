@@ -12,7 +12,7 @@ for subdir, dirs, files in os.walk(input_dir):
         in_file = os.path.join(subdir, file)
         output_file = file.split('.')[0]
         out_file = output_dir+output_file+'.pdf'
-        word = comtypes.client.CreateObject('Word.Application')
+        word = comtypes.client.CreateObject('WordPad.exe')
 
         doc = word.Documents.Open(in_file)
         doc.SaveAs(out_file, FileFormat=wdFormatPDF)
