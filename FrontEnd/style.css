@@ -6,12 +6,22 @@
   font-family: "Poppins", sans-serif;
 }
 body{
-  display: flex;
+  display: compact;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   background: #5256ad;
 }
+
+.navigation{
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
 .drag-area{
   border: 2px dashed #fff;
   height: 500px;
