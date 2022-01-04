@@ -26,8 +26,8 @@ chrome_options.add_experimental_option("prefs",prefs)
 
 driver = webdriver.Chrome(executable_path="/Users/cosmos/chromedriver", chrome_options=chrome_options)  
 
-#url = "https://demos.pragnakalp.com/resume-parser/"
-url = "https://www.linkedin.com/"
+url = "https://demos.pragnakalp.com/resume-parser/"
+#url = "https://www.linkedin.com/"
 
 class praglap():
     def __init__(self,url):
@@ -90,8 +90,8 @@ class praglap():
 
 
 Start = praglap(url)
-#Start.upload_files()
+Start.upload_files()
 #Start.extract_data()
-#Start.bs4()
+Start.bs4()
 
-Start.newTab()
+#Start.newTab()
