@@ -27,7 +27,6 @@ chrome_options.add_experimental_option("prefs",prefs)
 driver = webdriver.Chrome(executable_path="/Users/cosmos/chromedriver", chrome_options=chrome_options)  
 
 url = "https://demos.pragnakalp.com/resume-parser/"
-#url = "https://www.linkedin.com/"
 
 class praglap():
     def __init__(self,url):
