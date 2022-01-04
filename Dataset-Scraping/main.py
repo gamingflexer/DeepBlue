@@ -26,7 +26,8 @@ chrome_options.add_experimental_option("prefs",prefs)
 
 driver = webdriver.Chrome(executable_path="/Users/cosmos/chromedriver", chrome_options=chrome_options)  
 
-url = "https://demos.pragnakalp.com/resume-parser/"
+#url = "https://demos.pragnakalp.com/resume-parser/"
+url = "https://www.google.com/"
 
 class praglap():
     def __init__(self,url):
@@ -79,12 +80,11 @@ class praglap():
         driver.delete_all_cookies()
         
 
-        
+      
            
     def newTab(self):
-       open = driver.get(url)
-       upload = driver.find_element_by_xpath('/html/body/div/div/div/form/div[1]/input')
-       upload.send_keys(Keys.COMMAND) + upload.send_keys("t")
+       driver.get(url)
+       driver.execute_script("window.open('https://www.google.com/', '_blank');");
        time.sleep(5)
        
        
@@ -95,8 +95,8 @@ class praglap():
 
 
 Start = praglap(url)
-Start.upload_files()
+#Start.upload_files()
 #Start.extract_data()
-Start.bs4()
+#Start.bs4()
 
-#Start.newTab()
+Start.newTab()
