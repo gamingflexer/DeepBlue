@@ -9,17 +9,9 @@ body{
   display: compact;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  /* Decides height of the body */
+  min-height: 200vh;
   background: #5256ad;
-}
-
-.navigation{
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 80px;
-  background: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .drag-area{
@@ -32,6 +24,7 @@ body{
   justify-content: center;
   flex-direction: column;
 }
+
 .drag-area.active{
   border: 2px solid #fff;
 }
