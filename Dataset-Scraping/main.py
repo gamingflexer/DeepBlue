@@ -27,7 +27,7 @@ chrome_options.add_experimental_option("prefs",prefs)
 driver = webdriver.Chrome(executable_path="/Users/cosmos/chromedriver", chrome_options=chrome_options)  
 
 #url = "https://demos.pragnakalp.com/resume-parser/"
-url = "https://www.google.com/"
+url = "https://www.linkedin.com/"
 
 class praglap():
     def __init__(self,url):
@@ -84,14 +84,9 @@ class praglap():
            
     def newTab(self):
        driver.get(url)
-       driver.execute_script("window.open('https://www.google.com/', '_blank');");
+       driver.execute_script("window.open('https://www.youtube.com/', '_blank');");
        time.sleep(5)
        
-       
-       
-        
-
-
 
 
 Start = praglap(url)
