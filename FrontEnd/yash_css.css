@@ -50,31 +50,34 @@ ul li .menu .menu-item .con a{
 }
 
 .menu{
-    
+    position: fixed;
     float:left;
     border: 0.4rem solid;
-    margin-top: 4.5rem;
-    height: 39rem;
+    border-radius: 15px;
+    margin-top: 4.0rem;
+    left: -250px;
+    height: 42.2rem;
     width: 19rem;
-}
+    background-color: #808080;
+    transition: all .7s ease;
+} 
 
 a{
     font-size: 2rem;
-    color: black;
+    color:white;
     line-height: 350%;
     
 }
 
  a i{
+     margin-left: 3rem;
     margin-right: 16px;
+    color: white;
 }
 
 
 
-li{
-    font: Black;
-    margin-left: 3rem;
-}
+
 h2{
     font-size: 3.1rem;
     letter-spacing: 0.25rem;
@@ -97,5 +100,37 @@ h2{
     margin: 0.8em 0;
     background-color: white;
     border-radius: 50px;
+}
+li {
+   transition: .4s;
+  
+}
+#check{
+    display: none;
+}
+label #icon,label #cancel{
+position: absolute;
+cursor: pointer;
+
+}
+label #icon{
+    left: 40px;
+    top:90px;
+    font-size: 35px;
+    color: white;
+}
+label #cancel{
+    z-index: 1111;
+    left: -150px;
+    top: 100px;
+    color: white;
+    font-size:30px;
+    transition: all 0.7s ease;
+}
+#check:checked ~ .menu{
+    left: 0px;
+}
+#check:checked ~ label #cancel{
+    left: 150px;
 }
 
