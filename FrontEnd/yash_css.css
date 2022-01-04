@@ -35,11 +35,11 @@ li{
 }
 
 
- h1{
+ p{
      margin-top: 1rem;
      font-size: 3.5rem;
     text-transform:uppercase ;
-    font-weight: 600;
+    
     text-align: center;
     position: relative;
     
