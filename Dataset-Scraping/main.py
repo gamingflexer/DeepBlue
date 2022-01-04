@@ -75,7 +75,7 @@ class praglap():
         templist_bs4 = []
         templist_bs4.append(data_tb)
         df2 = pd.DataFrame(templist_bs4)
-        df2.to_csv('data2.csv')
+        df2.to_json('data2.json')
         driver.delete_all_cookies()
         
 
