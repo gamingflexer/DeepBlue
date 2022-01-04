@@ -13,7 +13,7 @@ driver.maximize_window()
 driver.implicitly_wait(4)
 
 driver.find_element_by_id('username').send_keys(email)
-driver.find_element(By.ID, 'username').send_keys(Keys.CONTROL + 't')
+driver.find_element_by_tag_name('body').send_keys(Keys.CONTROL + 't')
 driver.find_element(By.ID, 'password').send_keys(password)
 time.sleep(2)
 driver.find_element(By.CLASS_NAME, 'login__form_action_container ').click()
