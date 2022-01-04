@@ -22,13 +22,13 @@ driver.find_element(By.ID, "password").send_keys(PASSWORD)
 # Cilck on sign in button
 driver.find_element(By.XPATH, "//button[@type='submit']").click()
 
-linkOfTab = 'www.github.com'
+linkOfTab = 'https://www.github.com/'
 # Open New Tab
-#driver.execute_script("window.open('')")
+driver.execute_script("window.open('"+linkOfTab+"','_blank');")
 
 driver.find_element(By.CLASS_NAME, 'search-global-typeahead__input always-show-placeholder').send_keys(Keys.CONTROL + 't')
 
-""" 
+"""
     To Switch Tabs by Index Number
     driver.switch_to.window(driver.window_handles[0])
 """
