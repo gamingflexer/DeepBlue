@@ -1,5 +1,0 @@
-C:\Users\COSMOS\Desktop\DEEPBLUE\Doptech\BACKEND\File conversion\fileCon\obj\Debug\net6.0\fileCon.csproj.AssemblyReference.cache
-C:\Users\COSMOS\Desktop\DEEPBLUE\Doptech\BACKEND\File conversion\fileCon\obj\Debug\net6.0\fileCon.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\COSMOS\Desktop\DEEPBLUE\Doptech\BACKEND\File conversion\fileCon\obj\Debug\net6.0\fileCon.AssemblyInfoInputs.cache
-C:\Users\COSMOS\Desktop\DEEPBLUE\Doptech\BACKEND\File conversion\fileCon\obj\Debug\net6.0\fileCon.AssemblyInfo.cs
-C:\Users\COSMOS\Desktop\DEEPBLUE\Doptech\BACKEND\File conversion\fileCon\obj\Debug\net6.0\fileCon.csproj.CoreCompileInputs.cache

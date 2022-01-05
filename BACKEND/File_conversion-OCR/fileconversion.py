@@ -1,17 +1,14 @@
 from docx2pdf import convert
-import cv2
+#import cv2
 from fpdf import FPDF
 from PIL import Image
 import pytesseract
 
-#add a function to accept file path from user
+#function to accept file path from user
+print = ( '################# ENTER FILE TO CONVERT INTO PDF ####################')
+filename = str(input())
 
-#rtf to pdf
-#doc to any to pdf
-#ots to pdf
-#hrml to pdf
-
-filename = "CG experiments.docx"
+#filename = "CG experiments.docx"
 x = filename.rfind(".")
 extension=filename[x+1:]
 
