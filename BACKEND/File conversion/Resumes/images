@@ -1,5 +1,0 @@
-import os
-from PIL import Image
-path="resume.png"
-pdf=Image.open(path)
-pdf.save("convertedimg1.pdf")

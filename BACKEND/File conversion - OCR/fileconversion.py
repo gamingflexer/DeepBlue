@@ -2,13 +2,23 @@ from docx2pdf import convert
 import cv2
 from fpdf import FPDF
 from PIL import Image
-
 import pytesseract
+
+#add a function to accept file path from user
+
+#rtf to pdf
+#doc to any to pdf
+#ots to pdf
+#hrml to pdf
+
 filename = "CG experiments.docx"
 x = filename.rfind(".")
 extension=filename[x+1:]
+
+#docx - pdf
 if(extension == "docx"):
     convert(filename, r"filepdf100.pdf")
+#image - pdf
 elif(extension=="png" or extension=="jpg"):
     file = open("imgtotext99.txt", "w")
     pdf = FPDF()
@@ -31,7 +41,8 @@ elif(extension=="png" or extension=="jpg"):
         pdf.cell(200, 10, txt=x, ln=1, align='L')
 
     pdf.output("imgtopdf100.pdf")
- #   cv2.waitKey(0)
+ #  cv2.waitKey(0)
+ #text - pdf
 elif(extension=="txt"):
      pdf = FPDF()
      pdf.add_page()
