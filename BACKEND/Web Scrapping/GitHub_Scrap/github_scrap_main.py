@@ -1,12 +1,9 @@
-import time
-from bs4 import BeautifulSoup
 import requests
+from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 
 PATH = 'D:\\Py New\\Py Softwares\\Selenium\\chromedriver.exe'
 driver = webdriver.Chrome(PATH)
-from githubFunctions import *
 
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
@@ -26,11 +23,6 @@ for tag in star_count:
 
 for tag in repo_name:
     j.append(tag.text.strip())
-
-'''for k in range(len(j)):
-    j[k] = j[k].split('\n')
-    j[k] = [j[k] for j[k] in j[k] if j[k].strip()]
-'''
 
 for index in range(len(j)):
     print(j[index], i[index])
