@@ -1,6 +1,4 @@
 import time
-
-from _cffi_backend import string
 from bs4 import BeautifulSoup
 import requests
 from selenium import webdriver
