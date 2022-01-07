@@ -1,0 +1,89 @@
+#Main table
+CREATE TABLE Candidate (
+    Candidate_ID varchar(1000) PRIMARY KEY, 
+    Name varchar(1000),
+    Address varchar(1000),
+    Number INT (12),
+    DOB varchar(1000),
+    Nationality varchar(1000),
+    Git_lk varchar(1000),
+    link_lk varchar(1000),
+    Objective varchar(1000),
+    File_path BLOB,
+    Project_name varchar(1000)
+
+);
+
+
+#Project
+CREATE TABLE Candidate (
+    Project_name varchar(1000) , 
+    Project_time varchar(1000),
+    Tech_id varchar(1000),
+    Number INT (12),
+    DOB varchar(1000),
+
+
+);
+
+#Skills
+CREATE TABLE Skills (
+    Candidate_ID varchar(1000) 
+    Skill_name varchar(1000) , 
+    total_expirence varchar(1000),
+
+);
+
+#Github
+CREATE TABLE Github (
+    Candidate_ID varchar(1000) 
+    Git_lk varchar(1000) , 
+    pull_count INT(1000),
+    Contro_count_yr INT(1000),
+    repo_count INT (12),
+
+);
+
+#linkdien
+CREATE TABLE linkdien (
+    Candidate_ID varchar(1000) 
+    link_lk varchar(1000) , 
+    connec_count INT(1000),
+    courses_count INT(1000),
+    courses_top2 INT (12),
+
+);
+
+#Education
+CREATE TABLE Education (
+    Candidate_ID varchar(1000) 
+    school varchar(1000) , 
+    jr_college varchar(1000),
+    degree_college varchar(1000),
+    degree_name INT (12),
+    P_university INT(2),
+
+
+);
+
+#Refrence
+CREATE TABLE Refrence (
+    Candidate_ID varchar(1000) 
+    Name_r varchar(1000) , 
+    position_r varchar(1000),
+    company_r varchar(1000),
+    email_r INT (12),
+
+
+);
+
+#Expierence 
+CREATE TABLE Expierence (
+    Candidate_ID varchar(1000) 
+    Company varchar(1000) , 
+    Work_info varchar(1000),
+    years varchar(1000),
+    Type varchar (1000),
+    Year_stamp varchar(1000),
+
+);
