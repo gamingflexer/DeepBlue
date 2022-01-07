@@ -1,5 +1,5 @@
 from docx2pdf import convert
-#import cv2
+import cv2
 from fpdf import FPDF
 from PIL import Image
 import pytesseract
@@ -22,6 +22,7 @@ elif(extension=="png" or extension=="jpg"):
     pdf.add_page()
     fpdf = FPDF('L', 'cm', (500, 550))
     pdf.set_font("Arial", size=12)
+    #change file path accordingly
     pytesseract.pytesseract.tesseract_cmd = "C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
     img = cv2.imread(filename)
 
