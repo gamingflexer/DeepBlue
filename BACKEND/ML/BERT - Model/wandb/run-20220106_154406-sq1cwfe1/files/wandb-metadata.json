@@ -1,0 +1,24 @@
+{
+    "os": "macOS-12.1-arm64-arm-64bit",
+    "python": "3.9.9",
+    "heartbeatAt": "2022-01-06T10:14:18.491088",
+    "startedAt": "2022-01-06T10:14:06.827341",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [
+        "-f",
+        "/Users/cosmos/Library/Jupyter/runtime/kernel-421ed5c1-5ea4-4a05-aef9-0848fc31409d.json"
+    ],
+    "state": "running",
+    "program": "BERT_D1_Model_v0.1-jvsc-a7d69e7a-80c0-43b3-9530-efb3e6e1b322.ipynb",
+    "root": "/Users/cosmos/Desktop/DeepBlue",
+    "git": {
+        "remote": "https://github.com/gamingflexer/DeepBlue.git",
+        "commit": "13930707c32b22b395ac052da55e14be5a0ccab1"
+    },
+    "email": "osurve20ece@student.mes.ac.in",
+    "host": "Oms-MacBook-Pro.local",
+    "username": "cosmos",
+    "executable": "/opt/homebrew/Caskroom/miniforge/base/envs/tensorflow/bin/python"
+}
