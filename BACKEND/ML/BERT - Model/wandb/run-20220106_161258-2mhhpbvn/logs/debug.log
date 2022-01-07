@@ -1,0 +1,394 @@
+2022-01-06 16:12:58,450 INFO    MainThread:7632 [wandb_setup.py:_flush():71] setting env: {}
+2022-01-06 16:12:58,450 INFO    MainThread:7632 [wandb_setup.py:_flush():71] setting login settings: {}
+2022-01-06 16:12:58,450 WARNING MainThread:7632 [wandb_setup.py:_flush():71] interrupted
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\IPython\core\interactiveshell.py", line 3437, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-14-1d43949778f3>", line 3, in <module>
+    trainer = TFTrainer(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\transformers\trainer_tf.py", line 123, in __init__
+    self.setup_wandb()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\transformers\trainer_tf.py", line 264, in setup_wandb
+    wandb.init(project=os.getenv("WANDB_PROJECT", "huggingface"), config=combined_dict, name=self.args.run_name)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_init.py", line 953, in init
+    raise e
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_init.py", line 928, in init
+    wi.setup(kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_init.py", line 181, in setup
+    wandb_login._login(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_login.py", line 274, in _login
+    wlogin.prompt_api_key()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_login.py", line 202, in prompt_api_key
+    key, status = self._prompt_api_key()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_login.py", line 182, in _prompt_api_key
+    key = apikey.prompt_api_key(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\lib\apikey.py", line 126, in prompt_api_key
+    key = input_callback(api_ask).strip()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\ipykernel\kernelbase.py", line 843, in getpass
+    return self._input_request(prompt,
+  File "C:\ProgramData\Anaconda3\lib\site-packages\ipykernel\kernelbase.py", line 904, in _input_request
+    raise KeyboardInterrupt("Interrupted by user") from None
+KeyboardInterrupt: Interrupted by user
+2022-01-06 16:12:58,458 INFO    MainThread:7632 [wandb_setup.py:_flush():71] setting login settings: {}
+2022-01-06 16:12:58,458 WARNING MainThread:7632 [wandb_setup.py:_flush():71] interrupted
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\IPython\core\interactiveshell.py", line 3437, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-18-1d43949778f3>", line 3, in <module>
+    trainer = TFTrainer(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\transformers\trainer_tf.py", line 123, in __init__
+    self.setup_wandb()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\transformers\trainer_tf.py", line 264, in setup_wandb
+    wandb.init(project=os.getenv("WANDB_PROJECT", "huggingface"), config=combined_dict, name=self.args.run_name)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_init.py", line 953, in init
+    raise e
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_init.py", line 928, in init
+    wi.setup(kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_init.py", line 181, in setup
+    wandb_login._login(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_login.py", line 274, in _login
+    wlogin.prompt_api_key()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_login.py", line 202, in prompt_api_key
+    key, status = self._prompt_api_key()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_login.py", line 182, in _prompt_api_key
+    key = apikey.prompt_api_key(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\lib\apikey.py", line 121, in prompt_api_key
+    wandb.termlog(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\errors\term.py", line 36, in termlog
+    _log(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\errors\term.py", line 94, in _log
+    click.echo(line, file=sys.stderr, nl=newline)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\click\utils.py", line 273, in echo
+    file.flush()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\ipykernel\iostream.py", line 352, in flush
+    if not evt.wait(self.flush_timeout):
+  File "C:\ProgramData\Anaconda3\lib\threading.py", line 558, in wait
+    signaled = self._cond.wait(timeout)
+  File "C:\ProgramData\Anaconda3\lib\threading.py", line 306, in wait
+    gotit = waiter.acquire(True, timeout)
+KeyboardInterrupt
+2022-01-06 16:12:58,458 INFO    MainThread:7632 [wandb_setup.py:_flush():71] setting login settings: {}
+2022-01-06 16:12:58,458 WARNING MainThread:7632 [wandb_setup.py:_flush():71] interrupted
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\IPython\core\interactiveshell.py", line 3437, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-19-1d43949778f3>", line 3, in <module>
+    trainer = TFTrainer(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\transformers\trainer_tf.py", line 123, in __init__
+    self.setup_wandb()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\transformers\trainer_tf.py", line 264, in setup_wandb
+    wandb.init(project=os.getenv("WANDB_PROJECT", "huggingface"), config=combined_dict, name=self.args.run_name)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_init.py", line 953, in init
+    raise e
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_init.py", line 928, in init
+    wi.setup(kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_init.py", line 181, in setup
+    wandb_login._login(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_login.py", line 274, in _login
+    wlogin.prompt_api_key()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_login.py", line 202, in prompt_api_key
+    key, status = self._prompt_api_key()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_login.py", line 182, in _prompt_api_key
+    key = apikey.prompt_api_key(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\lib\apikey.py", line 121, in prompt_api_key
+    wandb.termlog(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\errors\term.py", line 36, in termlog
+    _log(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\errors\term.py", line 94, in _log
+    click.echo(line, file=sys.stderr, nl=newline)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\click\utils.py", line 273, in echo
+    file.flush()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\ipykernel\iostream.py", line 352, in flush
+    if not evt.wait(self.flush_timeout):
+  File "C:\ProgramData\Anaconda3\lib\threading.py", line 558, in wait
+    signaled = self._cond.wait(timeout)
+  File "C:\ProgramData\Anaconda3\lib\threading.py", line 306, in wait
+    gotit = waiter.acquire(True, timeout)
+KeyboardInterrupt
+2022-01-06 16:12:58,458 INFO    MainThread:7632 [wandb_setup.py:_flush():71] setting login settings: {}
+2022-01-06 16:12:58,466 INFO    MainThread:7632 [wandb_init.py:_log_setup():371] Logging user logs to c:\Users\KISHOR WAGH\Documents\GitHub\DeepBlue\BACKEND\ML\BERT - Model\wandb\run-20220106_161258-2mhhpbvn\logs\debug.log
+2022-01-06 16:12:58,466 INFO    MainThread:7632 [wandb_init.py:_log_setup():372] Logging internal logs to c:\Users\KISHOR WAGH\Documents\GitHub\DeepBlue\BACKEND\ML\BERT - Model\wandb\run-20220106_161258-2mhhpbvn\logs\debug-internal.log
+2022-01-06 16:12:58,466 INFO    MainThread:7632 [wandb_init.py:_jupyter_setup():321] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x000001B6EA4DBA30>
+2022-01-06 16:12:58,474 INFO    MainThread:7632 [wandb_init.py:init():404] calling init triggers
+2022-01-06 16:12:58,474 INFO    MainThread:7632 [wandb_init.py:init():409] wandb.init called with sweep_config: {}
+config: {'return_dict': True, 'output_hidden_states': False, 'output_attentions': False, 'torchscript': False, 'torch_dtype': None, 'use_bfloat16': False, 'pruned_heads': {}, 'tie_word_embeddings': True, 'is_encoder_decoder': False, 'is_decoder': False, 'cross_attention_hidden_size': None, 'add_cross_attention': False, 'tie_encoder_decoder': False, 'max_length': 20, 'min_length': 0, 'do_sample': False, 'early_stopping': False, 'num_beams': 1, 'num_beam_groups': 1, 'diversity_penalty': 0.0, 'temperature': 1.0, 'top_k': 50, 'top_p': 1.0, 'repetition_penalty': 1.0, 'length_penalty': 1.0, 'no_repeat_ngram_size': 0, 'encoder_no_repeat_ngram_size': 0, 'bad_words_ids': None, 'num_return_sequences': 1, 'chunk_size_feed_forward': 0, 'output_scores': False, 'return_dict_in_generate': False, 'forced_bos_token_id': None, 'forced_eos_token_id': None, 'remove_invalid_values': False, 'architectures': ['BertForTokenClassification'], 'finetuning_task': None, 'id2label': {0: 'O', 1: 'B-MISC', 2: 'I-MISC', 3: 'B-PER', 4: 'I-PER', 5: 'B-ORG', 6: 'I-ORG', 7: 'B-LOC', 8: 'I-LOC'}, 'label2id': {'B-LOC': 7, 'B-MISC': 1, 'B-ORG': 5, 'B-PER': 3, 'I-LOC': 8, 'I-MISC': 2, 'I-ORG': 6, 'I-PER': 4, 'O': 0}, 'tokenizer_class': None, 'prefix': None, 'bos_token_id': None, 'pad_token_id': 0, 'eos_token_id': None, 'sep_token_id': None, 'decoder_start_token_id': None, 'task_specific_params': None, 'problem_type': None, '_name_or_path': 'dslim/bert-large-NER', 'transformers_version': '4.12.5', 'directionality': 'bidi', 'eos_token_ids': None, 'model_type': 'bert', 'output_past': True, 'pooler_fc_size': 768, 'pooler_num_attention_heads': 12, 'pooler_num_fc_layers': 3, 'pooler_size_per_head': 128, 'pooler_type': 'first_token_transform', 'vocab_size': 28996, 'hidden_size': 1024, 'num_hidden_layers': 24, 'num_attention_heads': 16, 'hidden_act': 'gelu', 'intermediate_size': 4096, 'hidden_dropout_prob': 0.1, 'attention_probs_dropout_prob': 0.1, 'max_position_embeddings': 512, 'type_vocab_size': 2, 'initializer_range': 0.02, 'layer_norm_eps': 1e-12, 'position_embedding_type': 'absolute', 'use_cache': True, 'classifier_dropout': None, 'output_dir': './results', 'overwrite_output_dir': False, 'do_train': False, 'do_eval': False, 'do_predict': False, 'evaluation_strategy': 'no', 'prediction_loss_only': False, 'per_device_train_batch_size': 8, 'per_device_eval_batch_size': 16, 'per_gpu_train_batch_size': 'None', 'per_gpu_eval_batch_size': 'None', 'gradient_accumulation_steps': 1, 'eval_accumulation_steps': 'None', 'learning_rate': 5e-05, 'weight_decay': 0.01, 'adam_beta1': 0.9, 'adam_beta2': 0.999, 'adam_epsilon': 1e-08, 'max_grad_norm': 1.0, 'num_train_epochs': 2, 'max_steps': -1, 'lr_scheduler_type': 'linear', 'warmup_ratio': 0.0, 'warmup_steps': 500, 'log_level': -1, 'log_level_replica': -1, 'log_on_each_node': True, 'logging_dir': './logs', 'logging_strategy': 'steps', 'logging_first_step': False, 'logging_steps': 10, 'logging_nan_inf_filter': True, 'save_strategy': 'steps', 'save_steps': 500, 'save_total_limit': 'None', 'save_on_each_node': False, 'no_cuda': False, 'seed': 42, 'fp16': False, 'fp16_opt_level': 'O1', 'fp16_backend': 'auto', 'fp16_full_eval': False, 'local_rank': -1, 'xpu_backend': 'None', 'tpu_num_cores': 'None', 'tpu_metrics_debug': False, 'debug': '[]', 'dataloader_drop_last': False, 'eval_steps': 'None', 'dataloader_num_workers': 0, 'past_index': -1, 'run_name': './results', 'disable_tqdm': False, 'remove_unused_columns': True, 'label_names': 'None', 'load_best_model_at_end': False, 'metric_for_best_model': 'None', 'greater_is_better': 'None', 'ignore_data_skip': False, 'sharded_ddp': '[]', 'deepspeed': 'None', 'label_smoothing_factor': 0.0, 'adafactor': False, 'group_by_length': False, 'length_column_name': 'length', 'report_to': "['tensorboard', 'wandb']", 'ddp_find_unused_parameters': 'None', 'dataloader_pin_memory': True, 'skip_memory_metrics': True, 'use_legacy_prediction_loop': False, 'push_to_hub': False, 'resume_from_checkpoint': 'None', 'hub_model_id': 'None', 'hub_strategy': 'every_save', 'hub_token': '<HUB_TOKEN>', 'gradient_checkpointing': False, 'push_to_hub_model_id': 'None', 'push_to_hub_organization': 'None', 'push_to_hub_token': '<PUSH_TO_HUB_TOKEN>', '_n_gpu': 0, 'mp_parameters': '', 'tpu_name': 'None', 'tpu_zone': 'None', 'gcp_project': 'None', 'poly_power': 1.0, 'xla': False, 'train_batch_size': 8, 'eval_batch_size': 16}
+2022-01-06 16:12:58,482 INFO    MainThread:7632 [wandb_init.py:init():460] starting backend
+2022-01-06 16:12:58,482 INFO    MainThread:7632 [backend.py:_multiprocessing_setup():99] multiprocessing start_methods=spawn, using: spawn
+2022-01-06 16:12:58,490 INFO    MainThread:7632 [backend.py:ensure_launched():216] starting backend process...
+2022-01-06 16:12:58,696 INFO    MainThread:7632 [backend.py:ensure_launched():221] started backend process with pid: 12304
+2022-01-06 16:12:58,706 INFO    MainThread:7632 [wandb_init.py:init():469] backend started and connected
+2022-01-06 16:12:59,038 INFO    MainThread:7632 [wandb_run.py:_label_probe_notebook():911] probe notebook
+2022-01-06 16:12:59,038 INFO    MainThread:7632 [wandb_run.py:_label_probe_notebook():921] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2022-01-06 16:12:59,038 INFO    MainThread:7632 [wandb_init.py:init():533] updated telemetry
+2022-01-06 16:12:59,182 INFO    MainThread:7632 [wandb_init.py:init():563] communicating current version
+2022-01-06 16:13:02,030 INFO    MainThread:7632 [wandb_init.py:init():568] got version response 
+2022-01-06 16:13:02,030 INFO    MainThread:7632 [wandb_init.py:init():578] communicating run to backend with 30 second timeout
+2022-01-06 16:13:02,481 INFO    MainThread:7632 [wandb_init.py:init():606] starting run threads in backend
+2022-01-06 16:13:07,501 INFO    MainThread:7632 [wandb_run.py:_console_start():1810] atexit reg
+2022-01-06 16:13:07,501 INFO    MainThread:7632 [wandb_run.py:_redirect():1684] redirect: SettingsConsole.WRAP
+2022-01-06 16:13:07,501 INFO    MainThread:7632 [wandb_run.py:_redirect():1721] Wrapping output streams.
+2022-01-06 16:13:07,509 INFO    MainThread:7632 [wandb_run.py:_redirect():1745] Redirects installed.
+2022-01-06 16:13:07,509 INFO    MainThread:7632 [wandb_init.py:init():633] run started, returning control to user process
+2022-01-06 16:13:07,693 INFO    MainThread:7632 [wandb_init.py:_pause_backend():284] pausing backend
+2022-01-06 16:13:07,693 INFO    MainThread:7632 [jupyter.py:save_ipynb():374] not saving jupyter notebook
+2022-01-06 16:13:38,174 INFO    MainThread:7632 [wandb_init.py:_resume_backend():293] resuming backend
+2022-01-06 16:13:47,299 INFO    MainThread:7632 [wandb_init.py:_pause_backend():284] pausing backend
+2022-01-06 16:13:47,315 INFO    MainThread:7632 [jupyter.py:save_ipynb():374] not saving jupyter notebook
+2022-01-06 16:13:53,863 INFO    MainThread:7632 [wandb_init.py:_resume_backend():293] resuming backend
+2022-01-06 16:13:54,039 INFO    MainThread:7632 [wandb_init.py:_pause_backend():284] pausing backend
+2022-01-06 16:13:54,048 INFO    MainThread:7632 [jupyter.py:save_ipynb():374] not saving jupyter notebook
+2022-01-06 16:14:34,076 INFO    MainThread:7632 [wandb_init.py:_resume_backend():293] resuming backend
+2022-01-06 16:14:40,468 INFO    MainThread:7632 [wandb_setup.py:_flush():71] setting env: {}
+2022-01-06 16:14:40,468 INFO    MainThread:7632 [wandb_setup.py:_flush():71] setting login settings: {}
+2022-01-06 16:14:40,468 WARNING MainThread:7632 [wandb_setup.py:_flush():71] interrupted
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\IPython\core\interactiveshell.py", line 3437, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-14-1d43949778f3>", line 3, in <module>
+    trainer = TFTrainer(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\transformers\trainer_tf.py", line 123, in __init__
+    self.setup_wandb()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\transformers\trainer_tf.py", line 264, in setup_wandb
+    wandb.init(project=os.getenv("WANDB_PROJECT", "huggingface"), config=combined_dict, name=self.args.run_name)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_init.py", line 953, in init
+    raise e
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_init.py", line 928, in init
+    wi.setup(kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_init.py", line 181, in setup
+    wandb_login._login(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_login.py", line 274, in _login
+    wlogin.prompt_api_key()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_login.py", line 202, in prompt_api_key
+    key, status = self._prompt_api_key()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_login.py", line 182, in _prompt_api_key
+    key = apikey.prompt_api_key(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\lib\apikey.py", line 126, in prompt_api_key
+    key = input_callback(api_ask).strip()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\ipykernel\kernelbase.py", line 843, in getpass
+    return self._input_request(prompt,
+  File "C:\ProgramData\Anaconda3\lib\site-packages\ipykernel\kernelbase.py", line 904, in _input_request
+    raise KeyboardInterrupt("Interrupted by user") from None
+KeyboardInterrupt: Interrupted by user
+2022-01-06 16:14:40,476 INFO    MainThread:7632 [wandb_setup.py:_flush():71] setting login settings: {}
+2022-01-06 16:14:40,476 WARNING MainThread:7632 [wandb_setup.py:_flush():71] interrupted
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\IPython\core\interactiveshell.py", line 3437, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-18-1d43949778f3>", line 3, in <module>
+    trainer = TFTrainer(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\transformers\trainer_tf.py", line 123, in __init__
+    self.setup_wandb()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\transformers\trainer_tf.py", line 264, in setup_wandb
+    wandb.init(project=os.getenv("WANDB_PROJECT", "huggingface"), config=combined_dict, name=self.args.run_name)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_init.py", line 953, in init
+    raise e
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_init.py", line 928, in init
+    wi.setup(kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_init.py", line 181, in setup
+    wandb_login._login(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_login.py", line 274, in _login
+    wlogin.prompt_api_key()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_login.py", line 202, in prompt_api_key
+    key, status = self._prompt_api_key()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_login.py", line 182, in _prompt_api_key
+    key = apikey.prompt_api_key(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\lib\apikey.py", line 121, in prompt_api_key
+    wandb.termlog(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\errors\term.py", line 36, in termlog
+    _log(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\errors\term.py", line 94, in _log
+    click.echo(line, file=sys.stderr, nl=newline)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\click\utils.py", line 273, in echo
+    file.flush()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\ipykernel\iostream.py", line 352, in flush
+    if not evt.wait(self.flush_timeout):
+  File "C:\ProgramData\Anaconda3\lib\threading.py", line 558, in wait
+    signaled = self._cond.wait(timeout)
+  File "C:\ProgramData\Anaconda3\lib\threading.py", line 306, in wait
+    gotit = waiter.acquire(True, timeout)
+KeyboardInterrupt
+2022-01-06 16:14:40,476 INFO    MainThread:7632 [wandb_setup.py:_flush():71] setting login settings: {}
+2022-01-06 16:14:40,476 WARNING MainThread:7632 [wandb_setup.py:_flush():71] interrupted
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\IPython\core\interactiveshell.py", line 3437, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-19-1d43949778f3>", line 3, in <module>
+    trainer = TFTrainer(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\transformers\trainer_tf.py", line 123, in __init__
+    self.setup_wandb()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\transformers\trainer_tf.py", line 264, in setup_wandb
+    wandb.init(project=os.getenv("WANDB_PROJECT", "huggingface"), config=combined_dict, name=self.args.run_name)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_init.py", line 953, in init
+    raise e
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_init.py", line 928, in init
+    wi.setup(kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_init.py", line 181, in setup
+    wandb_login._login(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_login.py", line 274, in _login
+    wlogin.prompt_api_key()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_login.py", line 202, in prompt_api_key
+    key, status = self._prompt_api_key()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\wandb_login.py", line 182, in _prompt_api_key
+    key = apikey.prompt_api_key(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\sdk\lib\apikey.py", line 121, in prompt_api_key
+    wandb.termlog(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\errors\term.py", line 36, in termlog
+    _log(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\wandb\errors\term.py", line 94, in _log
+    click.echo(line, file=sys.stderr, nl=newline)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\click\utils.py", line 273, in echo
+    file.flush()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\ipykernel\iostream.py", line 352, in flush
+    if not evt.wait(self.flush_timeout):
+  File "C:\ProgramData\Anaconda3\lib\threading.py", line 558, in wait
+    signaled = self._cond.wait(timeout)
+  File "C:\ProgramData\Anaconda3\lib\threading.py", line 306, in wait
+    gotit = waiter.acquire(True, timeout)
+KeyboardInterrupt
+2022-01-06 16:14:40,476 INFO    MainThread:7632 [wandb_setup.py:_flush():71] setting login settings: {}
+2022-01-06 16:14:40,476 INFO    MainThread:7632 [wandb_init.py:_log_setup():371] Logging user logs to c:\Users\KISHOR WAGH\Documents\GitHub\DeepBlue\BACKEND\ML\BERT - Model\wandb\run-20220106_161440-37gwv3hw\logs\debug.log
+2022-01-06 16:14:40,476 INFO    MainThread:7632 [wandb_init.py:_log_setup():372] Logging internal logs to c:\Users\KISHOR WAGH\Documents\GitHub\DeepBlue\BACKEND\ML\BERT - Model\wandb\run-20220106_161440-37gwv3hw\logs\debug-internal.log
+2022-01-06 16:14:40,476 INFO    MainThread:7632 [wandb_init.py:init():404] calling init triggers
+2022-01-06 16:14:40,484 INFO    MainThread:7632 [wandb_init.py:init():409] wandb.init called with sweep_config: {}
+config: {'return_dict': True, 'output_hidden_states': False, 'output_attentions': False, 'torchscript': False, 'torch_dtype': None, 'use_bfloat16': False, 'pruned_heads': {}, 'tie_word_embeddings': True, 'is_encoder_decoder': False, 'is_decoder': False, 'cross_attention_hidden_size': None, 'add_cross_attention': False, 'tie_encoder_decoder': False, 'max_length': 20, 'min_length': 0, 'do_sample': False, 'early_stopping': False, 'num_beams': 1, 'num_beam_groups': 1, 'diversity_penalty': 0.0, 'temperature': 1.0, 'top_k': 50, 'top_p': 1.0, 'repetition_penalty': 1.0, 'length_penalty': 1.0, 'no_repeat_ngram_size': 0, 'encoder_no_repeat_ngram_size': 0, 'bad_words_ids': None, 'num_return_sequences': 1, 'chunk_size_feed_forward': 0, 'output_scores': False, 'return_dict_in_generate': False, 'forced_bos_token_id': None, 'forced_eos_token_id': None, 'remove_invalid_values': False, 'architectures': ['BertForTokenClassification'], 'finetuning_task': None, 'id2label': {0: 'O', 1: 'B-MISC', 2: 'I-MISC', 3: 'B-PER', 4: 'I-PER', 5: 'B-ORG', 6: 'I-ORG', 7: 'B-LOC', 8: 'I-LOC'}, 'label2id': {'B-LOC': 7, 'B-MISC': 1, 'B-ORG': 5, 'B-PER': 3, 'I-LOC': 8, 'I-MISC': 2, 'I-ORG': 6, 'I-PER': 4, 'O': 0}, 'tokenizer_class': None, 'prefix': None, 'bos_token_id': None, 'pad_token_id': 0, 'eos_token_id': None, 'sep_token_id': None, 'decoder_start_token_id': None, 'task_specific_params': None, 'problem_type': None, '_name_or_path': 'dslim/bert-large-NER', 'transformers_version': '4.12.5', 'directionality': 'bidi', 'eos_token_ids': None, 'model_type': 'bert', 'output_past': True, 'pooler_fc_size': 768, 'pooler_num_attention_heads': 12, 'pooler_num_fc_layers': 3, 'pooler_size_per_head': 128, 'pooler_type': 'first_token_transform', 'vocab_size': 28996, 'hidden_size': 1024, 'num_hidden_layers': 24, 'num_attention_heads': 16, 'hidden_act': 'gelu', 'intermediate_size': 4096, 'hidden_dropout_prob': 0.1, 'attention_probs_dropout_prob': 0.1, 'max_position_embeddings': 512, 'type_vocab_size': 2, 'initializer_range': 0.02, 'layer_norm_eps': 1e-12, 'position_embedding_type': 'absolute', 'use_cache': True, 'classifier_dropout': None, 'output_dir': './results', 'overwrite_output_dir': False, 'do_train': False, 'do_eval': False, 'do_predict': False, 'evaluation_strategy': 'no', 'prediction_loss_only': False, 'per_device_train_batch_size': 8, 'per_device_eval_batch_size': 16, 'per_gpu_train_batch_size': 'None', 'per_gpu_eval_batch_size': 'None', 'gradient_accumulation_steps': 1, 'eval_accumulation_steps': 'None', 'learning_rate': 5e-05, 'weight_decay': 0.01, 'adam_beta1': 0.9, 'adam_beta2': 0.999, 'adam_epsilon': 1e-08, 'max_grad_norm': 1.0, 'num_train_epochs': 2, 'max_steps': -1, 'lr_scheduler_type': 'linear', 'warmup_ratio': 0.0, 'warmup_steps': 500, 'log_level': -1, 'log_level_replica': -1, 'log_on_each_node': True, 'logging_dir': './logs', 'logging_strategy': 'steps', 'logging_first_step': False, 'logging_steps': 10, 'logging_nan_inf_filter': True, 'save_strategy': 'steps', 'save_steps': 500, 'save_total_limit': 'None', 'save_on_each_node': False, 'no_cuda': False, 'seed': 42, 'fp16': False, 'fp16_opt_level': 'O1', 'fp16_backend': 'auto', 'fp16_full_eval': False, 'local_rank': -1, 'xpu_backend': 'None', 'tpu_num_cores': 'None', 'tpu_metrics_debug': False, 'debug': '[]', 'dataloader_drop_last': False, 'eval_steps': 'None', 'dataloader_num_workers': 0, 'past_index': -1, 'run_name': './results', 'disable_tqdm': False, 'remove_unused_columns': True, 'label_names': 'None', 'load_best_model_at_end': False, 'metric_for_best_model': 'None', 'greater_is_better': 'None', 'ignore_data_skip': False, 'sharded_ddp': '[]', 'deepspeed': 'None', 'label_smoothing_factor': 0.0, 'adafactor': False, 'group_by_length': False, 'length_column_name': 'length', 'report_to': "['tensorboard', 'wandb']", 'ddp_find_unused_parameters': 'None', 'dataloader_pin_memory': True, 'skip_memory_metrics': True, 'use_legacy_prediction_loop': False, 'push_to_hub': False, 'resume_from_checkpoint': 'None', 'hub_model_id': 'None', 'hub_strategy': 'every_save', 'hub_token': '<HUB_TOKEN>', 'gradient_checkpointing': False, 'push_to_hub_model_id': 'None', 'push_to_hub_organization': 'None', 'push_to_hub_token': '<PUSH_TO_HUB_TOKEN>', '_n_gpu': 0, 'mp_parameters': '', 'tpu_name': 'None', 'tpu_zone': 'None', 'gcp_project': 'None', 'poly_power': 1.0, 'xla': False, 'train_batch_size': 8, 'eval_batch_size': 16}
+2022-01-06 16:14:40,484 INFO    MainThread:7632 [wandb_init.py:init():424] re-initializing run, found existing run on stack: 2mhhpbvn
+2022-01-06 16:14:40,484 INFO    MainThread:7632 [wandb_run.py:finish():1457] finishing run kkwagh/huggingface/2mhhpbvn
+2022-01-06 16:14:40,836 INFO    MainThread:7632 [jupyter.py:save_history():429] not saving jupyter history
+2022-01-06 16:14:40,836 INFO    MainThread:7632 [jupyter.py:save_ipynb():374] not saving jupyter notebook
+2022-01-06 16:14:40,836 INFO    MainThread:7632 [wandb_init.py:_jupyter_teardown():303] cleaning up jupyter logic
+2022-01-06 16:14:40,836 INFO    MainThread:7632 [wandb_run.py:_atexit_cleanup():1780] got exitcode: 0
+2022-01-06 16:14:40,844 INFO    MainThread:7632 [wandb_run.py:_restore():1752] restore
+2022-01-06 16:14:41,902 INFO    MainThread:7632 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 1171
+  total_bytes: 1171
+}
+
+2022-01-06 16:14:42,195 INFO    MainThread:7632 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 1171
+  total_bytes: 1171
+}
+
+2022-01-06 16:14:42,777 INFO    MainThread:7632 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 1171
+  total_bytes: 1171
+}
+
+2022-01-06 16:14:43,208 INFO    MainThread:7632 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 1171
+  total_bytes: 30055
+}
+
+2022-01-06 16:14:43,312 INFO    MainThread:7632 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 1171
+  total_bytes: 30055
+}
+
+2022-01-06 16:14:43,420 INFO    MainThread:7632 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 1171
+  total_bytes: 30055
+}
+
+2022-01-06 16:14:43,529 INFO    MainThread:7632 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 1171
+  total_bytes: 30055
+}
+
+2022-01-06 16:14:43,637 INFO    MainThread:7632 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 1171
+  total_bytes: 30055
+}
+
+2022-01-06 16:14:43,754 INFO    MainThread:7632 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 30055
+  total_bytes: 30055
+}
+
+2022-01-06 16:14:43,870 INFO    MainThread:7632 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 30055
+  total_bytes: 30055
+}
+
+2022-01-06 16:14:43,971 INFO    MainThread:7632 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 30055
+  total_bytes: 30055
+}
+
+2022-01-06 16:14:44,079 INFO    MainThread:7632 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 30055
+  total_bytes: 30055
+}
+
+2022-01-06 16:14:44,187 INFO    MainThread:7632 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 30055
+  total_bytes: 30055
+}
+
+2022-01-06 16:14:44,288 INFO    MainThread:7632 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 30055
+  total_bytes: 30055
+}
+
+2022-01-06 16:14:45,267 INFO    MainThread:7632 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 30055
+  total_bytes: 30055
+}
+
+2022-01-06 16:14:45,996 INFO    MainThread:7632 [wandb_run.py:_wait_for_finish():1912] got exit ret: done: true
+exit_result {
+}
+file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 30055
+  total_bytes: 30055
+}
+local_info {
+}
+
+2022-01-06 16:14:48,412 INFO    MainThread:7632 [wandb_run.py:_append_files():2180] logging synced files
