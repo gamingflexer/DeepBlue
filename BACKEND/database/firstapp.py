@@ -3,7 +3,7 @@ from flask_mysqldb import MySQL
 from flask_sqlalchemy import SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
 import mysql
-import MySQLdb.cursors
+import MySQLdb.cursors 
 import mysql.connector
 
 app = Flask(__name__)
