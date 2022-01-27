@@ -5,6 +5,7 @@ from PIL import Image
 import pytesseract
 import pdfkit
 import os,os.path
+import textract
 
 
 #function to accept file path from user
