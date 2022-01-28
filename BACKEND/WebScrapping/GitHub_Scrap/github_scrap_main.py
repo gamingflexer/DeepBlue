@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
-PATH = 'D:\\Py New\\Py Softwares\\Selenium\\chromedriver.exe'
+PATH = 'D:\\Softwares\\chromedriver.exe'
 driver = webdriver.Chrome(PATH)
 
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
