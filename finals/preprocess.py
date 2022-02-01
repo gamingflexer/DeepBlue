@@ -139,8 +139,8 @@ def pre_process1(text):
     text=re.sub('#\S+',' ',text)
     text=re.sub('@\S+',' ',text)
     
-    for i in range (len(emails)): #removes emails
-        text = text.replace(emails[i],"") 
+    #for i in range (len(emails)): #removes emails
+     #   text = text.replace(emails[i],"") 
     
     text = re.sub(r'(\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4})','',text) #removes phone numbers
     text=re.sub(r'[^\x00-\x7f]',' ',text)
