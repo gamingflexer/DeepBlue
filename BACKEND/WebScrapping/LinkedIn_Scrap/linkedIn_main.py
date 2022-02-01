@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import requests
 import re
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree
 
 # PATH to chrome driver
 PATH = 'D:\\Softwares\\chromedriver.exe'
@@ -32,38 +32,31 @@ driver.get('https://www.linkedin.com/in/aju-palleri-248798a4/')
 
 pagesource = driver.page_source
 soup = BeautifulSoup(pagesource, "html.parser")
-aboutWithTags = soup.find('div', attrs={'class', 'inline-show-more-text inline-show-more-text--is-collapsed'})
-
-"""def remove_html_markup(s):
-    tag = False
-    quote = False
-    out = ""
-
-    for c in s:
-            if c == '<' and not quote:
-                tag = True
-            elif c == '>' and not quote:
-                tag = False
-            elif (c == '"' or c == "'") and tag:
-                quote = not quote
-            elif not tag:
-                out = out + c
-
-    return out
-"""
 
 
-def remove_html_tags(text):
-    """Remove html tags from a string"""
-    import re
-    clean = re.compile('<.*?>')
-    return re.sub(clean, '', text)
+
+def getAbout():
+    spans = soup.find_all('span', "visually-hidden")
+    dataArray = []
+    for span in spans:
+        dataArray.append(span.text)
+
+    print(dataArray[7])
+    print(dataArray[8])
+
+    newDataArray = [dataArray[7],dataArray[8]]
+
+    return newDataArray
 
 
-tagsWithout = remove_html_tags(aboutWithTags)
-print(tagsWithout)
+
+
+
+
 
 """
     To Switch Tabs by Index Number
     driver.switch_to.window(driver.window_handles[0])
 """
+
+driver.quit()
