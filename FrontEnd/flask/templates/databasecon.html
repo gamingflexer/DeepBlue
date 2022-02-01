@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<title>Maha-ticket eportal</title>
+</head>
+<body>
+ <div class="head">
+<h1>MAHA-TICEKT E-PORTAL</h1>
+<h2>Train Pass Service </h2>
+<h2>Registration Form</h2>
+</div>
+<div class="fo">
+<form  action= "{{url_for('databasecon')}}" method="post" novalidate>
+
+    
+ <br>   
+    <label for="first name"><b>First Name:   </b></label>
+    <br>
+    <input type="text" name="first name" placeholder="First Name" required>
+    <br>
+    <br>
+    <label for="Last name"><b>Last Name: </b>  </label>
+    <br>
+    <input type="text" name="Last name" placeholder="Last Name" required>
+    <br>
+    <br>
+    <label for="email"><b>Email address:   </b></label>
+    <br>
+    <input type="email" name="email" placeholder="Enter mes mail id" required>
+    <br> <br>
+    <label for="Admissionno"><b>Admission No </b>: </label><br>
+    <input type="password" name="Admissionno" placeholder="Admission No" required>
+    <br> <br>
+    
+    
+   <div class="sub">
+    <input type="Submit" id="search" value="submit" class="search">
+   </div>
+
+</form>
+</div>
+</body>
+</html>

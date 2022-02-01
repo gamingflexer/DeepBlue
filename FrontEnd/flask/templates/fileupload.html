@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<title>Maha-ticket eportal</title>
+</head>
+<body>
+ <div class="head">
+<h1>MAHA-TICEKT E-PORTAL</h1>
+<h2>Train Pass Service </h2>
+<h2>Registration Form</h2>
+</div>
+<p>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+     {% for message in messages %}
+       <div class="alert alert-success">
+        <strong>{{ message }}</strong>
+      </div>
+     {% endfor %}
+      {% endif %}
+    {% endwith %}
+   </p>
+<div class="fo">
+<form  action= "/upload" method="post" enctype="multipart/form-data"  >
+
+    
+ <br>   
+    <label for="first name"><b>First Name:   </b></label>
+    <br>
+    <input type="text" name="first name" placeholder="First Name" required>
+    <br>
+    <br>
+    <label for="Last name"><b>Last Name: </b>  </label>
+    <br>
+    <input type="text" name="Last name" placeholder="Last Name" required>
+    <br>
+    <br>
+    <label for="email"><b>Email address:   </b></label>
+    <br>
+    <input type="email" name="email" placeholder="Enter mes mail id" required>
+    <br> <br>
+    <label for="Admissionno"><b>Admission No </b>: </label><br>
+    <input type="password" name="Admissionno" placeholder="Admission No" required>
+    <br> <br>
+    <div>
+        <!-- File upload form -->
+    <div class="form-group">
+        <label>Choose Images: </label>
+        <input type="file" name="fileInput" id="fileInput" class="form-control" multiple >
+        </div>
+        <input type="submit" name="submit" class="btn btn-success" value="UPLOAD"/>
+        </form>
+       </div>
+    
+   
+
+</form>
+</div>
+<script>
+    $(document).ready(function(){
+     // File type validation
+        $("#fileInput").change(function(){
+            var fileLength = this.files.length;
+            var match= ["image/jpeg","image/png","image/jpg", "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/rtf","application/vnd.oasis.opendocum", "text/html","application/zip","text/plain"];
+            var i;
+            for(i = 0; i < fileLength; i++){ 
+                var file = this.files[i];
+                var acceptfile = file.type;
+                if(!((acceptfile==match[0]) || (acceptfile==match[1]) || (acceptfile==match[2]) || (acceptfile==match[3]) || (acceptfile==match[4]) || (acceptfile==match[5]) || (acceptfile==match[6]) || (acceptfile==match[7]) || (acceptfile==match[8]) || (acceptfile==match[9]) || (acceptfile==match[10] || (acceptfile==match[11])))){
+                    alert('Please select a valid image file (JPEG/JPG/PNG/GIF/docx/doc/pdf).');
+                    $("#fileInput").val('');
+                    return false;
+                }
+            }
+        });
+    });
+    </script>
+</body>
+</html>
