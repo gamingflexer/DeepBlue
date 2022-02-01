@@ -1,12 +1,7 @@
-from selenium import webdriver
-from selenium.webdriver import ActionChains
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
-import requests
-import re
-import xml.etree.ElementTree
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
 
 # PATH to chrome driver
 PATH = 'D:\\Softwares\\chromedriver.exe'
