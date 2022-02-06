@@ -29,8 +29,12 @@ stop_words = list(stop_words.union(words_stop))
 ##############################################################################################################################
 
 #url function
-def url_grabber(text):
-    url = re.search("(?P<url>https?://[^\s]+)", text).group("url")
+def url_grabber(text0):
+    url =["",""]
+    for i in range(0,2):
+        url[i] = re.search("(?P<url>https?://[^\s]+)", text).group("url")
+        name = "text" + i
+        name = text0.replace(url[0],"")
     return url
 
 #get number
