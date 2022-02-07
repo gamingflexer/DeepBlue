@@ -1,0 +1,34 @@
+{
+    "os": "Windows-10-10.0.19041-SP0",
+    "python": "3.8.8",
+    "heartbeatAt": "2022-01-18T14:16:57.885576",
+    "startedAt": "2022-01-18T14:16:40.264624",
+    "docker": null,
+    "gpu": "GeForce MX250",
+    "gpu_count": 1,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [
+        "--ip=127.0.0.1",
+        "--stdin=9003",
+        "--control=9001",
+        "--hb=9000",
+        "--Session.signature_scheme=\"hmac-sha256\"",
+        "--Session.key=b\"4147e5a5-2c1c-4c28-b8df-a74c5965e270\"",
+        "--shell=9002",
+        "--transport=\"tcp\"",
+        "--iopub=9004",
+        "--f=C:\\Users\\KISHOR~1\\AppData\\Local\\Temp\\tmp-16040Zct9FvCfVXxt.json"
+    ],
+    "state": "running",
+    "program": "<python with no main file>",
+    "git": {
+        "remote": "https://github.com/gamingflexer/DeepBlue.git",
+        "commit": "44d16988dd2ee0e567e972b50f1341e6c81957a2"
+    },
+    "email": "91679569+kunalwagh30092002@users.noreply.github.com",
+    "root": "C:/Users/KISHOR WAGH/Documents/GitHub/DeepBlue",
+    "host": "LAPTOP-0NII10GM",
+    "username": "KISHOR WAGH",
+    "executable": "C:\\ProgramData\\Anaconda3\\python.exe"
+}
