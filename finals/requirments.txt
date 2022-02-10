@@ -1,0 +1,36 @@
+#mysql
+#chromedriver - loc
+#pip install them
+
+#ml
+tensorflow
+pandas
+numpy
+
+
+#ocr
+tika
+
+#file conversion
+selenium
+BeautifulSoup
+fitz
+cv2
+fpdf
+docx2pdf
+pytesseract
+PIL
+pdfkit
+
+
+#db conn
+mysql
+flask_mysqldb
+mysql.connector
+flask_sqlalchemy
+flask
+
+
+date_extractor
+PyMuPDF 
+fitz
