@@ -7,9 +7,9 @@ raw = parser.from_file(fname)
 text = raw['content']
 
 #model paths
-model_spacy_path_edu = ''
-model_spacy_path_exp = ''
-model_spacy_path_skill = ''
+model_spacy_path_edu = 'edu'
+model_spacy_path_exp = 'exp'
+model_spacy_path_skill = 'skill'
 
 
 model_spacy_edu = spacy.load(model_spacy_path_edu)

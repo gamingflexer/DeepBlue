@@ -7,7 +7,7 @@ raw = parser.from_file(fname)
 text = raw['content']
 
 #model paths
-model_spacy_path_all = ''
+model_spacy_path_all = '700 old code'
 
 model_spacy = spacy.load(model_spacy_path_all)
 
