@@ -21,7 +21,7 @@ if(extension == "docx"):
     convert(filename, r"filepdf100.pdf")
     
 #image - pdf
-elif(extension=="png" or extension=="jpg"):
+elif(extension=="png" or extension=="jpg" or extension=="jpeg"):
     file = open(filename, "w")
     pdf = FPDF()
     pdf.add_page()
