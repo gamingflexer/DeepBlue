@@ -28,30 +28,65 @@ driver.get('https://www.linkedin.com/in/aju-palleri-248798a4/')
 pagesource = driver.page_source
 soup = BeautifulSoup(pagesource, "html.parser")
 
+firstBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[2]').text
+print('First Box :' + firstBox)
+f = open("blocks/1b.txt", "a")
+f.write("\n\nFirst Box :\n" + firstBox)
+f.close()
+
+secondBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[3]').text
+print('Second Box :' + secondBox)
+f = open("blocks/2b.txt", "a")
+f.write("\n\nSecond Box :\n" + secondBox)
+f.close()
+
+thirdBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[4]').text
+print('Third Box :' + thirdBox)
+f = open("blocks/3b.txt", "a")
+f.write("\n\nThird Box :\n" + thirdBox)
+f.close()
+
+fourthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[5]').text
+print('Fourth Box :' + fourthBox)
+f = open("blocks/4b.txt", "a")
+f.write("\n\nFourth Box :\n" + fourthBox)
+f.close()
+
+fifthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[6]').text
+print('Fifth Box :' + fifthBox)
+f = open("blocks/5b.txt", "a")
+f.write("\n\nFifth Box :\n" + fifthBox)
+f.close()
+
+sixthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[7]').text
+print('Sixth Box :' + sixthBox)
+f = open("blocks/6b.txt", "a")
+f.write("\n\nSixth Box :\n" + sixthBox)
+f.close()
+
+seventhBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[8]').text
+print('Seventh Box :' + seventhBox)
+f = open("blocks/7b.txt", "a")
+f.write("\n\nSeventh Box :\n" + seventhBox)
+f.close()
 
 
-def getAbout():
-    spans = soup.find_all('span', "visually-hidden")
-    dataArray = []
-    for span in spans:
-        dataArray.append(span.text)
+class Link:
 
-    print(dataArray[7])
-    print(dataArray[8])
+    def getAbout(self):
+        link_About = soup.find_all('div', {"class": "display-flex ph5 pv3"})
+        about = ''
+        for ab in link_About:
+            about = ab.text
+            print(ab.text)
 
-    newDataArray = [dataArray[7],dataArray[8]]
+        return about
 
-    return newDataArray
+    def currentWork(self):
+        current_work = soup.find_all('div', {"class": "text-body-medium break-words"})
+        for data in current_work:
+            print(data.text)
+            return data.text
 
-
-
-
-
-
-
-"""
-    To Switch Tabs by Index Number
-    driver.switch_to.window(driver.window_handles[0])
-"""
 
 driver.quit()
