@@ -2,8 +2,8 @@ import hashlib
 
 
 def removeWords():
-    bad_words = ['Message', 'logo', 'See credential', 'Expiration Date','followers','See all','�','comments']
-    for i in range(9):
+    bad_words = ['Message', 'logo', 'See credential', 'Expiration Date','followers','See all','�','comments','.pdf']
+    for i in range(12):
         with open(str(i + 1) + 'bclean.txt') as oldfile, open(str(i + 1) + 'b.txt', 'w') as newfile:
             for line in oldfile:
                 if not any(bad_word in line for bad_word in bad_words):
@@ -11,7 +11,7 @@ def removeWords():
 
 
 def removeDupes():
-    for i in range(9):
+    for i in range(12):
         inputFile = str(i + 1) + 'b.txt'
         outputFile = str(i + 1) + 'bclean.txt'
         completed_lines_hash = set()

@@ -23,51 +23,80 @@ driver.find_element(By.ID, "password").send_keys(PASSWORD)
 driver.find_element(By.XPATH, "//button[@type='submit']").click()
 
 # GOTO REQUIRED PERSON PROFILE
-driver.get('https://www.linkedin.com/in/aju-palleri-248798a4/')
+driver.get('https://www.linkedin.com/in/saurabh-sharma-786211193/')
 
 pagesource = driver.page_source
-soup = BeautifulSoup(pagesource, "html.parser")
-
+soup = BeautifulSoup(pagesource, "html.parser").encode("utf-8")
 firstBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[2]').text
 print('First Box :' + firstBox)
-f = open("blocks/1b.txt", "a")
+f = open("blocks/1b.txt", "a", encoding="utf-8")
 f.write(firstBox)
 f.close()
 
 secondBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[3]').text
 print('Second Box :' + secondBox)
-f = open("blocks/2b.txt", "a")
+f = open("blocks/2b.txt", "a", encoding="utf-8")
 f.write(secondBox)
 f.close()
 
 thirdBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[4]').text
 print('Third Box :' + thirdBox)
-f = open("blocks/3b.txt", "a")
+f = open("blocks/3b.txt", "a", encoding="utf-8")
 f.write(thirdBox)
 f.close()
 
 fourthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[5]').text
 print('Fourth Box :' + fourthBox)
-f = open("blocks/4b.txt", "a")
+f = open("blocks/4b.txt", "a", encoding="utf-8")
 f.write(fourthBox)
 f.close()
 
 fifthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[6]').text
 print('Fifth Box :' + fifthBox)
-f = open("blocks/5b.txt", "a")
+f = open("blocks/5b.txt", "a", encoding="utf-8")
 f.write(fifthBox)
 f.close()
 
 sixthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[7]').text
 print('Sixth Box :' + sixthBox)
-f = open("blocks/6b.txt", "a")
+f = open("blocks/6b.txt", "a", encoding="utf-8")
 f.write(sixthBox)
 f.close()
 
 seventhBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[8]').text
 print('Seventh Box :' + seventhBox)
-f = open("blocks/7b.txt", "a")
+f = open("blocks/7b.txt", "a", encoding="utf-8")
 f.write(seventhBox)
+f.close()
+
+eighthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[9]').text
+print('Seventh Box :' + eighthBox)
+f = open("blocks/8b.txt", "a", encoding="utf-8")
+f.write(eighthBox)
+f.close()
+
+ninthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[10]').text
+print('ninthBox Box :' + ninthBox)
+f = open("blocks/9b.txt", "a", encoding="utf-8")
+f.write(ninthBox)
+f.close()
+
+tenthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[11]').text
+print('tenthBox Box :' + tenthBox)
+f = open("blocks/10b.txt", "a", encoding="utf-8")
+f.write(tenthBox)
+f.close()
+
+eleventhBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[12]').text
+print('eleventhBox Box :' + eleventhBox)
+f = open("blocks/11b.txt", "a", encoding="utf-8")
+f.write(eleventhBox)
+f.close()
+
+twelvethBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[13]').text
+print('twelvethBox Box :' + twelvethBox)
+f = open("blocks/12b.txt", "a", encoding="utf-8")
+f.write(twelvethBox)
 f.close()
 
 
