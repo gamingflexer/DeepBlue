@@ -31,43 +31,43 @@ soup = BeautifulSoup(pagesource, "html.parser")
 firstBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[2]').text
 print('First Box :' + firstBox)
 f = open("blocks/1b.txt", "a")
-f.write("\n\nFirst Box :\n" + firstBox)
+f.write(firstBox)
 f.close()
 
 secondBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[3]').text
 print('Second Box :' + secondBox)
 f = open("blocks/2b.txt", "a")
-f.write("\n\nSecond Box :\n" + secondBox)
+f.write(secondBox)
 f.close()
 
 thirdBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[4]').text
 print('Third Box :' + thirdBox)
 f = open("blocks/3b.txt", "a")
-f.write("\n\nThird Box :\n" + thirdBox)
+f.write(thirdBox)
 f.close()
 
 fourthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[5]').text
 print('Fourth Box :' + fourthBox)
 f = open("blocks/4b.txt", "a")
-f.write("\n\nFourth Box :\n" + fourthBox)
+f.write(fourthBox)
 f.close()
 
 fifthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[6]').text
 print('Fifth Box :' + fifthBox)
 f = open("blocks/5b.txt", "a")
-f.write("\n\nFifth Box :\n" + fifthBox)
+f.write(fifthBox)
 f.close()
 
 sixthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[7]').text
 print('Sixth Box :' + sixthBox)
 f = open("blocks/6b.txt", "a")
-f.write("\n\nSixth Box :\n" + sixthBox)
+f.write(sixthBox)
 f.close()
 
 seventhBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[8]').text
 print('Seventh Box :' + seventhBox)
 f = open("blocks/7b.txt", "a")
-f.write("\n\nSeventh Box :\n" + seventhBox)
+f.write(seventhBox)
 f.close()
 
 
