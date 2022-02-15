@@ -1,8 +1,0 @@
-
-
-Second Box :
-About
-About
-I am working as an Assistant Professor with PCE, New Panvel for past 10 years. I have keen interest in programming and learning new languages. C, C++, Java, Python, DBMS, Digital Logic Design, Computer Simulation and modelling and web programming are subjects taught to students.
-
-I have mentored students to National Level Smart India Hackathon and Deep Blue Competition. I have guided SE, TE and BE students in their projects and it has been fun to bring in creative ideas and develop using different technologies I am part of internal software development team, responsible to develop software that maintains academic records of students.
