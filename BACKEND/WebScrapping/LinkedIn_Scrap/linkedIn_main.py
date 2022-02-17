@@ -2,6 +2,49 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+import hashlib
+
+
+def removeWords():
+    bad_words = ['Message', 'logo', 'See credential', 'Expiration Date', 'followers', 'See all', '�', 'comments',
+                 '.pdf']
+    for i in range(12):
+        with open(str(i + 1) + 'blocks/bclean.txt') as oldfile, open(str(i + 1) + 'blocks/b.txt', 'w') as newfile:
+            for line in oldfile:
+                if not any(bad_word in line for bad_word in bad_words):
+                    newfile.write(line)
+
+
+def removeDupes():
+    for i in range(12):
+        inputFile = str(i + 1) + 'blocks/b.txt'
+        outputFile = str(i + 1) + 'blocks/bclean.txt'
+        completed_lines_hash = set()
+        output_file = open(outputFile, "w")
+        for line in open(inputFile, "r"):
+            hashValue = hashlib.md5(line.rstrip().encode('utf-8')).hexdigest()
+            if hashValue not in completed_lines_hash:
+                output_file.write(line)
+                completed_lines_hash.add(hashValue)
+        output_file.close()
+
+
+def getAbout():
+    link_About = soup.find_all('div', {"class": "display-flex ph5 pv3"})
+    about = ''
+    for ab in link_About:
+        about = ab.text
+        print(ab.text)
+
+    return about
+
+
+def currentWork():
+    current_work = soup.find_all('div', {"class": "text-body-medium break-words"})
+    for data in current_work:
+        print(data.text)
+        return data.text
+
 
 # PATH to chrome driver
 PATH = 'D:\\Softwares\\chromedriver.exe'
@@ -11,7 +54,7 @@ driver = webdriver.Chrome(service=ser, options=op)
 
 # USERNAME AND PASSWORD
 USERNAME = 'adwaitg02@gmail.com'
-PASSWORD = ''
+PASSWORD = '5'
 
 # open linkedin.com
 driver.get("https://www.linkedin.com/login")
@@ -23,7 +66,7 @@ driver.find_element(By.ID, "password").send_keys(PASSWORD)
 driver.find_element(By.XPATH, "//button[@type='submit']").click()
 
 # GOTO REQUIRED PERSON PROFILE
-driver.get('https://www.linkedin.com/in/saurabh-sharma-786211193/')
+driver.get('https://www.linkedin.com/in/ajuvjohn/')
 
 pagesource = driver.page_source
 soup = BeautifulSoup(pagesource, "html.parser").encode("utf-8")
@@ -99,23 +142,7 @@ f = open("blocks/12b.txt", "a", encoding="utf-8")
 f.write(twelvethBox)
 f.close()
 
-
-class Link:
-
-    def getAbout(self):
-        link_About = soup.find_all('div', {"class": "display-flex ph5 pv3"})
-        about = ''
-        for ab in link_About:
-            about = ab.text
-            print(ab.text)
-
-        return about
-
-    def currentWork(self):
-        current_work = soup.find_all('div', {"class": "text-body-medium break-words"})
-        for data in current_work:
-            print(data.text)
-            return data.text
-
+removeDupes()
+removeWords()
 
 driver.quit()

@@ -1,4 +1,4 @@
-import hashlib
+"""import hashlib
 
 
 def removeWords():
@@ -26,3 +26,4 @@ def removeDupes():
 
 removeDupes()
 removeWords()
+"""
