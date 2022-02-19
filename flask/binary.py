@@ -18,6 +18,7 @@ import os
 from fileconversion import*
 # import magic
 import urllib.request
+import zipfile
 
 
 def convertToBinary(filename):
