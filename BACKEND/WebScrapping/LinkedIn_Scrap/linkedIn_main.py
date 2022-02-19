@@ -9,7 +9,7 @@ def removeWords():
     bad_words = ['Message', 'logo', 'See credential', 'Expiration Date', 'followers', 'See all', '�', 'comments',
                  '.pdf']
     for i in range(12):
-        with open(str(i + 1) + 'blocks/bclean.txt') as oldfile, open(str(i + 1) + 'blocks/b.txt', 'w') as newfile:
+        with open(f'blocks/{str(i + 1)}bclean.txt') as oldfile, open(f'blocks/{str(i + 1)}b.txt', 'w') as newfile:
             for line in oldfile:
                 if not any(bad_word in line for bad_word in bad_words):
                     newfile.write(line)
@@ -17,8 +17,8 @@ def removeWords():
 
 def removeDupes():
     for i in range(12):
-        inputFile = str(i + 1) + 'blocks/b.txt'
-        outputFile = str(i + 1) + 'blocks/bclean.txt'
+        inputFile = f'blocks/{str(i + 1)}b.txt'
+        outputFile = f'blocks/{str(i + 1)}bclean.txt'
         completed_lines_hash = set()
         output_file = open(outputFile, "w")
         for line in open(inputFile, "r"):
@@ -54,7 +54,7 @@ driver = webdriver.Chrome(service=ser, options=op)
 
 # USERNAME AND PASSWORD
 USERNAME = 'adwaitg02@gmail.com'
-PASSWORD = '5'
+PASSWORD = '4'
 
 # open linkedin.com
 driver.get("https://www.linkedin.com/login")
@@ -70,79 +70,114 @@ driver.get('https://www.linkedin.com/in/ajuvjohn/')
 
 pagesource = driver.page_source
 soup = BeautifulSoup(pagesource, "html.parser").encode("utf-8")
-firstBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[2]').text
-print('First Box :' + firstBox)
-f = open("blocks/1b.txt", "a", encoding="utf-8")
-f.write(firstBox)
-f.close()
 
-secondBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[3]').text
-print('Second Box :' + secondBox)
-f = open("blocks/2b.txt", "a", encoding="utf-8")
-f.write(secondBox)
-f.close()
+firstBox = ''
+secondBox = ''
+thirdBox = ''
+fourthBox = ''
+fifthBox = ''
+sixthBox = ''
+sixthBox = ''
+eighthBox = ''
+ninthBox = ''
+tenthBox = ''
+eleventhBox = ''
+twelvethBox = ''
 
-thirdBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[4]').text
-print('Third Box :' + thirdBox)
-f = open("blocks/3b.txt", "a", encoding="utf-8")
-f.write(thirdBox)
-f.close()
+try:
+    firstBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[2]').text
+    secondBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[3]').text
+    thirdBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[4]').text
+    fourthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[5]').text
+    fifthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[6]').text
+    sixthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[7]').text
+    seventhBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[8]').text
+    eighthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[9]').text
+    ninthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[10]').text
+    tenthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[11]').text
+    eleventhBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[12]').text
+    twelvethBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[13]').text
 
-fourthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[5]').text
-print('Fourth Box :' + fourthBox)
-f = open("blocks/4b.txt", "a", encoding="utf-8")
-f.write(fourthBox)
-f.close()
 
-fifthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[6]').text
-print('Fifth Box :' + fifthBox)
-f = open("blocks/5b.txt", "a", encoding="utf-8")
-f.write(fifthBox)
-f.close()
+except:
+    print('error')
 
-sixthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[7]').text
-print('Sixth Box :' + sixthBox)
-f = open("blocks/6b.txt", "a", encoding="utf-8")
-f.write(sixthBox)
-f.close()
+finally:
+    print('First Box :' + firstBox)
+    f = open("blocks/1b.txt", "a", encoding="utf-8")
+    f.write(firstBox)
+    f.close()
 
-seventhBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[8]').text
-print('Seventh Box :' + seventhBox)
-f = open("blocks/7b.txt", "a", encoding="utf-8")
-f.write(seventhBox)
-f.close()
+    print('Second Box :' + secondBox)
+    f = open("blocks/2b.txt", "a", encoding="utf-8")
+    f.write(secondBox)
+    f.close()
 
-eighthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[9]').text
-print('Seventh Box :' + eighthBox)
-f = open("blocks/8b.txt", "a", encoding="utf-8")
-f.write(eighthBox)
-f.close()
+    print('Third Box :' + thirdBox)
+    f = open("blocks/3b.txt", "a", encoding="utf-8")
+    f.write(thirdBox)
+    f.close()
 
-ninthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[10]').text
-print('ninthBox Box :' + ninthBox)
-f = open("blocks/9b.txt", "a", encoding="utf-8")
-f.write(ninthBox)
-f.close()
+    print('Fourth Box :' + fourthBox)
+    f = open("blocks/4b.txt", "a", encoding="utf-8")
+    f.write(fourthBox)
+    f.close()
 
-tenthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[11]').text
-print('tenthBox Box :' + tenthBox)
-f = open("blocks/10b.txt", "a", encoding="utf-8")
-f.write(tenthBox)
-f.close()
+    print('Fifth Box :' + fifthBox)
+    f = open("blocks/5b.txt", "a", encoding="utf-8")
+    f.write(fifthBox)
+    f.close()
 
-eleventhBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[12]').text
-print('eleventhBox Box :' + eleventhBox)
-f = open("blocks/11b.txt", "a", encoding="utf-8")
-f.write(eleventhBox)
-f.close()
+    print('Sixth Box :' + sixthBox)
+    f = open("blocks/6b.txt", "a", encoding="utf-8")
+    f.write(sixthBox)
+    f.close()
 
-twelvethBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[13]').text
-print('twelvethBox Box :' + twelvethBox)
-f = open("blocks/12b.txt", "a", encoding="utf-8")
-f.write(twelvethBox)
-f.close()
+    print('Seventh Box :' + seventhBox)
+    f = open("blocks/7b.txt", "a", encoding="utf-8")
+    f.write(seventhBox)
+    f.close()
+
+    print('Seventh Box :' + eighthBox)
+    f = open("blocks/8b.txt", "a", encoding="utf-8")
+    f.write(eighthBox)
+    f.close()
+
+    print('ninthBox Box :' + ninthBox)
+    f = open("blocks/9b.txt", "a", encoding="utf-8")
+    f.write(ninthBox)
+    f.close()
+
+    print('tenthBox Box :' + tenthBox)
+    f = open("blocks/10b.txt", "a", encoding="utf-8")
+    f.write(tenthBox)
+    f.close()
+
+    print('eleventhBox Box :' + eleventhBox)
+    f = open("blocks/11b.txt", "a", encoding="utf-8")
+    f.write(eleventhBox)
+    f.close()
+
+    print('twelvethBox Box :' + twelvethBox)
+    f = open("blocks/12b.txt", "a", encoding="utf-8")
+    f.write(twelvethBox)
+    f.close()
 
 removeDupes()
 removeWords()
+
+elements = ['About', 'Activity', 'Education', 'Highlights', 'Experience', 'Licenses & certifications', 'Skills',
+            'Projects', 'Honors & awards', 'Languages', 'Interests', 'Causes']
+
+my_dict = {}
+for i in range(12):
+    with open(f"blocks/{i + 1}b.txt", "r") as file:
+        first_line = file.readline()
+        for j in range(12):
+            if elements[j] in first_line:
+                remaining_lines = file.readlines()
+                my_dict[elements[i]] = remaining_lines
+
+print(my_dict)
 
 driver.quit()
