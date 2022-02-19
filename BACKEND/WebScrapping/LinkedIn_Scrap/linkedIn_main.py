@@ -54,7 +54,7 @@ driver = webdriver.Chrome(service=ser, options=op)
 
 # USERNAME AND PASSWORD
 USERNAME = 'adwaitg02@gmail.com'
-PASSWORD = '4'
+PASSWORD = '5'
 
 # open linkedin.com
 driver.get("https://www.linkedin.com/login")
@@ -77,7 +77,7 @@ thirdBox = ''
 fourthBox = ''
 fifthBox = ''
 sixthBox = ''
-sixthBox = ''
+seventhBox=''
 eighthBox = ''
 ninthBox = ''
 tenthBox = ''
