@@ -54,7 +54,7 @@ driver = webdriver.Chrome(service=ser, options=op)
 
 # USERNAME AND PASSWORD
 USERNAME = 'adwaitg02@gmail.com'
-PASSWORD = '5'
+PASSWORD = '6'
 
 # open linkedin.com
 driver.get("https://www.linkedin.com/login")
@@ -66,7 +66,7 @@ driver.find_element(By.ID, "password").send_keys(PASSWORD)
 driver.find_element(By.XPATH, "//button[@type='submit']").click()
 
 # GOTO REQUIRED PERSON PROFILE
-driver.get('https://www.linkedin.com/in/ajuvjohn/')
+driver.get('https://www.linkedin.com/in/aniruddh-achary-0090131b4/')
 
 pagesource = driver.page_source
 soup = BeautifulSoup(pagesource, "html.parser").encode("utf-8")
@@ -77,7 +77,7 @@ thirdBox = ''
 fourthBox = ''
 fifthBox = ''
 sixthBox = ''
-seventhBox=''
+seventhBox = ''
 eighthBox = ''
 ninthBox = ''
 tenthBox = ''
@@ -163,21 +163,24 @@ finally:
     f.write(twelvethBox)
     f.close()
 
-removeDupes()
-removeWords()
+    removeDupes()
+    removeWords()
 
-elements = ['About', 'Activity', 'Education', 'Highlights', 'Experience', 'Licenses & certifications', 'Skills',
-            'Projects', 'Honors & awards', 'Languages', 'Interests', 'Causes']
+    elements = ['Highlights', 'About', 'Activity', 'Education', 'Experience', 'Licenses & certifications', 'Skills',
+                'Projects', 'Honors & awards', 'Languages', 'Interests', 'Causes', 'Featured']
 
-my_dict = {}
-for i in range(12):
-    with open(f"blocks/{i + 1}b.txt", "r") as file:
-        first_line = file.readline()
-        for j in range(12):
-            if elements[j] in first_line:
-                remaining_lines = file.readlines()
-                my_dict[elements[i]] = remaining_lines
+    my_dict = {}
+    for i in range(14):
+        with open(f"blocks/{i + 1}b.txt", "r") as file:
+            first_line = file.readline()
+            for j in range(13):
+                if elements[j] in first_line:
+                    remaining_lines = file.readlines()
+                    my_dict[elements[i]] = remaining_lines
+                    break
+                else:
+                    j += 1
 
-print(my_dict)
+    print(my_dict)
 
-driver.quit()
+    driver.quit()
