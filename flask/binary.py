@@ -15,9 +15,9 @@ import mysql.connector
 from werkzeug.utils import secure_filename
 import os
 from fileconversion import*
-from modelspacy import*
+# from modelspacy import*
 
-from modelbert import*
+# from modelbert import*
 
 # import magic
 import urllib.request
@@ -42,7 +42,7 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
 # db = SQLAlchemy(app)
 #inserting path to save the file *********************************************************
-UPLOAD_FOLDER = "C:\\WindowServer\\Flask-app\\v.1.0\\v1.1_16Feb\\flask\\static\\files"
+UPLOAD_FOLDER = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 #app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
@@ -92,7 +92,7 @@ def upload():
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 #inserting path to save the file *********************************************************
-                binary = "C:\\WindowServer\\Flask-app\\v.1.0\\v1.1_16Feb\\flask\\static\\files\\" + filename
+                binary = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files\\" + filename
                 #file1 = "C:\\Users\\Yash\\PycharmProjects\\flask\\static\\files\\2021-12-08.png"
                 x = binary.rindex("\\")
                 y = binary.rindex(".")
@@ -109,33 +109,10 @@ def upload():
 
                 cur.execute("INSERT INTO deepbluecomp_table(files_path,binaryfiles_path) VALUES (%s, %s)",(filerename, binartfile))
                 print("------SPACY--------")
-                text,text1, link, mailid, phone_number, date, human_name, add, pincode, ftext = fileconversion(path, num)
+                text1, link, mailid, phone_number, date, human_name, add, pincode, ftext = fileconversion(path, num)
                 cur.execute("INSERT INTO datastore( data, link, emailid, phoneno,date,humaname,address,code,data_two) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s )",(text1, link,mailid, phone_number,date,human_name,add,pincode,ftext))
-                model(text)
+                #model(text)
                 print('------BERT--------')
-                #prediction - 2
-                process_resume2(text, TOKENIZER, MAX_LEN)
-                predict(MODEL, TOKENIZER, idx2tag, tag2idx, device, text)
-
-                entities1 = predict(MODEL, TOKENIZER, idx2tag, tag2idx, DEVICE, text)
-                # for i in entities1:
-                #     print(i['entity'], '-', i['text']) #display them in the list
-                main = []
-
-                for i in entities1:
-                    if i['entity'] in tags_vals:
-                        k = {i['entity']:i['text']}
-                        main = main +[k]
-
-                #print(main)
-                k = len(main)
-                for i in range(0,k):
-                     for m in range(0,26):
-                         val = tags_vals[m]
-                         if val in main[i].keys():
-                             if main[i][val] != '' or main[i][val] !=',' :
-                                 print(main[i])
-
                 #proc = subprocess.Popen('python author_script.py {}{} -p n -s n -m num'.format(UPLOAD_FOLDER, file.filename), shell=True,stdout=subprocess.PIPE)
 
     mysql.connection.commit()
@@ -148,7 +125,7 @@ def upload():
 @app.route("/delete")
 def delete():
 
-    folder = "C:\\WindowServer\\Flask-app\\v.1.0\\v1.1_16Feb\\flask\\static\\files"
+    folder = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files"
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
         try:
