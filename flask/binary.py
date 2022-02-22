@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, flash, redirect
 from flask import *
-import os, shutil
+import os
+import shutil
 from flask_mysqldb import MySQL, MySQLdb
 from flask_sqlalchemy import SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
@@ -15,19 +16,25 @@ import mysql.connector
 from werkzeug.utils import secure_filename
 import os
 from fileconversion import*
-# from modelspacy import*
+from linkedIn_main import*
 
+# from modelspacy import*
 # from modelbert import*
 
 # import magic
 import urllib.request
+
+
 def convertToBinary(filename):
     with open(filename, 'rb') as file:
         binarydata = file.read()
     return binarydata
-def convertBinaryToFile(binarydata,filename):
+
+
+def convertBinaryToFile(binarydata, filename):
     with open(filename, 'wb') as file:
         file.write(binarydata)
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'cairocoders-ednalan'
@@ -41,21 +48,23 @@ app.config['MYSQL_DB'] = 'deepbluecomp'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
 # db = SQLAlchemy(app)
-#inserting path to save the file *********************************************************
+# inserting path to save the file *********************************************************
 UPLOAD_FOLDER = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 #app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'docx', 'doc', 'rtf', 'odt','html', 'txt'])
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg',
+                         'jpeg', 'docx', 'doc', 'rtf', 'odt', 'html', 'txt'])
+
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-
 @app.route('/', methods=["POST", "GET"])
 def hello():
     return render_template('Homepage.html')
+
 
 @app.route('/upload2', methods=["POST", "GET"])
 def upload2():
@@ -87,11 +96,10 @@ def upload():
                 flash('No selected file')
                 return redirect(request.url)
             if file and allowed_file(file.filename):
-                
 
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-                #inserting path to save the file *********************************************************
+                # inserting path to save the file *********************************************************
                 binary = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files\\" + filename
                 #file1 = "C:\\Users\\Yash\\PycharmProjects\\flask\\static\\files\\2021-12-08.png"
                 x = binary.rindex("\\")
@@ -100,27 +108,30 @@ def upload():
                 num = str(val)
                 val = val+1
 
-
                 path = binary[:x + 1] + "resume" + num + binary[y:]
-                filerename="resume" + num + binary[y:]
+                filerename = "resume" + num + binary[y:]
                 os.rename(binary, path)
                 #binary = "C:\\Users\\Yash\\PycharmProjects\\flask\\static\\files\\"+filename
                 binartfile = convertToBinary(path)
 
-                cur.execute("INSERT INTO deepbluecomp_table(files_path,binaryfiles_path) VALUES (%s, %s)",(filerename, binartfile))
+                cur.execute(
+                    "INSERT INTO deepbluecomp_table(files_path,binaryfiles_path) VALUES (%s, %s)", (filerename, binartfile))
                 print("------SPACY--------")
-                text1, link, mailid, phone_number, date, human_name, add, pincode, ftext = fileconversion(path, num)
-                cur.execute("INSERT INTO datastore( data, link, emailid, phoneno,date,humaname,address,code,data_two) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s )",(text1, link,mailid, phone_number,date,human_name,add,pincode,ftext))
-                #model(text)
+                text1, link, mailid, phone_number, date, human_name, add, pincode, ftext = fileconversion(
+                    path, num)
+                cur.execute("INSERT INTO datastore( data, link, emailid, phoneno,date,humaname,address,code,data_two) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s )",
+                            (text1, link, mailid, phone_number, date, human_name, add, pincode, ftext))
+                # model(text)
                 print('------BERT--------')
                 #proc = subprocess.Popen('python author_script.py {}{} -p n -s n -m num'.format(UPLOAD_FOLDER, file.filename), shell=True,stdout=subprocess.PIPE)
 
     mysql.connection.commit()
-            #print(file)
+    # print(file)
     cur.close()
     flash('File(s) successfully uploaded')
-    #return redirect('/upload')
+    # return redirect('/upload')
     return render_template('upload2.html')
+
 
 @app.route("/delete")
 def delete():
@@ -138,7 +149,10 @@ def delete():
 
     return render_template('upload2.html')
 
-if __name__ == "__main__":
-  app.run(debug=True)
 
-#app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
+
+# app.run(debug=True)
+# scrape_link = ''
+# linkedien_scrape(scrape_link)
