@@ -4,6 +4,29 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 import hashlib
 
+scrape_link = ''
+
+def emptyB():
+    for i in range(12):
+        #print(i + 1)
+        f = open('blocks/' + str(i + 1) + "b.txt", "w")
+        f.write('')
+        f.close()
+
+
+def emptyBClean():
+    for i in range(12):
+        #print(i + 1)
+        f = open('blocks/' + str(i + 1) + "bclean.txt", "w")
+        f.write('')
+        f.close()
+
+
+emptyB()
+emptyBClean()
+print('clean Completed!')
+
+
 
 def removeWords():
     bad_words = ['Message', 'logo', 'See credential', 'Expiration Date', 'followers', 'See all', '�', 'comments',
@@ -47,14 +70,14 @@ def currentWork():
 
 
 # PATH to chrome driver
-PATH = 'D:\\Softwares\\chromedriver.exe'
+PATH = '"C:\\chromedriver.exe"'
 ser = Service(PATH)
 op = webdriver.ChromeOptions()
 driver = webdriver.Chrome(service=ser, options=op)
 
 # USERNAME AND PASSWORD
-USERNAME = 'adwaitg02@gmail.com'
-PASSWORD = '6'
+USERNAME = 'omsurve570@gmail.com'
+PASSWORD = 'lucario123'
 
 # open linkedin.com
 driver.get("https://www.linkedin.com/login")
@@ -66,7 +89,7 @@ driver.find_element(By.ID, "password").send_keys(PASSWORD)
 driver.find_element(By.XPATH, "//button[@type='submit']").click()
 
 # GOTO REQUIRED PERSON PROFILE
-driver.get('https://www.linkedin.com/in/aniruddh-achary-0090131b4/')
+driver.get(scrape_link)
 
 pagesource = driver.page_source
 soup = BeautifulSoup(pagesource, "html.parser").encode("utf-8")
