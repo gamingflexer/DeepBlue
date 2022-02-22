@@ -103,8 +103,8 @@ def both_model(text):
     MODEL = BertForTokenClassification.from_pretrained(
         MODEL_PATH, state_dict=STATE_DICT['model_state_dict'], num_labels=12)
 
-    tags_vals = ["UNKNOWN", "Name", "Degree", "Skills", "College Name", "Email Address", "Designation",
-                 "Companies worked at", "Empty", "Graduation Year", "Years of Experience", "Location"]
+    tags_vals = ['Empty', 'UNKNOWN', 'Email Address', 'Links', 'Skills', 'Graduation Year', 'College Name', 'Degree', 'Companies worked at', 'Location', 'Name', 'Designation', 'projects',
+                 'Years of Experience', 'Can Relocate to', 'Rewards and Achievements', 'Address', 'University', 'Relocate to', 'Certifications', 'state', 'links', 'College', 'training', 'des', 'abc']
 
     def process_resume2(text, tokenizer, max_len):
         tok = tokenizer.encode_plus(
