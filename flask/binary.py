@@ -9,6 +9,7 @@ import mysql
 import json
 import subprocess
 import urllib.request
+import zipfile
 import MySQLdb.cursors
 import sys
 from flask_mysqldb import MySQL
@@ -16,6 +17,7 @@ import mysql.connector
 from werkzeug.utils import secure_filename
 import os
 from fileconversion import*
+from get_links import *
 from linkedIn_main import*
 
 # from modelspacy import*
@@ -49,6 +51,12 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
 # db = SQLAlchemy(app)
 # inserting path to save the file *********************************************************
+
+ZIPPED = "C:\\Users\\Yash\\PycharmProjects\\flask\\static\\zip"
+app.config['ZIPPED'] = ZIPPED
+EXTRACTED = "C:\\Users\\Yash\\PycharmProjects\\flask\\static\\extracted"
+app.config['EXTRACTED'] = EXTRACTED
+
 UPLOAD_FOLDER = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 #app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
@@ -96,45 +104,91 @@ def upload():
                 flash('No selected file')
                 return redirect(request.url)
             if file and allowed_file(file.filename):
+                print(file.filename)
+                name = ((file.filename).rsplit('.'))[1]
+                if (name == 'zip'):
+                    filename = secure_filename(file.filename)
+                    file.save(os.path.join(app.config['ZIPPED'], filename))
+                    zip_ref = zipfile.ZipFile(os.path.join(app.config['ZIPPED'], filename), 'r')
+                    zip_ref.extractall(app.config['EXTRACTED'])
+                    dir_list = os.listdir(app.config['EXTRACTED'])
+                    print(dir_list)
+                    for i in dir_list:
+                        original = "C:\\Users\\Yash\\PycharmProjects\\flask\\static\\extracted\\" + str(i)
+                        x = original.rindex("\\")
+                        y = original.index(".")
+                        num = str(val)
+                        val = val + 1
+                        path = original[:x + 1] + "resume" + num + original[y:]
+                        filerename = "resume" + num + original[y:]
+                        os.rename(original, path)
+                        # binary = "C:\\Users\\Yash\\PycharmProjects\\flask\\static\\files\\"+filename
+                        binartfile = convertToBinary(path)
+                        # moving on to final folder
+                        cur.execute("INSERT INTO deepbluecomp_table(files_path,binaryfiles_path) VALUES (%s, %s)",
+                                    (filerename, binartfile))
+                        print("------")
+                        text, text1, link, mailid, phone_number, date, human_name, add, pincode, ftext = fileconversion(
+                            path, num)
+                        linkdedln, github, others = get_links(link)
 
-                filename = secure_filename(file.filename)
-                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-                # inserting path to save the file *********************************************************
-                binary = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files\\" + filename
-                #file1 = "C:\\Users\\Yash\\PycharmProjects\\flask\\static\\files\\2021-12-08.png"
-                x = binary.rindex("\\")
-                y = binary.rindex(".")
+                        cur.execute(
+                            "INSERT INTO parse( extracted_text, cleaned_text,state, emails, linkedin_link, github_link,extra_link,phonenumber) VALUES (%s, %s, %s, %s, %s, %s, %s, %s )",
+                            (text1, ftext, pincode, mailid, linkdedln, github, others, phone_number))
+                        # model eval
 
-                num = str(val)
-                val = val+1
+                        # model(text)
 
-                path = binary[:x + 1] + "resume" + num + binary[y:]
-                filerename = "resume" + num + binary[y:]
-                os.rename(binary, path)
-                #binary = "C:\\Users\\Yash\\PycharmProjects\\flask\\static\\files\\"+filename
-                binartfile = convertToBinary(path)
+                    dir_list = os.listdir(app.config['EXTRACTED'])
+                    for file_name in dir_list:
+                        source = "C:\\Users\\Yash\\PycharmProjects\\flask\\static\\extracted\\" + file_name
+                        destination = "C:\\Users\\Yash\\PycharmProjects\\flask\\static\\files\\" + file_name
+                        shutil.move(source, destination)
+                else:
+                    filename = secure_filename(file.filename)
+                    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                    # inserting path to save the file *********************************************************
+                    binary = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files\\" + filename
+                    #file1 = "C:\\Users\\Yash\\PycharmProjects\\flask\\static\\files\\2021-12-08.png"
+                    x = binary.rindex("\\")
+                    y = binary.rindex(".")
 
-                cur.execute(
-                    "INSERT INTO deepbluecomp_table(files_path,binaryfiles_path) VALUES (%s, %s)", (filerename, binartfile))
-                print("------SPACY--------")
-                text1, link, mailid, phone_number, date, human_name, add, pincode, ftext = fileconversion(
-                    path, num)
-                cur.execute("INSERT INTO datastore( data, link, emailid, phoneno,date,humaname,address,code,data_two) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s )",
-                            (text1, link, mailid, phone_number, date, human_name, add, pincode, ftext))
-                # model(text)
-                print('------BERT--------')
-                #proc = subprocess.Popen('python author_script.py {}{} -p n -s n -m num'.format(UPLOAD_FOLDER, file.filename), shell=True,stdout=subprocess.PIPE)
+                    num = str(val)
+                    val = val+1
+
+                    path = binary[:x + 1] + "resume" + num + binary[y:]
+                    filerename = "resume" + num + binary[y:]
+                    os.rename(binary, path)
+                    #binary = "C:\\Users\\Yash\\PycharmProjects\\flask\\static\\files\\"+filename
+                    binartfile = convertToBinary(path)
+
+                    cur.execute(
+                        "INSERT INTO deepbluecomp_table(files_path,binaryfiles_path) VALUES (%s, %s)", (filerename, binartfile))
+                    print("------SPACY--------")
+                    text1, link, mailid, phone_number, date, human_name, add, pincode, ftext = fileconversion(
+                        path, num)
+                    cur.execute(
+                        "INSERT INTO parse( extracted_text, cleaned_text,state, emails, linkedin_link, github_link,extra_link,phonenumber) VALUES (%s, %s, %s, %s, %s, %s, %s, %s )",
+                        (text1, ftext, pincode, mailid, linkdedln, github, others, phone_number))
+                    # model(text)
+                    print('------BERT--------')
+                    #proc = subprocess.Popen('python author_script.py {}{} -p n -s n -m num'.format(UPLOAD_FOLDER, file.filename), shell=True,stdout=subprocess.PIPE)
 
     mysql.connection.commit()
     # print(file)
     cur.close()
     flash('File(s) successfully uploaded')
     # return redirect('/upload')
-    return render_template('upload2.html')
+    return render_template('table2.html')
 
 
 @app.route("/delete")
 def delete():
+    dirzip_list = os.listdir(app.config['ZIPPED'])
+
+    for zipfileli in dirzip_list:
+        os.remove("C:\\Users\\Yash\\PycharmProjects\\flask\\static\\zip\\" + zipfileli)
+
 
     folder = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files"
     for filename in os.listdir(folder):
@@ -148,6 +202,22 @@ def delete():
             print('Failed to delete %s. Reason: %s' % (file_path, e))
 
     return render_template('upload2.html')
+@app.route('/table', methods=["POST", "GET"])
+def table():
+    table_li=[]
+
+    cur = mysql.connection.cursor()
+    result = cur.execute('SELECT * FROM list')
+    #name,education,skills,experience,email
+    print(result)
+    if result > 0:
+        row = cur.fetchall()
+        print(row)
+        for dict in row:
+            table_li.append(list(dict.values()))
+        print(table_li)
+
+    return render_template('table2.html',row=table_li)
 
 
 if __name__ == "__main__":

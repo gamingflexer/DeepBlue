@@ -35,45 +35,59 @@ li{
 }
 
 
+    
  p{
      margin-top: 1rem;
      font-size: 3.5rem;
     text-transform:uppercase ;
-    
     text-align: center;
     position: relative;
     
 }
 
-ul li .menu .menu-item .con a{
-    display: inline-block;
-}
 
-.menu{
+.logo{
+    float: left;
     position: fixed;
-    float:left;
-    border: 0.4rem solid;
-    border-radius: 15px;
-    margin-top: 4.0rem;
-    left: -250px;
-    height: 42.2rem;
-    width: 19rem;
-    background-color: #808080;
-    transition: all .7s ease;
-} 
+    width: 6rem;
+    background-color: white;
+    box-shadow: 0.1rem 0.2rem 0.8rem black;
+    height: 100%;
+    padding: 2rem;
+    
+    
+ }
+ .setting1,.home ,.statistic,.candiate ,.account{
+     width: 2.2rem;
+}
+.home{
+    margin-top: 2rem;
+}
+.setting1{
+    margin-top: 2rem;
+}
+.home ,.statistic,.candiate{
+    margin-left: -2.2rem;
+    width:7rem ;
 
-a{
+}
+.fa-microsoft{
     font-size: 2rem;
-    color:white;
-    line-height: 350%;
+    color: black;
+   
+}
+.setting{
+   margin-top: 25rem;
+   width: 2.4rem;
+}
+.account{
+    width: 5.6rem;
+    margin-left: -2.1rem;
     
 }
 
- a i{
-     margin-left: 3rem;
-    margin-right: 16px;
-    color: white;
-}
+
+
 
 
 
@@ -87,50 +101,26 @@ h2{
     position: absolute;
     text-align: center;
     float: right;
-    margin-top: 35rem;
+    margin-top: 30rem;
     margin-left: 50%;
     transform: translate(-50%,-50%);
     
 }
 .btn{
+    margin-top: 1.1rem;
     display: inline-block;
     color: blue;
+    font-size: 1.5rem;
     font-weight: 500;
-    padding: 0.1em 2.3em;
-    margin: 0.8em 0;
+    height: 5rem;
+    width: 12rem;
+   padding-top: 1.4rem;
+   text-align: center;
+   
     background-color: white;
     border-radius: 50px;
 }
-li {
-   transition: .4s;
-  
-}
-#check{
-    display: none;
-}
-label #icon,label #cancel{
-position: absolute;
-cursor: pointer;
 
+.sub_con{
+    margin-top: 20rem;
 }
-label #icon{
-    left: 40px;
-    top:90px;
-    font-size: 35px;
-    color: white;
-}
-label #cancel{
-    z-index: 1111;
-    left: -150px;
-    top: 100px;
-    color: white;
-    font-size:30px;
-    transition: all 0.7s ease;
-}
-#check:checked ~ .menu{
-    left: 0px;
-}
-#check:checked ~ label #cancel{
-    left: 150px;
-}
-

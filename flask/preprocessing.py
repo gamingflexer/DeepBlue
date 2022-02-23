@@ -50,6 +50,8 @@ def url(text5):
         url=None
     return url
 def url_func(text2):
+    url1.clear()
+
     tex=text2
     val1 = "so"
     while(val1!=""):
@@ -71,6 +73,7 @@ def url_func(text2):
 
 def email(text):
     emails = re.findall(r"[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+", text)
+    emails=set(emails)
     return(emails)
 
 def get_phone_numbers(string):

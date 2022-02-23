@@ -10,9 +10,9 @@
 </head>
 <body>
   <div class="wrapper">
-    <header>File Uploader JavaScript</header>
+    <header>File Uploader</header>
     <form  action= "/upload" method="post" enctype="multipart/form-data"  >
-      <input class="file-input" type="file" name="fileInput" id="fileInput" class="form-control" multiple aria-hidden="false" >
+      <input class="file-input" type="file" name="files[]" id="fileInput" class="form-control" multiple aria-hidden="false"required >
       <i class="fas fa-cloud-upload-alt"></i>
       <p>Browse File to Upload</p>
       <input type="submit" name="submit" class="btn btn-success" value="UPLOAD"/>
