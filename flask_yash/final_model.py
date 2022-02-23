@@ -12,12 +12,24 @@ import torch.nn.functional as F
 import torch.nn as nn
 import textract
 from tika import parser
+MAX_LEN = 512
+DEVICE = torch.device("cuda")
+MODEL_PATH = '/content/drive/MyDrive/Colab Notebooks/DeepBlue/bert-large-uncased'
+STATE_DICT = torch.load(
+    '/content/drive/MyDrive/Colab Notebooks/DeepBlue/TYPE 2/uncased/new/large-uncased-bert-700-512-basedir.pth', map_location=DEVICE)
+#TOKENIZER = BertTokenizerFast('/content/drive/MyDrive/Colab Notebooks/DeepBlue/bert-large-uncased/vocab.txt', lowercase=True)
+TOKENIZER = Tokenizer(num_words=20000)  # SIMPLE
+MODEL = BertForTokenClassification.from_pretrained(
+    MODEL_PATH, state_dict=STATE_DICT['model_state_dict'], num_labels=12)
+
+tags_vals = ['Empty', 'UNKNOWN', 'Email Address', 'Links', 'Skills', 'Graduation Year', 'College Name', 'Degree', 'Companies worked at', 'Location', 'Name', 'Designation', 'projects',
+             'Years of Experience', 'Can Relocate to', 'Rewards and Achievements', 'Address', 'University', 'Relocate to', 'Certifications', 'state', 'links', 'College', 'training', 'des', 'abc']
 
 
 text1 = ''
 
 
-def both_model(text):
+def both_model(text, MAX_LEN, DEVICE, MODEL, TOKENIZER):
     # spacy 700
     tag2idx = {t: i for i, t in enumerate(tags_vals)}
     idx2tag = {i: t for i, t in enumerate(tags_vals)}
@@ -92,19 +104,6 @@ def both_model(text):
     # after , remove for name
 
     # BERT
-    MAX_LEN = 512
-    EPOCHS = 6
-    DEVICE = torch.device("cuda")
-    MODEL_PATH = '/content/drive/MyDrive/Colab Notebooks/DeepBlue/bert-large-uncased'
-    STATE_DICT = torch.load(
-        '/content/drive/MyDrive/Colab Notebooks/DeepBlue/TYPE 2/uncased/new/large-uncased-bert-700-512-basedir.pth', map_location=DEVICE)
-    #TOKENIZER = BertTokenizerFast('/content/drive/MyDrive/Colab Notebooks/DeepBlue/bert-large-uncased/vocab.txt', lowercase=True)
-    TOKENIZER = Tokenizer(num_words=20000)  # SIMPLE
-    MODEL = BertForTokenClassification.from_pretrained(
-        MODEL_PATH, state_dict=STATE_DICT['model_state_dict'], num_labels=12)
-
-    tags_vals = ['Empty', 'UNKNOWN', 'Email Address', 'Links', 'Skills', 'Graduation Year', 'College Name', 'Degree', 'Companies worked at', 'Location', 'Name', 'Designation', 'projects',
-                 'Years of Experience', 'Can Relocate to', 'Rewards and Achievements', 'Address', 'University', 'Relocate to', 'Certifications', 'state', 'links', 'College', 'training', 'des', 'abc']
 
     def process_resume2(text, tokenizer, max_len):
         tok = tokenizer.encode_plus(
