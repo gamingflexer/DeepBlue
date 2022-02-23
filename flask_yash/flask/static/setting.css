@@ -1,0 +1,48 @@
+.logo{
+    
+    
+    float: left;
+    position: fixed;
+    width: 2rem;
+    background-color: white;
+    box-shadow: 0.1rem 0.2rem 0.8rem grey;
+    height: 100%;
+    padding: 2rem;
+    
+    
+ }
+ ul{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+}
+.setting1,.home ,.statistic,.candiate ,.account{
+     
+     width: 2.2rem;
+ }
+ .home{
+     margin-top: 2rem;
+ }
+ .setting1{
+     margin-top: 2rem;
+ }
+ .home ,.statistic,.candiate{
+     margin-left: -2.2rem;
+     width:7rem ;
+
+ }
+ .fa-microsoft{
+     font-size: 2rem;
+     color: black;
+    
+ }
+ .setting{
+    margin-top: 25rem;
+    width: 2.4rem;
+ }
+ .account{
+     width: 5.6rem;
+     margin-left: -2.1rem;
+     
+ }
