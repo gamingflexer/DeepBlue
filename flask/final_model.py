@@ -16,11 +16,14 @@ from tika import parser
 
 #text1 = ''
 
-
 def both_model(text):
-    # spacy 700
+    #BERT
+    MAX_LEN = 512
+    tags_vals = ['Empty', 'UNKNOWN', 'Email Address', 'Links', 'Skills', 'Graduation Year', 'College Name', 'Degree', 'Companies worked at', 'Location', 'Name', 'Designation', 'projects',
+             'Years of Experience', 'Can Relocate to', 'Rewards and Achievements', 'Address', 'University', 'Relocate to', 'Certifications', 'state', 'links', 'College', 'training', 'des', 'abc']
     tag2idx = {t: i for i, t in enumerate(tags_vals)}
     idx2tag = {i: t for i, t in enumerate(tags_vals)}
+    # spacy 700
     spacy_700 = []
     spacy_skills = []
     spacy_edu = []
@@ -91,20 +94,6 @@ def both_model(text):
     # keyword - not possible in spacy
     # after , remove for name
 
-    # BERT
-    MAX_LEN = 512
-    EPOCHS = 6
-    DEVICE = torch.device("cuda")
-    MODEL_PATH = '/content/drive/MyDrive/Colab Notebooks/DeepBlue/bert-large-uncased'
-    STATE_DICT = torch.load(
-        '/content/drive/MyDrive/Colab Notebooks/DeepBlue/TYPE 2/uncased/new/large-uncased-bert-700-512-basedir.pth', map_location=DEVICE)
-    #TOKENIZER = BertTokenizerFast('/content/drive/MyDrive/Colab Notebooks/DeepBlue/bert-large-uncased/vocab.txt', lowercase=True)
-    TOKENIZER = Tokenizer(num_words=20000)  # SIMPLE
-    MODEL = BertForTokenClassification.from_pretrained(
-        MODEL_PATH, state_dict=STATE_DICT['model_state_dict'], num_labels=12)
-
-    tags_vals = ['Empty', 'UNKNOWN', 'Email Address', 'Links', 'Skills', 'Graduation Year', 'College Name', 'Degree', 'Companies worked at', 'Location', 'Name', 'Designation', 'projects',
-                 'Years of Experience', 'Can Relocate to', 'Rewards and Achievements', 'Address', 'University', 'Relocate to', 'Certifications', 'state', 'links', 'College', 'training', 'des', 'abc']
 
     def process_resume2(text, tokenizer, max_len):
         tok = tokenizer.encode_plus(
@@ -212,11 +201,14 @@ def both_model(text):
                 main.remove(val)
             elif key == "Empty":
                 main.remove(val)
+    
+    print(main)
 
     # functions
-    spacy_700(text1)
-    spacy_edu(text1)
-    spacy_exp(text1)
-    spacy_skills(text1)
+    spacy_700(text)
+    spacy_edu(text)
+    spacy_exp(text)
+    spacy_skills(text)
+    print(spacy_700)
 
     return spacy_700, spacy_skills, spacy_edu, spacy_exp, main
