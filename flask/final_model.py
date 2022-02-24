@@ -16,7 +16,7 @@ from tika import parser
 
 #text1 = ''
 
-def both_model(text):
+def both_model(MODEL,TOKENIZER,DEVICE,text):
     #BERT
     MAX_LEN = 512
     tags_vals = ['Empty', 'UNKNOWN', 'Email Address', 'Links', 'Skills', 'Graduation Year', 'College Name', 'Degree', 'Companies worked at', 'Location', 'Name', 'Designation', 'projects',

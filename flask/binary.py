@@ -25,27 +25,21 @@ from final_model import*
 
 # BERT
 MAX_LEN = 512
-EPOCHS = 6
-DEVICE = torch.device("cuda")
-MODEL_PATH = '/content/drive/MyDrive/Colab Notebooks/DeepBlue/bert-large-uncased'
+DEVICE = torch.device("cpu")
+MODEL_PATH = 'bert-base-uncased'
 STATE_DICT = torch.load(
-    '/content/drive/MyDrive/Colab Notebooks/DeepBlue/TYPE 2/uncased/new/large-uncased-bert-700-512-basedir.pth', map_location=DEVICE)
-#TOKENIZER = BertTokenizerFast('/content/drive/MyDrive/Colab Notebooks/DeepBlue/bert-large-uncased/vocab.txt', lowercase=True)
-TOKENIZER = Tokenizer(num_words=20000)  # SIMPLE
+    'C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\models\\model_e10.tar', map_location=DEVICE)
+TOKENIZER = BertTokenizerFast.from_pretrained(MODEL_PATH, lowercase=True)
+#TOKENIZER = Tokenizer(num_words=20000)  # SIMPLE
 MODEL = BertForTokenClassification.from_pretrained(
     MODEL_PATH, state_dict=STATE_DICT['model_state_dict'], num_labels=12)
+print('Model Loaded!')
 
 tags_vals = ['Empty', 'UNKNOWN', 'Email Address', 'Links', 'Skills', 'Graduation Year', 'College Name', 'Degree', 'Companies worked at', 'Location', 'Name', 'Designation', 'projects',
              'Years of Experience', 'Can Relocate to', 'Rewards and Achievements', 'Address', 'University', 'Relocate to', 'Certifications', 'state', 'links', 'College', 'training', 'des', 'abc']
 
 # flask
-ZIPPED = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\zip"
-app.config['ZIPPED'] = ZIPPED
-EXTRACTED = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\extracted"
-app.config['EXTRACTED'] = EXTRACTED
 
-UPLOAD_FOLDER = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files"
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg',
                          'jpeg', 'docx', 'doc', 'rtf', 'odt', 'html', 'txt', 'zip'])
@@ -80,7 +74,13 @@ app.config['MYSQL_DB'] = 'deepbluecomp'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
 # db = SQLAlchemy(app)
+ZIPPED = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\zip"
+app.config['ZIPPED'] = ZIPPED
+EXTRACTED = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\extracted"
+app.config['EXTRACTED'] = EXTRACTED
 
+UPLOAD_FOLDER = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files"
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # routes
 @app.route('/', methods=["POST", "GET"])
 def hello():
@@ -192,7 +192,7 @@ def upload():
                         "INSERT INTO parse( extracted_text, cleaned_text,state, emails, linkedin_link, github_link,extra_link,phonenumber) VALUES (%s, %s, %s, %s, %s, %s, %s, %s )",
                         (text1, ftext, pincode, mailid, linkdedln, github, others, phone_number))
                     print("------MODELS--------")
-                    both_model(text1)
+                    both_model(MODEL,TOKENIZER,DEVICE,text1)
                     
                     #proc = subprocess.Popen('python author_script.py {}{} -p n -s n -m num'.format(UPLOAD_FOLDER, file.filename), shell=True,stdout=subprocess.PIPE)
 
