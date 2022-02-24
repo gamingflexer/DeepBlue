@@ -109,7 +109,7 @@ def upload():
                 print(file.filename)
                 name = ((file.filename).rsplit('.'))[1]
                 if (name == 'zip'):
-                    print('zip !')
+                    print('zip ! upload')
                     filename = secure_filename(file.filename)
                     file.save(os.path.join(app.config['ZIPPED'], filename))
                     zip_ref = zipfile.ZipFile(os.path.join(app.config['ZIPPED'], filename), 'r')
@@ -148,7 +148,7 @@ def upload():
                         destination = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files\\" + file_name
                         shutil.move(source, destination)
                 else:
-                    print('pdf !')
+                    print('pdf ! upload')
                     filename = secure_filename(file.filename)
                     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                     # inserting path to save the file *********************************************************

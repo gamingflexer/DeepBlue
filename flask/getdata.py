@@ -23,6 +23,7 @@ def givedata(text):
         eid = "null"
 
     phone_number = get_phone_numbers(text)
+    #phone_number = phone_number[len(phone_number0) -1]
     if (len(phone_number) == 0):
         phno = "null"
     else:
