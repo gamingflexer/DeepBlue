@@ -14,7 +14,7 @@ import textract
 from tika import parser
 
 
-text1 = ''
+#text1 = ''
 
 
 def both_model(text):

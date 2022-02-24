@@ -16,7 +16,7 @@ import mysql.connector
 from preprocessing import *
 from getdata import *
 
-def fileconversion(filename, y):
+def fileconversion1(filename, y):
     eid=""
     phno=""
     f_human_name=""
@@ -297,6 +297,7 @@ def fileconversion(filename, y):
             raw = parser.from_file(filename)
             text = raw['content']
             text,text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext=givedata(text)
+            print("underfile")
         except:
             try:
                 raw = parser.from_file(filename)
@@ -314,6 +315,7 @@ def fileconversion(filename, y):
                 address = "NAN"
                 pincode = "NAN"
                 ftext = "NAN"
+                print("under except")
 
 
 

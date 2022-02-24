@@ -3,7 +3,7 @@
 from transformers import pipeline
 # try a smaller model
 
-text1 = " "  # text to classify
+#text1 = " "  # text to classify
 
 
 def comparemain(text):
