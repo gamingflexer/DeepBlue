@@ -16,14 +16,14 @@ from tika import parser
 
 #text1 = ''
 
-def both_model(MODEL,TOKENIZER,DEVICE,text):
+def both_model(text):
     # #BERT
     # MAX_LEN = 512
     # tags_vals = ['Empty', 'UNKNOWN', 'Email Address', 'Links', 'Skills', 'Graduation Year', 'College Name', 'Degree', 'Companies worked at', 'Location', 'Name', 'Designation', 'projects',
     #          'Years of Experience', 'Can Relocate to', 'Rewards and Achievements', 'Address', 'University', 'Relocate to', 'Certifications', 'state', 'links', 'College', 'training', 'des', 'abc']
     # tag2idx = {t: i for i, t in enumerate(tags_vals)}
     # idx2tag = {i: t for i, t in enumerate(tags_vals)}
-    
+
     # spacy 700
     spacy_700 = []
     spacy_skills = []
@@ -95,7 +95,6 @@ def both_model(MODEL,TOKENIZER,DEVICE,text):
     # keyword - not possible in spacy
     # after , remove for name
 
-
     # def process_resume2(text, tokenizer, max_len):
     #     tok = tokenizer.encode_plus(
     #         text, max_length=max_len, return_offsets_mapping=True)
@@ -157,53 +156,53 @@ def both_model(MODEL,TOKENIZER,DEVICE,text):
 
     # entities1 = predict(MODEL, TOKENIZER, idx2tag, tag2idx, DEVICE, text)
 
-    main = []
-    for i in entities1:
-        if i['entity'] in tags_vals:
-            k = {i['entity']: i['text']}
-            main = main + [k]
+    # main = []
+    # for i in entities1:
+    #     if i['entity'] in tags_vals:
+    #         k = {i['entity']: i['text']}
+    #         main = main + [k]
 
-    #save & clean
-    k = len(main)
+    # #save & clean
+    # k = len(main)
 
-    # clean unnescaary values
-    r = []
-    for k in range(len(main)):
-        for key, value in main[k].items():
-            # print(value)
-            if value == '':
-                r = r + [k]
-                # main.remove(main[k])
-            elif value == ':':
-                r = r + [k]
-            elif value == ',':
-                r = r + [k]
-            elif value == 'Resume':
-                r = r + [k]
-            elif value == '.':
-                r = r + [k]
-            elif value == ' ':
-                r = r + [k]
-            elif value == '.':
-                r = r + [k]
-            elif value == '.':
-                r = r + [k]
+    # # clean unnescaary values
+    # r = []
+    # for k in range(len(main)):
+    #     for key, value in main[k].items():
+    #         # print(value)
+    #         if value == '':
+    #             r = r + [k]
+    #             # main.remove(main[k])
+    #         elif value == ':':
+    #             r = r + [k]
+    #         elif value == ',':
+    #             r = r + [k]
+    #         elif value == 'Resume':
+    #             r = r + [k]
+    #         elif value == '.':
+    #             r = r + [k]
+    #         elif value == ' ':
+    #             r = r + [k]
+    #         elif value == '.':
+    #             r = r + [k]
+    #         elif value == '.':
+    #             r = r + [k]
 
-    for rr in range(len(r)):
-        main.remove(main[rr])
-    r.clear()
+    # for rr in range(len(r)):
+    #     main.remove(main[rr])
+    # r.clear()
 
-    # clean unnesacry keys
-    for val in main:
-        for key, value in val.items():
-            if key == "Email Address":
-                main.remove(val)
-            elif key == "UNKNOWN":
-                main.remove(val)
-            elif key == "Empty":
-                main.remove(val)
-    
-    print(main)
+    # # clean unnesacry keys
+    # for val in main:
+    #     for key, value in val.items():
+    #         if key == "Email Address":
+    #             main.remove(val)
+    #         elif key == "UNKNOWN":
+    #             main.remove(val)
+    #         elif key == "Empty":
+    #             main.remove(val)
+
+    # print(main)
 
     # functions
     spacy_700(text)
@@ -212,4 +211,4 @@ def both_model(MODEL,TOKENIZER,DEVICE,text):
     spacy_skills(text)
     print(spacy_700)
 
-    return spacy_700, spacy_skills, spacy_edu, spacy_exp, main
+    return spacy_700, spacy_skills, spacy_edu, spacy_exp

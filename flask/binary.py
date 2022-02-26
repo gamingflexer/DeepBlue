@@ -19,7 +19,7 @@ import os
 import urllib.request
 
 from fileconversion import fileconversion1
-from flask.preprocessing import clean_bert
+from preprocessing import*
 from get_links import *
 from linkedIn_main import*
 from final_model import*
@@ -31,7 +31,7 @@ MODEL_PATH = 'bert-base-uncased'
 STATE_DICT = torch.load(
     'C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\models\\model_e10.tar', map_location=DEVICE)
 TOKENIZER = BertTokenizerFast.from_pretrained(MODEL_PATH, lowercase=True)
-#TOKENIZER = Tokenizer(num_words=20000)  # SIMPLE
+# TOKENIZER = Tokenizer(num_words=20000)  # SIMPLE
 MODEL = BertForTokenClassification.from_pretrained(
     MODEL_PATH, state_dict=STATE_DICT['model_state_dict'], num_labels=12)
 print('Model Loaded!')
@@ -84,6 +84,8 @@ app.config['EXTRACTED'] = EXTRACTED
 UPLOAD_FOLDER = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # routes
+
+
 @app.route('/', methods=["POST", "GET"])
 def hello():
     return render_template('Homepage.html')
@@ -154,9 +156,9 @@ def upload():
                         cur.execute(
                             "INSERT INTO parse( extracted_text, cleaned_text,state, emails, linkedin_link, github_link,extra_link,phonenumber) VALUES (%s, %s, %s, %s, %s, %s, %s, %s )",
                             (text1, ftext, pincode, mailid, linkdedln, github, others, phone_number))
-                        
-                        
+
                         # model eval
+
                         def process_resume2(text, tokenizer, max_len):
                             tok = tokenizer.encode_plus(
                                 text, max_length=max_len, return_offsets_mapping=True)
@@ -165,7 +167,8 @@ def upload():
 
                             padding_length = max_len - len(tok['input_ids'])
 
-                            curr_sent['input_ids'] = tok['input_ids'] + ([0] * padding_length)
+                            curr_sent['input_ids'] = tok['input_ids'] + \
+                                ([0] * padding_length)
                             curr_sent['token_type_ids'] = tok['token_type_ids'] + \
                                 ([0] * padding_length)
                             curr_sent['attention_mask'] = tok['attention_mask'] + \
@@ -177,13 +180,14 @@ def upload():
                                 'attention_mask': torch.tensor(curr_sent['attention_mask'], dtype=torch.long),
                                 'offset_mapping': tok['offset_mapping']
                             }
+
                         def predict(model, tokenizer, idx2tag, tag2idx, device, text):
                             model.eval()
                             data = process_resume2(text, tokenizer, MAX_LEN)
                             input_ids, input_mask = data['input_ids'].unsqueeze(
                                 0), data['attention_mask'].unsqueeze(0)
                             labels = torch.tensor([1] * input_ids.size(0),
-                                                dtype=torch.long).unsqueeze(0)
+                                                  dtype=torch.long).unsqueeze(0)
                             with torch.no_grad():
                                 outputs = model(
                                     input_ids,
@@ -210,15 +214,12 @@ def upload():
                             for ent in entities:
                                 ent['text'] = text[ent['start']:ent['end']]
                             return entities
-                            
-                        entities1 = predict(MODEL, TOKENIZER, idx2tag, tag2idx, DEVICE, text)
-                        output_bert = clean_bert(entities1,tags_vals)
+
+                        entities1 = predict(
+                            MODEL, TOKENIZER, idx2tag, tag2idx, DEVICE, text)
+                        output_bert = clean_bert(entities1, tags_vals)
                         print(output_bert)
                         # model(text)
-                        
-                        
-                        
-                        
 
                     dir_list = os.listdir(app.config['EXTRACTED'])
                     for file_name in dir_list:
@@ -256,8 +257,8 @@ def upload():
                         "INSERT INTO parse( extracted_text, cleaned_text,state, emails, linkedin_link, github_link,extra_link,phonenumber) VALUES (%s, %s, %s, %s, %s, %s, %s, %s )",
                         (text1, ftext, pincode, mailid, linkdedln, github, others, phone_number))
                     print("------MODELS--------")
-                    both_model(MODEL,TOKENIZER,DEVICE,text1)
-                    
+                    both_model(text1)
+
                     #proc = subprocess.Popen('python author_script.py {}{} -p n -s n -m num'.format(UPLOAD_FOLDER, file.filename), shell=True,stdout=subprocess.PIPE)
 
     mysql.connection.commit()
