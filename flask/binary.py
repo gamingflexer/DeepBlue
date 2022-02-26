@@ -251,14 +251,14 @@ def upload():
                         return entities
                     print("------MODELS--------")
                     entities1 = predict(
-                        MODEL, TOKENIZER, idx2tag, tag2idx, DEVICE, text)
+                        MODEL, TOKENIZER, idx2tag, tag2idx, DEVICE, 1)
                     output_bert = clean_bert(entities1, tags_vals)
                     print(output_bert)
                     print('------SPACY--------')
-                    spacy_700(text)
-                    spacy_edu(text)
-                    spacy_exp(text)
-                    spacy_skills(text)
+                    spacy_700(text1)
+                    spacy_edu(text1)
+                    spacy_exp(text1)
+                    spacy_skills(text1)
                     print(spacy_700_list)
                     #proc = subprocess.Popen('python author_script.py {}{} -p n -s n -m num'.format(UPLOAD_FOLDER, file.filename), shell=True,stdout=subprocess.PIPE)
 
