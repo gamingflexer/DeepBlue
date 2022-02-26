@@ -263,7 +263,6 @@ def upload():
                         "INSERT INTO parse( extracted_text, cleaned_text,state, emails, linkedin_link, github_link,extra_link,phonenumber) VALUES (%s, %s, %s, %s, %s, %s, %s, %s )",
                         (text1, ftext, pincode, mailid, linkdedln, github, others, phone_number))
                     print("------MODELS--------")
-                    both_model(text1)
 
                     #proc = subprocess.Popen('python author_script.py {}{} -p n -s n -m num'.format(UPLOAD_FOLDER, file.filename), shell=True,stdout=subprocess.PIPE)
 
