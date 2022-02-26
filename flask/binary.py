@@ -214,18 +214,6 @@ def upload():
                             for ent in entities:
                                 ent['text'] = text[ent['start']:ent['end']]
                             return entities
-                        ###################################################
-                        entities1 = predict(
-                            MODEL, TOKENIZER, idx2tag, tag2idx, DEVICE, text)
-                        output_bert = clean_bert(entities1, tags_vals)
-                        print(output_bert)
-                        print('------SPACY--------')
-                        spacy_700(text)
-                        spacy_edu(text)
-                        spacy_exp(text)
-                        spacy_skills(text)
-                        print(spacy_700_list)
-                        # model(text)
 
                     dir_list = os.listdir(app.config['EXTRACTED'])
                     for file_name in dir_list:
@@ -263,7 +251,16 @@ def upload():
                         "INSERT INTO parse( extracted_text, cleaned_text,state, emails, linkedin_link, github_link,extra_link,phonenumber) VALUES (%s, %s, %s, %s, %s, %s, %s, %s )",
                         (text1, ftext, pincode, mailid, linkdedln, github, others, phone_number))
                     print("------MODELS--------")
-
+                    entities1 = predict(
+                        MODEL, TOKENIZER, idx2tag, tag2idx, DEVICE, text)
+                    output_bert = clean_bert(entities1, tags_vals)
+                    print(output_bert)
+                    print('------SPACY--------')
+                    spacy_700(text)
+                    spacy_edu(text)
+                    spacy_exp(text)
+                    spacy_skills(text)
+                    print(spacy_700_list)
                     #proc = subprocess.Popen('python author_script.py {}{} -p n -s n -m num'.format(UPLOAD_FOLDER, file.filename), shell=True,stdout=subprocess.PIPE)
 
     mysql.connection.commit()
