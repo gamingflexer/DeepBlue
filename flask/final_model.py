@@ -33,7 +33,7 @@ def both_model(text):
                        'EMAIL ADDRESS', 'SKILLS', 'YEARS OF EXPERIENCE', 'LOCATION', 'NAME  ', '']  # add more
 
     def spacy_700(text):
-        model_spacy_path_all = '700 old code'
+        model_spacy_path_all = 'C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\models\\700-old code'
 
         model_spacy = spacy.load(model_spacy_path_all)
 
@@ -48,7 +48,7 @@ def both_model(text):
     #spacy - skills
 
     def spacy_skills(text):
-        model_skills = '700 old code'
+        model_skills = 'C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\models\\Models-Seprate-700\\SKILL'
 
         model_spacy = spacy.load(model_skills)
 
@@ -63,7 +63,7 @@ def both_model(text):
     #spacy - Edu
 
     def spacy_edu(text):
-        model_edu = '700 old code'
+        model_edu = 'C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\models\\Models-Seprate-700\\EDU'
 
         model_spacy = spacy.load(model_edu)
 
@@ -78,7 +78,7 @@ def both_model(text):
     #spacy - Exp
 
     def spacy_exp(text):
-        model_exp = '700 old code'
+        model_exp = 'C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\models\\Models-Seprate-700\\EXP'
 
         model_spacy = spacy.load(model_exp)
 
