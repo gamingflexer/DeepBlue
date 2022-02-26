@@ -251,7 +251,7 @@ def upload():
                         return entities
                     print("------MODELS--------")
                     entities1 = predict(
-                        MODEL, TOKENIZER, idx2tag, tag2idx, DEVICE, 1)
+                        MODEL, TOKENIZER, idx2tag, tag2idx, DEVICE, text1)
                     output_bert = clean_bert(entities1, tags_vals)
                     print(output_bert)
                     print('------SPACY--------')
