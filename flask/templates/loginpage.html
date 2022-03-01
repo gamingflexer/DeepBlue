@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/loginpage.css">
+</head>
+<body>
+    <div class="con">
+        <img src="static\image\Group.png" width="650" height="500" class="login">
+
+        <div class="loginform">
+            <form action="/verify" class="loginform1" method="post">
+                
+                <p><b>Log in to your account</b></p><br>
+                <label for="can_email" class="emailid" >Email-id :</label><br>
+                <input type="email" id="can_email" name="emailid" class="can_email"><br>
+                <label for="can_pass" class="pass">Password :</label><br>
+                <input type="password" id="can_pass" class="can_pass" name="pass"><br><br>
+                <input type="submit" value="Log in" class="sub" name="pass">
+                <br>
+                <a href="/signup">Create Account </a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 62.6%;
+    display: inline-block;
+    margin-bottom: 0.01em;
+}
+body{
+    background-color: white;
+}
+.logo{
+    
+    
+    float: left;
+    position: fixed;
+    width: 2rem;
+    background-color: white;
+    box-shadow: 0.1rem 0.2rem 0.8rem grey;
+    height: 100%;
+    padding: 2rem;
+    
+    
+ }
+ ul{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+}
+.setting1,.home ,.statistic,.candiate ,.account{
+     
+     width: 2.2rem;
+ }
+ .home{
+     margin-top: 2rem;
+ }
+ .setting1{
+     margin-top: 2rem;
+ }
+ .home ,.statistic,.candiate{
+     margin-left: -2.2rem;
+     width:7rem ;
+
+ }
+ .fa-microsoft{
+     font-size: 2rem;
+     color: black;
+    
+ }
+ .setting{
+    margin-top: 25rem;
+    width: 2.4rem;
+ }
+ .account{
+     width: 5.6rem;
+     margin-left: -2.1rem;
+     
+ }
+ .con{
+     
+     background-color: #EBCBCB;
+     margin: 4rem;
+     margin-left: 10rem;
+     float: left;
+     display: block;
+     height: 90%;
+     position: fixed;
+     overflow:hidden;
+     border-radius: 1.5rem;
+        
+}
+ h1{
+    padding: 1rem;
+    margin-left: 1rem;
+}
+.searcharea{
+    position: fixed;
+    
+    width: 80%;
+    height: 2.5rem;
+    
+    
+}
+.search{
+    position: relative;
+    
+    
+    width: 40%;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+    margin-left: 15rem;
+   
+}
+.sub{
+    position:relative;
+    z-index: 1;
+    margin-left: -2.5rem;
+    border: white;
+    background-color: white;
+    width: 2rem;
+    height: 2.5rem;
+}
+table{
+   
+    margin-top: 6rem;
+    border-collapse: collapse;
+    
+    
+}
+ th,td{
+    border: 1px solid black;
+}
+th{
+   
+    padding: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 20rem;
+
+    
+}
+
+.table_dis{
+    display: block;
+     height: 500px;
+    overflow-y: scroll;
+    
+   
+}
+tr{
+    font-size: 1rem;
+    text-align: left;
+}
+td{
+    font-size: 1.2rem;
+    padding: 0.5rem;
+}
+
+.check{
+    text-align: center;
+    vertical-align: middle;
+}
+.id1{
+    font-size: 25;
+    color: red;
+}
+    
+
