@@ -209,5 +209,53 @@ def remove_hexcode_rhc(text):
 url1.clear()
 
 
+def clean_bert(entities1,tags_vals):
+    main = []
+    for i in entities1:
+        if i['entity'] in tags_vals:
+            k = {i['entity']: i['text']}
+            main = main + [k]
 
+    #save & clean
+    k = len(main)
+
+    # clean unnescaary values
+    r = []
+    for k in range(len(main)):
+        for key, value in main[k].items():
+            # print(value)
+            if value == '':
+                r = r + [k]
+                # main.remove(main[k])
+            elif value == ':':
+                r = r + [k]
+            elif value == ',':
+                r = r + [k]
+            elif value == 'Resume':
+                r = r + [k]
+            elif value == '.':
+                r = r + [k]
+            elif value == ' ':
+                r = r + [k]
+            elif value == '.':
+                r = r + [k]
+            elif value == '.':
+                r = r + [k]
+
+    for rr in range(len(r)):
+        main.remove(main[rr])
+    r.clear()
+
+    # clean unnesacry keys
+    for val in main:
+        for key, value in val.items():
+            if key == "Email Address":
+                main.remove(val)
+            elif key == "UNKNOWN":
+                main.remove(val)
+            elif key == "Empty":
+                main.remove(val)
+    
+    print(main)
+    return main
 
