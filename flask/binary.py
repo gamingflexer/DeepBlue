@@ -1,3 +1,4 @@
+from ast import Return
 from flask import Flask, render_template, request, flash, redirect
 from flask import *
 import os
@@ -25,7 +26,7 @@ from linkedIn_main import*
 from final_model import*
 
 # BERT
-MAX_LEN = 512
+MAX_LEN = 500
 DEVICE = torch.device("cpu")
 MODEL_PATH = 'bert-base-uncased'
 STATE_DICT = torch.load(
@@ -34,14 +35,19 @@ TOKENIZER = BertTokenizerFast.from_pretrained(MODEL_PATH, lowercase=True)
 # TOKENIZER = Tokenizer(num_words=20000)  # SIMPLE
 MODEL = BertForTokenClassification.from_pretrained(
     MODEL_PATH, state_dict=STATE_DICT['model_state_dict'], num_labels=12)
-print('Model Loaded!')
-
-tags_vals = ['Empty', 'UNKNOWN', 'Email Address', 'Links', 'Skills', 'Graduation Year', 'College Name', 'Degree', 'Companies worked at', 'Location', 'Name', 'Designation', 'projects',
-             'Years of Experience', 'Can Relocate to', 'Rewards and Achievements', 'Address', 'University', 'Relocate to', 'Certifications', 'state', 'links', 'College', 'training', 'des', 'abc']
+model = MODEL
+MODEL.to(DEVICE);
+print('\nModel Loaded!\n')
+tags_vals = ["UNKNOWN", "O", "Name", "Degree","Skills","College Name","Email Address","Designation","Companies worked at","Graduation Year","Years of Experience","Location"]
 tag2idx = {t: i for i, t in enumerate(tags_vals)}
-idx2tag = {i: t for i, t in enumerate(tags_vals)}
+idx2tag = {i:t for i, t in enumerate(tags_vals)}
+
 # flask
 
+o1={}
+o2={}
+o3={}
+o4={}
 
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg',
                          'jpeg', 'docx', 'doc', 'rtf', 'odt', 'html', 'txt', 'zip'])
@@ -85,6 +91,56 @@ UPLOAD_FOLDER = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\fi
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # routes
 
+def process_resume2(text, tokenizer, max_len):
+    tok = tokenizer.encode_plus(text, max_length=max_len, return_offsets_mapping=True)
+    
+    curr_sent = dict()
+    
+    padding_length = max_len - len(tok['input_ids'])
+        
+    curr_sent['input_ids'] = tok['input_ids'] + ([0] * padding_length)
+    curr_sent['token_type_ids'] = tok['token_type_ids'] + ([0] * padding_length)
+    curr_sent['attention_mask'] = tok['attention_mask'] + ([0] * padding_length)
+    
+    final_data = {
+        'input_ids': torch.tensor(curr_sent['input_ids'], dtype=torch.long),
+        'token_type_ids': torch.tensor(curr_sent['token_type_ids'], dtype=torch.long),
+        'attention_mask': torch.tensor(curr_sent['attention_mask'], dtype=torch.long),
+        'offset_mapping': tok['offset_mapping']
+    }
+    
+    return final_data
+
+def predict(model, tokenizer, idx2tag, tag2idx, device, test_resume):
+    model.eval()
+    data = process_resume2(test_resume, tokenizer, MAX_LEN)
+    input_ids, input_mask = data['input_ids'].unsqueeze(0), data['attention_mask'].unsqueeze(0)
+    labels = torch.tensor([1] * input_ids.size(0), dtype=torch.long).unsqueeze(0)
+    with torch.no_grad():
+        outputs = model(
+            input_ids,
+            token_type_ids=None,
+            attention_mask=input_mask,
+            labels=labels,
+        )
+        tmp_eval_loss, logits = outputs[:2]
+    
+    logits = logits.cpu().detach().numpy()
+    label_ids = np.argmax(logits, axis=2)
+    
+    entities = []
+    for label_id, offset in zip(label_ids[0], data['offset_mapping']):
+        curr_id = idx2tag[label_id]
+        curr_start = offset[0]
+        curr_end = offset[1]
+        if curr_id != 'O':
+            if len(entities) > 0 and entities[-1]['entity'] == curr_id and curr_start - entities[-1]['end'] in [0, 1]:
+                entities[-1]['end'] = curr_end
+            else:
+                entities.append({'entity': curr_id, 'start': curr_start, 'end':curr_end})
+    for ent in entities:
+        ent['text'] = test_resume[ent['start']:ent['end']]
+    return entities
 
 @app.route('/', methods=["POST", "GET"])
 def hello():
@@ -194,74 +250,21 @@ def upload():
                     cur.execute(
                         "INSERT INTO parse( extracted_text, cleaned_text,state, emails, linkedin_link, github_link,extra_link,phonenumber) VALUES (%s, %s, %s, %s, %s, %s, %s, %s )",
                         (text1, ftext, pincode, mailid, linkdedln, github, others, phone_number))
-                    def process_resume2(text, tokenizer, max_len):
-                        tok = tokenizer.encode_plus(
-                            text, max_length=max_len, return_offsets_mapping=True)
 
-                        curr_sent = dict()
-
-                        padding_length = max_len - len(tok['input_ids'])
-
-                        curr_sent['input_ids'] = tok['input_ids'] + \
-                            ([0] * padding_length)
-                        curr_sent['token_type_ids'] = tok['token_type_ids'] + \
-                            ([0] * padding_length)
-                        curr_sent['attention_mask'] = tok['attention_mask'] + \
-                            ([0] * padding_length)
-
-                        final_data = {
-                            'input_ids': torch.tensor(curr_sent['input_ids'], dtype=torch.long),
-                            'token_type_ids': torch.tensor(curr_sent['token_type_ids'], dtype=torch.long),
-                            'attention_mask': torch.tensor(curr_sent['attention_mask'], dtype=torch.long),
-                            'offset_mapping': tok['offset_mapping']
-                        }
-
-                    def predict(model, tokenizer, idx2tag, tag2idx, device, text):
-                        model.eval()
-                        data = process_resume2(text, tokenizer, MAX_LEN)
-                        input_ids, input_mask = data['input_ids'].unsqueeze(
-                            0), data['attention_mask'].unsqueeze(0)
-                        labels = torch.tensor([1] * input_ids.size(0),
-                                                dtype=torch.long).unsqueeze(0)
-                        with torch.no_grad():
-                            outputs = model(
-                                input_ids,
-                                token_type_ids=None,
-                                attention_mask=input_mask,
-                                labels=labels,
-                            )
-                            tmp_eval_loss, logits = outputs[:2]
-
-                        logits = logits.cpu().detach().numpy()
-                        label_ids = np.argmax(logits, axis=2)
-
-                        entities = []
-                        for label_id, offset in zip(label_ids[0], data['offset_mapping']):
-                            curr_id = idx2tag[label_id]
-                            curr_start = offset[0]
-                            curr_end = offset[1]
-                            if curr_id != 'O':
-                                if len(entities) > 0 and entities[-1]['entity'] == curr_id and curr_start - entities[-1]['end'] in [0, 1]:
-                                    entities[-1]['end'] = curr_end
-                                else:
-                                    entities.append(
-                                        {'entity': curr_id, 'start': curr_start, 'end': curr_end})
-                        for ent in entities:
-                            ent['text'] = text[ent['start']:ent['end']]
-                        return entities
                     print("------MODELS--------")
-                    entities1 = predict(
-                        MODEL, TOKENIZER, idx2tag, tag2idx, DEVICE, text1)
+
+                    print('------SPACY--------')
+                    oo1 = spacy_700(text1)
+                    # oo2 = spacy_skills(text1)
+                    # oo3 = spacy_edu(text1)
+                    # oo4 = spacy_exp(text1)
+                    print(oo1)
+                    # print(oo2)
+                    # print(oo3)
+                    # print(oo4)
+                    entities1 = predict(MODEL, TOKENIZER, idx2tag, tag2idx, DEVICE, text1)
                     output_bert = clean_bert(entities1, tags_vals)
                     print(output_bert)
-                    print('------SPACY--------')
-                    spacy_700(text1)
-                    spacy_edu(text1)
-                    spacy_exp(text1)
-                    spacy_skills(text1)
-                    print(spacy_700_list)
-                    #proc = subprocess.Popen('python author_script.py {}{} -p n -s n -m num'.format(UPLOAD_FOLDER, file.filename), shell=True,stdout=subprocess.PIPE)
-
     mysql.connection.commit()
     # print(file)
     cur.close()

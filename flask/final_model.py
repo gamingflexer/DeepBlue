@@ -14,25 +14,13 @@ import textract
 from tika import parser
 
 
-#text1 = ''
 
-# def both_model(text):
-    # #BERT
-    # MAX_LEN = 512
-    # tags_vals = ['Empty', 'UNKNOWN', 'Email Address', 'Links', 'Skills', 'Graduation Year', 'College Name', 'Degree', 'Companies worked at', 'Location', 'Name', 'Designation', 'projects',
-    #          'Years of Experience', 'Can Relocate to', 'Rewards and Achievements', 'Address', 'University', 'Relocate to', 'Certifications', 'state', 'links', 'College', 'training', 'des', 'abc']
-    # tag2idx = {t: i for i, t in enumerate(tags_vals)}
-    # idx2tag = {i: t for i, t in enumerate(tags_vals)}
-
-    # spacy 700
-spacy_700_list = []
-spacy_skills_list = []
-spacy_edu_list = []
-spacy_exp_list = []
 tagvalues_spacy = ['COLLEGE NAME', 'COMPANIES WORKED AT', 'DEGREE', 'DESIGNATION',
                     'EMAIL ADDRESS', 'SKILLS', 'YEARS OF EXPERIENCE', 'LOCATION', 'NAME  ', '']  # add more
 
 def spacy_700(text):
+    o1 = {}
+    spacy_700_list = []
     model_spacy_path_all = 'C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\models\\700-old code'
 
     model_spacy = spacy.load(model_spacy_path_all)
@@ -43,52 +31,66 @@ def spacy_700(text):
         if ent.label_.upper() in tagvalues_spacy:
             temp = {f'{ent.label_.upper():{4}}': [ent.text]}
             spacy_700_list = spacy_700_list + [temp]
-    return spacy_700_list
+    for val in spacy_700_list:
+        o1.update(val)
+    del model_spacy
+    return o1
 
 #spacy - skills
 
 def spacy_skills(text):
+    o2 = {}
+    spacy_skills_list = []
     model_skills = 'C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\models\\Models-Seprate-700\\SKILL'
 
-    model_spacy = spacy.load(model_skills)
+    model_spacy_s = spacy.load(model_skills)
 
     # predict
-    doc = model_spacy(text)
+    doc = model_spacy_s(text)
     for ent in doc.ents:
         if ent.label_.upper() in tagvalues_spacy:
             temp = {f'{ent.label_.upper():{4}}': [ent.text]}
             spacy_skills_list = spacy_skills_list + [temp]
-    return spacy_skills_list
+    for val in spacy_skills_list:
+        o2.update(val)
+    return o2
 
 #spacy - Edu
 
 def spacy_edu(text):
+    o3 = {}
+    spacy_edu_list = []
     model_edu = 'C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\models\\Models-Seprate-700\\EDU'
 
-    model_spacy = spacy.load(model_edu)
+    model_spacy_e = spacy.load(model_edu)
 
     # predict
-    doc = model_spacy(text)
+    doc = model_spacy_e(text)
     for ent in doc.ents:
         if ent.label_.upper() in tagvalues_spacy:
             temp = {f'{ent.label_.upper():{4}}': [ent.text]}
             spacy_edu_list = spacy_edu_list + [temp]
-    return spacy_edu_list
+    for val in spacy_edu_list:
+        o3.update(val)           
+    return o3
 
 #spacy - Exp
-
 def spacy_exp(text):
+    o4 = {}
+    spacy_exp_list = []
     model_exp = 'C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\models\\Models-Seprate-700\\EXP'
 
-    model_spacy = spacy.load(model_exp)
+    model_spacy_exp = spacy.load(model_exp)
 
     # predict
-    doc = model_spacy(text)
+    doc = model_spacy_exp(text)
     for ent in doc.ents:
         if ent.label_.upper() in tagvalues_spacy:
             temp = {f'{ent.label_.upper():{4}}': [ent.text]}
             spacy_exp_list = spacy_exp_list + [temp]
-    return spacy_exp_list
+    for val in spacy_exp_list:
+        o4.update(val)    
+    return o4
 
     # clean spacy
     # if same in any dict delete
