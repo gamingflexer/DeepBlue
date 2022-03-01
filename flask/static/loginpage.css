@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    font-size: 62.6%;
+}
+body{
+    background-color: rgb(207, 235, 246);
+}
+p{
+    font-size: 2rem;
+    
+}
+.con{
+    margin-top: 10rem;
+    margin-left: 10rem;
+    margin-bottom: 6rem;
+}
+.login{
+    float: left;
+}
+.loginform{
+    height: 600;
+    padding-top: 12% ;
+    margin-left: 90rem;
+}
+.emailid{
+    line-height: 3rem;
+    font-size: 2rem;
+}
+.pass{
+    line-height: 3rem;
+    font-size: 2rem;
+}
+.can_email{
+    font-size: 2rem;
+}
+.can_pass{
+    font-size: 2rem;
+}
+.sub{
+    margin-top: 1rem;
+    line-height: 3rem;
+    font-size: 2rem;
+    width: 25.5rem;
+    background-color: blue;
+    color: white;
+}
+a{
+    word-spacing: 0.5rem;
+    font-size: 1.5rem;
+    padding-top: 1.5rem;
+}
