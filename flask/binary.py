@@ -15,6 +15,7 @@ import sys
 from flask_mysqldb import MySQL
 import mysql.connector
 from werkzeug.utils import secure_filename
+import pyunpack
 import os
 import urllib.request
 
@@ -83,6 +84,66 @@ UPLOAD_FOLDER = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\fi
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # routes
 @app.route('/', methods=["POST", "GET"])
+def login():
+    return render_template('loginpage.html')
+
+
+@app.route('/signup', methods=["POST", "GET"])
+def signup():
+    return render_template('signup.html')
+
+@app.route('/verify', methods=["POST", "GET"])
+def verify():
+    table_pass=[]
+    cur = mysql.connection.cursor()
+    if request.method == 'POST':
+        email=request.form.get("emailid")
+        password=request.form.get("pass")
+        verify = cur.execute("Select password from login WHERE emailid= %s ", (email,))
+        if verify > 0:
+            row = cur.fetchall()
+            for dict in row:
+                table_pass.append(list(dict.values()))
+            print(table_pass)
+            print(str(table_pass[0][0]))
+            print(password)
+
+            if (str(password) == str(table_pass[0][0])) :
+                print("in if")
+                return render_template('Homepage.html')
+            else:
+                return redirect('/')
+
+    else:
+        return redirect('/')
+    mysql.connection.commit()
+    cur.close()
+
+
+@app.route('/user', methods=["POST", "GET"])
+def candiate():
+
+        cur = mysql.connection.cursor()
+        if request.method == 'POST':
+                email = request.form.get("emailid")
+                passw = request.form.get("pass")
+                print(email)
+                print(passw)
+
+                cur.execute("INSERT INTO login(emailid,password) VALUES (%s, %s)",(email, passw,))
+                mysql.connection.commit()
+                cur.close()
+                return redirect('/')
+
+
+
+
+
+
+
+
+
+@app.route('/home', methods=["POST", "GET"])
 def hello():
     return render_template('Homepage.html')
 
@@ -129,8 +190,7 @@ def upload():
                     dir_list = os.listdir(app.config['EXTRACTED'])
                     print(dir_list)
                     for i in dir_list:
-                        original = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\extracted\\" + \
-                            str(i)
+                        original = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\extracted\\" + str(i)
                         x = original.rindex("\\")
                         y = original.rindex(".")
                         num = str(val)
@@ -161,6 +221,46 @@ def upload():
                         source = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\extracted\\" + file_name
                         destination = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files\\" + file_name
                         shutil.move(source, destination)
+                elif(name=='rar'):
+                    filename = secure_filename(file.filename)
+                    print(type(filename))
+                    file.save(os.path.join(app.config['ZIPPED'], filename))
+
+                    #zip_ref = zipfile.ZipFile(os.path.join(app.config['ZIPPED'], filename), 'r')
+                    rarpath = pyunpack.Archive(os.path.join(app.config['ZIPPED'],filename))
+                    rarpath.extractall(app.config['EXTRACTED'])
+
+                    dir_list = os.listdir(app.config['EXTRACTED'])
+                    print(dir_list)
+                    for i in dir_list:
+                        original = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\extracted\\" + str(i)
+                        x = original.rindex("\\")
+                        y = original.rindex(".")
+                        num = str(val)
+                        val = val + 1
+                        path = original[:x + 1] + "resume" + num + original[y:]
+                        filerename = "resume" + num + original[y:]
+                        os.rename(original, path)
+
+                        binartfile = convertToBinary(path)
+
+                        cur.execute("INSERT INTO deepbluecomp_table(files_path,binaryfiles_path) VALUES (%s, %s)",
+                                    (filerename, binartfile))
+                        print("------")
+                        text, text1, link, mailid, phone_number, date, human_name, add, pincode, ftext = fileconversion(
+                            path, num)
+                        linkdedln, github, others = get_links(link)
+
+                        cur.execute(
+                            "INSERT INTO parse( extracted_text, cleaned_text,state, emails, linkedin_link, github_link,extra_link,phonenumber) VALUES (%s, %s, %s, %s, %s, %s, %s, %s )",
+                            (text1, ftext, pincode, mailid, linkdedln, github, others, phone_number))
+                        # moving on to final folder
+                    dir_list = os.listdir(app.config['EXTRACTED'])
+                    for file_name in dir_list:
+                        source = "C:\\Users\\Yash\\PycharmProjects\\flask\\static\\extracted\\" + file_name
+                        destination = "C:\\Users\\Yash\\PycharmProjects\\flask\\static\\files\\" + file_name
+                        shutil.move(source, destination)
+
                 else:
                     filename = secure_filename(file.filename)
                     file.save(os.path.join(
@@ -212,6 +312,12 @@ def delete():
         os.remove(
             "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\zip\\" + zipfileli)
 
+    dirrar_list = os.listdir(app.config['EXTRACTED'])
+
+    for rarfileli in dirrar_list:
+        os.remove("C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files\\" + rarfileli)        
+
+
     folder = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files"
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
@@ -242,6 +348,24 @@ def table():
         print(table_li)
 
     return render_template('table2.html', row=table_li)
+
+@app.route('/compare', methods=["POST", "GET"])
+def compare():
+    table_data=[]
+    if request.method == "POST":
+        candiatecomparelist = request.form.getlist('check')
+        cur=mysql.connection.cursor()
+        for i in candiatecomparelist:
+            compresult=cur.execute("Select linked_link,github_link,extra_link from datastore WHERE sr= %s ",(int(i),))
+            if compresult>0:
+                row=cur.fetchall()
+                for dict in row:
+                    table_data.append(list(dict.values()))
+                print(table_data)
+
+
+    return render_template('statistics.html', cont=table_data)
+
 
 
 if __name__ == "__main__":
