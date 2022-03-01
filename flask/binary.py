@@ -316,8 +316,8 @@ def upload():
                         # moving on to final folder
                     dir_list = os.listdir(app.config['EXTRACTED'])
                     for file_name in dir_list:
-                        source = "C:\\Users\\Yash\\PycharmProjects\\flask\\static\\extracted\\" + file_name
-                        destination = "C:\\Users\\Yash\\PycharmProjects\\flask\\static\\files\\" + file_name
+                        source = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\extracted\\" + file_name
+                        destination = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files\\" + file_name
                         shutil.move(source, destination)
 
                 else:
