@@ -4,6 +4,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 import hashlib
 
+scrape_link = ""
 
 def linkedien_scrape(text):
     def emptyB():
