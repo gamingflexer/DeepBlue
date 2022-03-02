@@ -12,7 +12,10 @@ import torch.nn.functional as F
 import torch.nn as nn
 import textract
 from tika import parser
-
+from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
+import torch
+import pyperclip
+import re
 
 
 tagvalues_spacy = ['COLLEGE NAME', 'COMPANIES WORKED AT', 'DEGREE', 'DESIGNATION',
@@ -33,11 +36,10 @@ def spacy_700(text):
             spacy_700_list = spacy_700_list + [temp]
     for val in spacy_700_list:
         o1.update(val)
-    del model_spacy
+    #del model_spacy
     return o1
 
 #spacy - skills
-
 def spacy_skills(text):
     o2 = {}
     spacy_skills_list = []
@@ -53,10 +55,9 @@ def spacy_skills(text):
             spacy_skills_list = spacy_skills_list + [temp]
     for val in spacy_skills_list:
         o2.update(val)
-    return o2
+    return (o2)
 
 #spacy - Edu
-
 def spacy_edu(text):
     o3 = {}
     spacy_edu_list = []
@@ -72,7 +73,7 @@ def spacy_edu(text):
             spacy_edu_list = spacy_edu_list + [temp]
     for val in spacy_edu_list:
         o3.update(val)           
-    return o3
+    return (o3)
 
 #spacy - Exp
 def spacy_exp(text):
@@ -90,74 +91,58 @@ def spacy_exp(text):
             spacy_exp_list = spacy_exp_list + [temp]
     for val in spacy_exp_list:
         o4.update(val)    
-    return o4
+    return (o4)
+
+#Compare
+def comparemain(text):
+
+    classifier = pipeline("zero-shot-classification")
+    # classes to divide into or not
+    candidate_labels = ['Skills','Degree', 'Companies worked at', 'Name','Rewards and Achievements']
+    output = classifier(text, candidate_labels, multi_class=False)
+
+    # last element of the dict
+    final_list = {output['sequence']: output['labels'][0]}
+    print(output['scores'][0])
+    return final_list
+
+
+#NER
+def ner(text,model,tokenizer):
+    # create a pipleine to get the output
+    nlp = pipeline('ner', model=model, tokenizer=tokenizer)
+    ner_list = nlp(text)
+
+    # Person Name
+    this_name = []
+    all_names_list_tmp = []
+
+    for ner_dict in ner_list:
+        if ner_dict['entity'] == 'B-PER':
+            if len(this_name) == 0:
+                this_name.append(ner_dict['word'])
+            else:
+                all_names_list_tmp.append([this_name])
+                this_name = []
+                this_name.append(ner_dict['word'])
+        elif ner_dict['entity'] == 'I-PER':
+            this_name.append(ner_dict['word'])
+
+    all_names_list_tmp.append([this_name])
+
+    final_name_list = []
+    for name_list in all_names_list_tmp:
+        full_name = ' '.join(name_list[0]).replace(' ##', '').replace(' .', '.')
+        final_name_list.append([full_name])
+    return final_name_list
 
     # clean spacy
     # if same in any dict delete
     # keyword - not possible in spacy
     # after , remove for name
 
-    # def process_resume2(text, tokenizer, max_len):
-    #     tok = tokenizer.encode_plus(
-    #         text, max_length=max_len, return_offsets_mapping=True)
-
-    #     curr_sent = dict()
-
-    #     padding_length = max_len - len(tok['input_ids'])
-
-    #     curr_sent['input_ids'] = tok['input_ids'] + ([0] * padding_length)
-    #     curr_sent['token_type_ids'] = tok['token_type_ids'] + \
-    #         ([0] * padding_length)
-    #     curr_sent['attention_mask'] = tok['attention_mask'] + \
-    #         ([0] * padding_length)
-
-    #     final_data = {
-    #         'input_ids': torch.tensor(curr_sent['input_ids'], dtype=torch.long),
-    #         'token_type_ids': torch.tensor(curr_sent['token_type_ids'], dtype=torch.long),
-    #         'attention_mask': torch.tensor(curr_sent['attention_mask'], dtype=torch.long),
-    #         'offset_mapping': tok['offset_mapping']
-    #     }
-
-    # def predict(model, tokenizer, idx2tag, tag2idx, device, text):
-    #     model.eval()
-    #     data = process_resume2(text, tokenizer, MAX_LEN)
-    #     input_ids, input_mask = data['input_ids'].unsqueeze(
-    #         0), data['attention_mask'].unsqueeze(0)
-    #     labels = torch.tensor([1] * input_ids.size(0),
-    #                           dtype=torch.long).unsqueeze(0)
-    #     with torch.no_grad():
-    #         outputs = model(
-    #             input_ids,
-    #             token_type_ids=None,
-    #             attention_mask=input_mask,
-    #             labels=labels,
-    #         )
-    #         tmp_eval_loss, logits = outputs[:2]
-
-    #     logits = logits.cpu().detach().numpy()
-    #     label_ids = np.argmax(logits, axis=2)
-
-    #     entities = []
-    #     for label_id, offset in zip(label_ids[0], data['offset_mapping']):
-    #         curr_id = idx2tag[label_id]
-    #         curr_start = offset[0]
-    #         curr_end = offset[1]
-    #         if curr_id != 'O':
-    #             if len(entities) > 0 and entities[-1]['entity'] == curr_id and curr_start - entities[-1]['end'] in [0, 1]:
-    #                 entities[-1]['end'] = curr_end
-    #             else:
-    #                 entities.append(
-    #                     {'entity': curr_id, 'start': curr_start, 'end': curr_end})
-    #     for ent in entities:
-    #         ent['text'] = text[ent['start']:ent['end']]
-    #     return entities
-
-    # # convert
-    # # tags_vals = ['Empty', 'UNKNOWN', 'Email Address', 'Links', 'Skills', 'Graduation Year', 'College Name', 'Degree', 'Companies worked at', 'Location', 'Name', 'Designation', 'projects',
-    # #             'Years of Experience', 'Can Relocate to', 'Rewards and Achievements', 'Address', 'University', 'Relocate to', 'Certifications', 'state', 'links', 'College', 'training', 'des', 'abc']
-
-    # entities1 = predict(MODEL, TOKENIZER, idx2tag, tag2idx, DEVICE, text)
-
+  
+  
     # main = []
     # for i in entities1:
     #     if i['entity'] in tags_vals:
@@ -206,7 +191,5 @@ def spacy_exp(text):
 
     # print(main)
 
-    # functions
 
 
-    # return spacy_700, spacy_skills, spacy_edu, spacy_exp

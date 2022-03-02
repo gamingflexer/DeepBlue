@@ -215,4 +215,4 @@ def linkedien_scrape(text):
         print(my_dict)
 
         driver.quit()
-        return my_dict
+    return my_dict
