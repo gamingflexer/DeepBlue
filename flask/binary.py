@@ -7,7 +7,9 @@ from flask_mysqldb import MySQL, MySQLdb
 from flask_sqlalchemy import SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
 import mysql
-import json
+from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
+import torch
+import pyperclip
 import subprocess
 import urllib.request
 import zipfile
@@ -19,6 +21,7 @@ from werkzeug.utils import secure_filename
 import pyunpack
 import os
 import urllib.request
+from keras.preprocessing.sequence import pad_sequences
 
 from fileconversion import fileconversion1
 from preprocessing import*
@@ -43,13 +46,16 @@ tags_vals = ["UNKNOWN", "O", "Name", "Degree","Skills","College Name","Email Add
 tag2idx = {t: i for i, t in enumerate(tags_vals)}
 idx2tag = {i:t for i, t in enumerate(tags_vals)}
 
+tokenizer_bert_ner = AutoTokenizer.from_pretrained("dslim/bert-base-NER")
+model_bert_ner = AutoModelForTokenClassification.from_pretrained("dslim/bert-base-NER")
+print('\n NER Model Loaded!\n')
+
 # flask
 
 o1={}
 o2={}
 o3={}
 o4={}
-
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg',
                          'jpeg', 'docx', 'doc', 'rtf', 'odt', 'html', 'txt', 'zip'])
 
@@ -143,6 +149,8 @@ def predict(model, tokenizer, idx2tag, tag2idx, device, test_resume):
         ent['text'] = test_resume[ent['start']:ent['end']]
     return entities
 
+print('\nFlask Started!\n')
+
 @app.route('/', methods=["POST", "GET"])
 def login():
     return render_template('loginpage.html')
@@ -233,7 +241,6 @@ def upload():
        # enumerate(list)
 
         for file in files:
-            print('files')
 
             if file.filename == '':
                 flash('No selected file')
@@ -273,7 +280,6 @@ def upload():
                             "INSERT INTO parse( extracted_text, cleaned_text,state, emails, linkedin_link, github_link,extra_link,phonenumber) VALUES (%s, %s, %s, %s, %s, %s, %s, %s )",
                             (text1, ftext, pincode, mailid, linkdedln, github, others, phone_number))
 
-                        # model eval
 
                     dir_list = os.listdir(app.config['EXTRACTED'])
                     for file_name in dir_list:
@@ -306,7 +312,7 @@ def upload():
                         cur.execute("INSERT INTO deepbluecomp_table(files_path,binaryfiles_path) VALUES (%s, %s)",
                                     (filerename, binartfile))
                         print("------")
-                        text, text1, link, mailid, phone_number, date, human_name, add, pincode, ftext = fileconversion(
+                        text, text1, link, mailid, phone_number, date, human_name, add, pincode, ftext = fileconversion1(
                             path, num)
                         linkdedln, github, others = get_links(link)
 
@@ -346,13 +352,12 @@ def upload():
                     text2, text1, link, mailid, phone_number, date, human_name, add, pincode, ftext = fileconversion1(
                         path, num)
                     linkdedln, github, others = get_links(link)
-
+                    #add to database
                     cur.execute(
                         "INSERT INTO parse( extracted_text, cleaned_text,state, emails, linkedin_link, github_link,extra_link,phonenumber) VALUES (%s, %s, %s, %s, %s, %s, %s, %s )",
                         (text1, ftext, pincode, mailid, linkdedln, github, others, phone_number))
 
                     print("------MODELS--------")
-
                     print('------SPACY--------')
                     oo1 = spacy_700(text1)
                     # oo2 = spacy_skills(text1)
@@ -365,6 +370,20 @@ def upload():
                     #entities1 = predict(MODEL, TOKENIZER, idx2tag, tag2idx, DEVICE, text1)
                     #output_bert = clean_bert(entities1, tags_vals)
                     #print(output_bert)
+                    #print("------BERT--------")
+                    # entities1 = predict(MODEL, TOKENIZER, idx2tag, tag2idx, DEVICE, text1)
+                    # output_bert = clean_bert(entities1, tags_vals)
+                    # print(output_bert)
+                    print("------NAME--------")
+                    name_extracted = ner(text2,model_bert_ner,tokenizer_bert_ner) #is a list
+                    print(name_extracted)
+                    
+                    #Linkdien
+                    if linkdedln != None:
+                        if mailid or pincode is not None: #add here
+                            linkdien_data = linkedien_scrape(linkdedln[0])
+                            print(linkdien_data)
+                    
     mysql.connection.commit()
     # print(file)
     cur.close()
@@ -440,6 +459,3 @@ def compare():
 if __name__ == "__main__":
     app.run(debug=True)
 
-# app.run(debug=True)
-# scrape_link = ''
-# linkedien_scrape(scrape_link)
