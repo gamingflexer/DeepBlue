@@ -42,4 +42,10 @@ date_extractor
 PyMuPDF 
 fitz
 
+nltk.download('maxent_ne_chunker')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('words')
+nltk.download('stopwords')
+
+
 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ß

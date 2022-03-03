@@ -24,7 +24,7 @@ tagvalues_spacy = ['COLLEGE NAME', 'COMPANIES WORKED AT', 'DEGREE', 'DESIGNATION
 def spacy_700(text):
     o1 = {}
     spacy_700_list = []
-    model_spacy_path_all = 'C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\models\\700-old code'
+    model_spacy_path_all = '/home/aiworkstation2/Music/ser/DeepBlue/flask/models/new/'
 
     model_spacy = spacy.load(model_spacy_path_all)
 
@@ -33,6 +33,7 @@ def spacy_700(text):
     for ent in doc.ents:
         if ent.label_.upper() in tagvalues_spacy:
             temp = {f'{ent.label_.upper():{4}}': [ent.text]}
+            print(temp)
             spacy_700_list = spacy_700_list + [temp]
     for val in spacy_700_list:
         o1.update(val)
@@ -43,7 +44,7 @@ def spacy_700(text):
 def spacy_skills(text):
     o2 = {}
     spacy_skills_list = []
-    model_skills = 'C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\models\\Models-Seprate-700\\SKILL'
+    model_skills = '/home/aiworkstation2/Music/ser/DeepBlue/flask/models/Models-Seprate-700/SKILL/'
 
     model_spacy_s = spacy.load(model_skills)
 
@@ -61,7 +62,7 @@ def spacy_skills(text):
 def spacy_edu(text):
     o3 = {}
     spacy_edu_list = []
-    model_edu = 'C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\models\\Models-Seprate-700\\EDU'
+    model_edu = '/home/aiworkstation2/Music/ser/DeepBlue/flask/models/Models-Seprate-700/EDU/'
 
     model_spacy_e = spacy.load(model_edu)
 
@@ -79,7 +80,7 @@ def spacy_edu(text):
 def spacy_exp(text):
     o4 = {}
     spacy_exp_list = []
-    model_exp = 'C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\models\\Models-Seprate-700\\EXP'
+    model_exp = "/home/aiworkstation2/Music/ser/DeepBlue/flask/models/Models-Seprate-700/EXP/"
 
     model_spacy_exp = spacy.load(model_exp)
 

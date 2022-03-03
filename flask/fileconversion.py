@@ -319,7 +319,7 @@ def fileconversion1(filename, y):
 
 
 
-        return (text,text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext)
+    return (text,text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext)
 
 
 
