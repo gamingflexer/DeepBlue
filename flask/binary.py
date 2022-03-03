@@ -51,7 +51,6 @@ idx2tag = {i:t for i, t in enumerate(tags_vals)}
 tokenizer_bert_ner = AutoTokenizer.from_pretrained("dslim/bert-base-NER")
 model_bert_ner = AutoModelForTokenClassification.from_pretrained("dslim/bert-base-NER")
 print('\n NER Model Loaded!\n')
-print(ner("Hi my name is Ron Davis",model_bert_ner,tokenizer_bert_ner))
 # flask
 
 o1={}
@@ -175,9 +174,9 @@ def verify():
     cur = mysql.connection.cursor()
     if request.method == 'POST':
         email=request.form.get("emailid")
-        print(email)
+        # print(email)
         password=request.form.get("pass")
-        print(password)
+        # print(password)
         verify = cur.execute("Select password from login WHERE emailid= %s ", (email,))
         print('database')
         if verify > 0:
@@ -207,8 +206,8 @@ def candiate():
         if request.method == 'POST':
                 email = request.form.get("emailid")
                 passw = request.form.get("pass")
-                print(email)
-                print(passw)
+                # print(email)
+                # print(passw)
 
                 cur.execute("INSERT INTO login(emailid,password) VALUES (%s, %s)",(email, passw,))
                 mysql.connection.commit()
@@ -282,7 +281,6 @@ def upload():
                         cur.execute("INSERT INTO deepbluecomp_table(files_path,binaryfiles_path) VALUES (%s, %s)",
                                     (filerename, binartfile))
                         print("------")
-                        print(path, num)
                         text, text1, link, mailid, phone_number, date, human_name, add, pincode, ftext = fileconversion1(
                             path, num)
                         linkdedln, github, others = get_links(link)
@@ -307,7 +305,6 @@ def upload():
                     rarpath.extractall(app.config['EXTRACTED'])
 
                     dir_list = os.listdir(app.config['EXTRACTED'])
-                    print(dir_list)
                     for i in dir_list:
                         original = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/extracted/" + str(i)
                         x = original.rindex("/")
@@ -368,7 +365,7 @@ def upload():
                         "INSERT INTO parse( extracted_text, cleaned_text,state, emails, linkedin_link, github_link,extra_link,phonenumber) VALUES (%s, %s, %s, %s, %s, %s, %s, %s )",
                         (text2, ftext, pincode, mailid, linkdedln, github, others, phone_number))
 
-                    print("------MODELS--------")
+                    print("\n------MODELS--------\n")
                     print('------SPACY--------')
                     oo1 = spacy_700(text1)
                     oo2 = spacy_700(text2)
@@ -399,9 +396,9 @@ def upload():
                     # oo2 = spacy_skills(text1)
                     # oo3 = spacy_edu(text1)
                     # oo4 = spacy_exp(text1)
-                    print(oo1)
+                    # print(oo1)
                     print(oo2)
-                    print(oo3)
+                    # print(oo3)
                     # print(oo4)
                     #entities1 = predict(MODEL, TOKENIZER, idx2tag, tag2idx, DEVICE, text1)
                     #output_bert = clean_bert(entities1, tags_vals)
@@ -411,7 +408,7 @@ def upload():
                     # output_bert = clean_bert(entities1, tags_vals)
                     # print(output_bert)
                     print("------NAME--------")
-                    name_extracted = ner(text1,model_bert_ner,tokenizer_bert_ner) #is a list
+                    name_extracted = ner(text2,model_bert_ner,tokenizer_bert_ner) #is a list
                     print(name_extracted)
                     
                     #Linkdien
@@ -421,7 +418,6 @@ def upload():
                     #         print(linkdien_data)
                     
     mysql.connection.commit()
-    # print(file)
     cur.close()
     flash('File(s) successfully uploaded')
     # return redirect('/upload')
@@ -463,13 +459,10 @@ def table():
     cur = mysql.connection.cursor()
     result = cur.execute('SELECT * FROM list')
     # name,education,skills,experience,email
-    print(result)
     if result > 0:
         row = cur.fetchall()
-        print(row)
         for dict in row:
             table_li.append(list(dict.values()))
-        print(table_li)
 
     return render_template('table2.html', row=table_li)
 

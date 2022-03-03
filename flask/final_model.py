@@ -33,7 +33,6 @@ def spacy_700(text):
     for ent in doc.ents:
         if ent.label_.upper() in tagvalues_spacy:
             temp = {f'{ent.label_.upper():{4}}': [ent.text]}
-            print(temp)
             spacy_700_list = spacy_700_list + [temp]
     for val in spacy_700_list:
         o1.update(val)
