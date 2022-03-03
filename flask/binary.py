@@ -34,7 +34,7 @@ MAX_LEN = 500
 DEVICE = torch.device("cpu")
 MODEL_PATH = 'bert-base-uncased'
 STATE_DICT = torch.load(
-    'C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\models\\model_e10.tar', map_location=DEVICE)
+    'C/home/aiworkstation2/Music/DeepBlue/flask/models/model_e10.tar', map_location=DEVICE)
 TOKENIZER = BertTokenizerFast.from_pretrained(MODEL_PATH, lowercase=True)
 # TOKENIZER = Tokenizer(num_words=20000)  # SIMPLE
 MODEL = BertForTokenClassification.from_pretrained(
@@ -89,12 +89,12 @@ app.config['MYSQL_DB'] = 'deepbluecomp'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
 # db = SQLAlchemy(app)
-ZIPPED = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\zip"
+ZIPPED = "C/home/aiworkstation2/Music/DeepBlue/flask/static/zip"
 app.config['ZIPPED'] = ZIPPED
-EXTRACTED = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\extracted"
+EXTRACTED = "C/home/aiworkstation2/Music/DeepBlue/flask/static/extracted"
 app.config['EXTRACTED'] = EXTRACTED
 
-UPLOAD_FOLDER = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files"
+UPLOAD_FOLDER = "C/home/aiworkstation2/Music/DeepBlue/flask/static/files"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # routes
 
@@ -257,7 +257,7 @@ def upload():
                     dir_list = os.listdir(app.config['EXTRACTED'])
                     print(dir_list)
                     for i in dir_list:
-                        original = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\extracted\\" + str(i)
+                        original = "C/home/aiworkstation2/Music/DeepBlue/flask/static/extracted/" + str(i)
                         x = original.rindex("\\")
                         y = original.rindex(".")
                         num = str(val)
@@ -283,8 +283,8 @@ def upload():
 
                     dir_list = os.listdir(app.config['EXTRACTED'])
                     for file_name in dir_list:
-                        source = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\extracted\\" + file_name
-                        destination = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files\\" + file_name
+                        source = "C/home/aiworkstation2/Music/DeepBlue/flask/static/extracted/" + file_name
+                        destination = "C/home/aiworkstation2/Music/DeepBlue/flask/static/files/" + file_name
                         shutil.move(source, destination)
                 elif(name=='rar'):
                     filename = secure_filename(file.filename)
@@ -298,7 +298,7 @@ def upload():
                     dir_list = os.listdir(app.config['EXTRACTED'])
                     print(dir_list)
                     for i in dir_list:
-                        original = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\extracted\\" + str(i)
+                        original = "C/home/aiworkstation2/Music/DeepBlue/flask/static/extracted/" + str(i)
                         x = original.rindex("\\")
                         y = original.rindex(".")
                         num = str(val)
@@ -322,8 +322,8 @@ def upload():
                         # moving on to final folder
                     dir_list = os.listdir(app.config['EXTRACTED'])
                     for file_name in dir_list:
-                        source = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\extracted\\" + file_name
-                        destination = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files\\" + file_name
+                        source = "C/home/aiworkstation2/Music/DeepBlue/flask/static/extracted/" + file_name
+                        destination = "C/home/aiworkstation2/Music/DeepBlue/flask/static/files/" + file_name
                         shutil.move(source, destination)
 
                 else:
@@ -331,7 +331,7 @@ def upload():
                     file.save(os.path.join(
                         app.config['UPLOAD_FOLDER'], filename))
                     # inserting path to save the file *********************************************************
-                    binary = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files\\" + filename
+                    binary = "C/home/aiworkstation2/Music/DeepBlue/flask/static/files/" + filename
                     #file1 = "C:\\Users\\Yash\\PycharmProjects\\flask\\static\\files\\2021-12-08.png"
                     x = binary.rindex("\\")
                     y = binary.rindex(".")
@@ -398,15 +398,15 @@ def delete():
 
     for zipfileli in dirzip_list:
         os.remove(
-            "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\zip\\" + zipfileli)
+            "C/home/aiworkstation2/Music/DeepBlue/flask/static/zip/" + zipfileli)
 
     dirrar_list = os.listdir(app.config['EXTRACTED'])
 
     for rarfileli in dirrar_list:
-        os.remove("C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files\\" + rarfileli)        
+        os.remove("C/home/aiworkstation2/Music/DeepBlue/flask/static/files/" + rarfileli)        
 
 
-    folder = "C:\\WindowServer\\Flask-app\\v.1.0\\DeepBlue\\flask\\static\\files"
+    folder = "C/home/aiworkstation2/Music/DeepBlue/flask/static/files"
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
         try:
