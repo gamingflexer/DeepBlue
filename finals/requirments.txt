@@ -15,13 +15,20 @@ tika
 selenium
 BeautifulSoup
 fitz
-cv2
+opencv-python
 fpdf
 docx2pdf
 pytesseract
-PIL
+Pillow
 pdfkit
-
+textract
+fpdf
+nltk 
+torch
+pyap
+nameparser
+spacy==2.2.4
+pytorch_pretrained_bert
 
 #db conn
 mysql
@@ -34,3 +41,5 @@ flask
 date_extractor
 PyMuPDF 
 fitz
+
+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ß
