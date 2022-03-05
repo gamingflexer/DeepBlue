@@ -19,7 +19,8 @@ import re
 
 
 tagvalues_spacy = ['COLLEGE NAME', 'COMPANIES WORKED AT', 'DEGREE', 'DESIGNATION',
-                    'EMAIL ADDRESS', 'SKILLS', 'YEARS OF EXPERIENCE', 'LOCATION', 'NAME  ', '']  # add more
+                   'EMAIL ADDRESS', 'SKILLS', 'YEARS OF EXPERIENCE', 'LOCATION', 'NAME  ', '']  # add more
+
 
 def spacy_700(text):
     o1 = {}
@@ -40,6 +41,8 @@ def spacy_700(text):
     return o1
 
 #spacy - skills
+
+
 def spacy_skills(text):
     o2 = {}
     spacy_skills_list = []
@@ -58,6 +61,8 @@ def spacy_skills(text):
     return (o2)
 
 #spacy - Edu
+
+
 def spacy_edu(text):
     o3 = {}
     spacy_edu_list = []
@@ -72,10 +77,12 @@ def spacy_edu(text):
             temp = {f'{ent.label_.upper():{4}}': [ent.text]}
             spacy_edu_list = spacy_edu_list + [temp]
     for val in spacy_edu_list:
-        o3.update(val)           
+        o3.update(val)
     return (o3)
 
 #spacy - Exp
+
+
 def spacy_exp(text):
     o4 = {}
     spacy_exp_list = []
@@ -90,15 +97,18 @@ def spacy_exp(text):
             temp = {f'{ent.label_.upper():{4}}': [ent.text]}
             spacy_exp_list = spacy_exp_list + [temp]
     for val in spacy_exp_list:
-        o4.update(val)    
+        o4.update(val)
     return (o4)
 
-#Compare
+# Compare
+
+
 def comparemain(text):
 
     classifier = pipeline("zero-shot-classification")
     # classes to divide into or not
-    candidate_labels = ['Skills','Degree', 'Companies worked at', 'Name','Rewards and Achievements']
+    candidate_labels = ['Skills', 'Degree',
+                        'Companies worked at', 'Name', 'Rewards and Achievements']
     output = classifier(text, candidate_labels, multi_class=False)
 
     # last element of the dict
@@ -107,8 +117,9 @@ def comparemain(text):
     return final_list
 
 
-#NER
-def ner(text,model,tokenizer):
+# NER
+
+def ner(text, model, tokenizer):
     # create a pipleine to get the output
     nlp = pipeline('ner', model=model, tokenizer=tokenizer)
     ner_list = nlp(text)
@@ -132,17 +143,24 @@ def ner(text,model,tokenizer):
 
     final_name_list = []
     for name_list in all_names_list_tmp:
-        full_name = ' '.join(name_list[0]).replace(' ##', '').replace(' .', '.')
+        full_name = ' '.join(name_list[0]).replace(
+            ' ##', '').replace(' .', '.')
         final_name_list.append([full_name])
-    return final_name_list
+
+    if (len(final_name_list)) > 1:
+        final_name_list2 = str(final_name_list[0]) + str(final_name_list[1])
+    final_name_list2 = final_name_list2.replace("]", "")
+    final_name_list2 = final_name_list2.replace("[", "")
+    final_name_list2 = final_name_list2.replace("'", "")
+    #final_name_list2 = final_name_list2.replace("]","")
+
+    return final_name_list2
 
     # clean spacy
     # if same in any dict delete
     # keyword - not possible in spacy
     # after , remove for name
 
-  
-  
     # main = []
     # for i in entities1:
     #     if i['entity'] in tags_vals:
@@ -190,6 +208,3 @@ def ner(text,model,tokenizer):
     #             main.remove(val)
 
     # print(main)
-
-
-

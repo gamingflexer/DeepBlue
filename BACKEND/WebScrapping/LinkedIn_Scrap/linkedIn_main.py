@@ -40,21 +40,22 @@ def getAbout():
 
 
 def currentWork():
-    current_work = soup.find_all('div', {"class": "text-body-medium break-words"})
+    current_work = soup.find_all(
+        'div', {"class": "text-body-medium break-words"})
     for data in current_work:
         print(data.text)
         return data.text
 
 
 # PATH to chrome driver
-PATH = 'D:\\Softwares\\chromedriver.exe'
+PATH = '/Users/cosmos/98'
 ser = Service(PATH)
 op = webdriver.ChromeOptions()
 driver = webdriver.Chrome(service=ser, options=op)
 
 # USERNAME AND PASSWORD
-USERNAME = 'adwaitg02@gmail.com'
-PASSWORD = '6'
+USERNAME = 'omsurve570@gmail.com'
+PASSWORD = 'lucario123'
 
 # open linkedin.com
 driver.get("https://www.linkedin.com/login")
@@ -85,18 +86,30 @@ eleventhBox = ''
 twelvethBox = ''
 
 try:
-    firstBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[2]').text
-    secondBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[3]').text
-    thirdBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[4]').text
-    fourthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[5]').text
-    fifthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[6]').text
-    sixthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[7]').text
-    seventhBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[8]').text
-    eighthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[9]').text
-    ninthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[10]').text
-    tenthBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[11]').text
-    eleventhBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[12]').text
-    twelvethBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[13]').text
+    firstBox = driver.find_element_by_xpath(
+        '/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[2]').text
+    secondBox = driver.find_element_by_xpath(
+        '/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[3]').text
+    thirdBox = driver.find_element_by_xpath(
+        '/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[4]').text
+    fourthBox = driver.find_element_by_xpath(
+        '/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[5]').text
+    fifthBox = driver.find_element_by_xpath(
+        '/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[6]').text
+    sixthBox = driver.find_element_by_xpath(
+        '/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[7]').text
+    seventhBox = driver.find_element_by_xpath(
+        '/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[8]').text
+    eighthBox = driver.find_element_by_xpath(
+        '/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[9]').text
+    ninthBox = driver.find_element_by_xpath(
+        '/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[10]').text
+    tenthBox = driver.find_element_by_xpath(
+        '/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[11]').text
+    eleventhBox = driver.find_element_by_xpath(
+        '/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[12]').text
+    twelvethBox = driver.find_element_by_xpath(
+        '/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[13]').text
 
 
 except:
