@@ -35,14 +35,14 @@ from funcdatabse import databasevalue
 MAX_LEN = 500
 DEVICE = torch.device("cpu")
 MODEL_PATH = 'bert-base-uncased'
-STATE_DICT = torch.load(
-   '/home/aiworkstation2/Music/ser/DeepBlue/flask/models/model_e10.tar', map_location=DEVICE)
-TOKENIZER = BertTokenizerFast.from_pretrained(MODEL_PATH, lowercase=True)
+#STATE_DICT = torch.load(
+  # 'C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\models\\model_e10.tar', map_location=DEVICE)
+#TOKENIZER = BertTokenizerFast.from_pretrained(MODEL_PATH, lowercase=True)
 #TOKENIZER = Tokenizer(num_words=20000)  # SIMPLE
-MODEL = BertForTokenClassification.from_pretrained(
-   MODEL_PATH, state_dict=STATE_DICT['model_state_dict'], num_labels=12)
-model = MODEL
-MODEL.to(DEVICE);
+#MODEL = BertForTokenClassification.from_pretrained(
+  # MODEL_PATH, state_dict=STATE_DICT['model_state_dict'], num_labels=12)
+#model = MODEL
+#MODEL.to(DEVICE);
 print('\nModel Loaded!\n')
 tags_vals = ["UNKNOWN", "O", "Name", "Degree","Skills","College Name","Email Address","Designation","Companies worked at","Graduation Year","Years of Experience","Location"]
 tag2idx = {t: i for i, t in enumerate(tags_vals)}
@@ -58,7 +58,7 @@ o2={}
 o3={}
 o4={}
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg',
-                         'jpeg', 'docx', 'doc', 'rtf', 'odt', 'html', 'txt', 'zip'])
+                         'jpeg', 'docx', 'doc', 'rtf', 'odt', 'html', 'txt', 'zip','rar'])
 
 
 # functions
@@ -90,12 +90,12 @@ app.config['MYSQL_DB'] = 'deepbluecomp'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
 # db = SQLAlchemy(app)
-ZIPPED = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/zip"
+ZIPPED = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\zip"
 app.config['ZIPPED'] = ZIPPED
-EXTRACTED = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/extracted"
+EXTRACTED = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\extracted"
 app.config['EXTRACTED'] = EXTRACTED
 
-UPLOAD_FOLDER = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/files"
+UPLOAD_FOLDER = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\files"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 databaseattribute = {'unknown': None, 'name': None, 'degree': None, 'skills': None, 'college_name': None,
                          'university': None, 'graduation_year': None, 'companies_worked_at': None, 'designation': None,
@@ -267,8 +267,8 @@ def upload():
                     dir_list = os.listdir(app.config['EXTRACTED'])
                     print(dir_list)
                     for i in dir_list:
-                        original = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/extracted/" + str(i)
-                        x = original.rindex("/")
+                        original = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\extracted\\" + str(i)
+                        x = original.rindex("\\")
                         y = original.rindex(".")
                         num = str(val)
                         val = val + 1
@@ -281,7 +281,7 @@ def upload():
                         cur.execute("INSERT INTO deepbluecomp_table(files_path,binaryfiles_path) VALUES (%s, %s)",
                                     (filerename, binartfile))
                         print("------")
-                        text, text1, link, mailid, phone_number, date, human_name, add, pincode, ftext = fileconversion1(
+                        text2, text1, link, mailid, phone_number, date, human_name, add, pincode, ftext = fileconversion1(
                             path, num)
                         linkdedln, github, others = get_links(link)
 
@@ -289,36 +289,51 @@ def upload():
                             "INSERT INTO parse( extracted_text, cleaned_text,state, emails, linkedin_link, github_link,extra_link,phonenumber) VALUES (%s, %s, %s, %s, %s, %s, %s, %s )",
                             (text1, ftext, pincode, mailid, linkdedln, github, others, phone_number))
 
+                        oo2 = spacy_700(text2)
+                        print("------NAME--------")
+                        name_extracted = ner(text2, model_bert_ner, tokenizer_bert_ner)  # is a list
+                        print(name_extracted)
+
+                        for entity in entities:
+                            if entity in oo2.keys():
+                                values = oo2.get(entity)
+                                if (entity.replace(" ", "_").lower() in databaseattribute.keys()):
+                                    databaseattribute.update({entity.replace(" ", "_").lower(): values})
+
+                        # print(databaseattribute)
+                        for key, values in databaseattribute.items():
+                            if (databaseattribute[key] == None):
+                                databaseattribute[key] = 'Null'
+
+                        cur.execute(
+                            "INSERT INTO model(unknown,name,degree,skills,college_name,university,graduation_year,companies_worked_at,designation,years_of_experience,location,address,rewards_achievements,projects) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+                            (databasevalue(databaseattribute.get('unknown')),
+                             name_extracted[0][0],
+                             databasevalue(databaseattribute.get('degree')),
+                             databasevalue(databaseattribute.get('skills')),
+                             databasevalue(databaseattribute.get('college_name')),
+                             databasevalue(databaseattribute.get('university')),
+                             databasevalue(databaseattribute.get('graduation_year')),
+                             databasevalue(databaseattribute.get('companies_worked_at')),
+                             databasevalue(databaseattribute.get('designation')),
+                             databasevalue(databaseattribute.get('years_of_experience')),
+                             databasevalue(databaseattribute.get('location')),
+                             databasevalue(databaseattribute.get('address')),
+                             databasevalue(databaseattribute.get('rewards_achievements')),
+                             databasevalue(databaseattribute.get('projects')),))
+
+                        cur.execute("INSERT INTO list(name,education,skills,experience,email) VALUES (%s,%s,%s,%s,%s)", (name_extracted[0][0],databaseattribute.get('degree'),databaseattribute.get('skills'),databaseattribute.get('years_of_experience'),mailid,))
+
+                        for key, values in databaseattribute.items():
+                            databaseattribute[key] = 'Null'
+
 
                     dir_list = os.listdir(app.config['EXTRACTED'])
                     for file_name in dir_list:
-                        source = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/extracted/" + file_name
-                        destination = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/files/" + file_name
+                        source = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\extracted\\" + file_name
+                        destination = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\files\\" + file_name
                         shutil.move(source, destination)
 
-                    oo2 = spacy_700(text2)
-
-                    for entity in entities:
-                        if entity in oo2.keys():
-                            values = oo2.get(entity)
-                            if (entity.replace(" ", "_").lower() in databaseattribute.keys()):
-                                databaseattribute.update({entity.replace(" ", "_").lower(): values})
-
-                    #print(databaseattribute)
-                    for key, values in databaseattribute.items():
-                        if (databaseattribute[key] == None):
-                            databaseattribute[key] = 'Null'
-                    
-
-
-                    cur.execute("INSERT INTO model(unknown,name,degree,skills,college_name,university,graduation_year,companies_worked_at,designation,years_of_experience,location,address,rewards_achievements,projects) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
-                            (databasevalue(databaseattribute.get('unknown')),databasevalue(databaseattribute.get('name')),databasevalue(databaseattribute.get('degree')),databasevalue(databaseattribute.get('skills')),databasevalue(databaseattribute.get('college_name')),databasevalue(databaseattribute.get('university')),databasevalue(databaseattribute.get('graduation_year')),databasevalue(databaseattribute.get('companies_worked_at')),databasevalue(databaseattribute.get('designation')),databasevalue(databaseattribute.get('years_of_experience')),databasevalue(databaseattribute.get('location')),databasevalue(databaseattribute.get('address')),databasevalue(databaseattribute.get('rewards_achievements')),databasevalue(databaseattribute.get('projects')),))
-                
-                    
-                    cur.execute("INSERT INTO list(email) VALUES (%s)",(mailid,))
-                    
-                    for key, values in databaseattribute.items():
-                        databaseattribute[key] = 'Null'
                    
 
 
@@ -334,8 +349,8 @@ def upload():
 
                     dir_list = os.listdir(app.config['EXTRACTED'])
                     for i in dir_list:
-                        original = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/extracted/" + str(i)
-                        x = original.rindex("/")
+                        original = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\extracted\\" + str(i)
+                        x = original.rindex("\\")
                         y = original.rindex(".")
                         num = str(val)
                         val = val + 1
@@ -348,7 +363,7 @@ def upload():
                         cur.execute("INSERT INTO deepbluecomp_table(files_path,binaryfiles_path) VALUES (%s, %s)",
                                     (filerename, binartfile))
                         print("------")
-                        text, text1, link, mailid, phone_number, date, human_name, add, pincode, ftext = fileconversion1(
+                        text2, text1, link, mailid, phone_number, date, human_name, add, pincode, ftext = fileconversion1(
                             path, num)
                         linkdedln, github, others = get_links(link)
 
@@ -356,48 +371,59 @@ def upload():
                             "INSERT INTO parse( extracted_text, cleaned_text,state, emails, linkedin_link, github_link,extra_link,phonenumber) VALUES (%s, %s, %s, %s, %s, %s, %s, %s )",
                             (text1, ftext, pincode, mailid, linkdedln, github, others, phone_number))
                         # moving on to final folder
+
+                        oo2 = spacy_700(text2)
+                        print("------NAME--------")
+                        name_extracted = ner(text2, model_bert_ner, tokenizer_bert_ner)  # is a list
+                        print(name_extracted)
+
+                        for entity in entities:
+                            if entity in oo2.keys():
+                                values = oo2.get(entity)
+                                if (entity.replace(" ", "_").lower() in databaseattribute.keys()):
+                                    databaseattribute.update({entity.replace(" ", "_").lower(): values})
+
+                        # print(databaseattribute)
+                        for key, values in databaseattribute.items():
+                            if (databaseattribute[key] == None):
+                                databaseattribute[key] = 'Null'
+
+                        cur.execute(
+                            "INSERT INTO model(unknown,name,degree,skills,college_name,university,graduation_year,companies_worked_at,designation,years_of_experience,location,address,rewards_achievements,projects) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+                            (databasevalue(databaseattribute.get('unknown')),
+                             name_extracted[0][0],
+                             databasevalue(databaseattribute.get('degree')),
+                             databasevalue(databaseattribute.get('skills')),
+                             databasevalue(databaseattribute.get('college_name')),
+                             databasevalue(databaseattribute.get('university')),
+                             databasevalue(databaseattribute.get('graduation_year')),
+                             databasevalue(databaseattribute.get('companies_worked_at')),
+                             databasevalue(databaseattribute.get('designation')),
+                             databasevalue(databaseattribute.get('years_of_experience')),
+                             databasevalue(databaseattribute.get('location')),
+                             databasevalue(databaseattribute.get('address')),
+                             databasevalue(databaseattribute.get('rewards_achievements')),
+                             databasevalue(databaseattribute.get('projects')),))
+
+                        cur.execute("INSERT INTO list(name,education,skills,experience,email) VALUES (%s,%s,%s,%s,%s)", (name_extracted[0][0],databaseattribute.get('degree'),databaseattribute.get('skills'),databaseattribute.get('years_of_experience'),mailid,))
+
+                        for key, values in databaseattribute.items():
+                            databaseattribute[key] = 'Null'
                     dir_list = os.listdir(app.config['EXTRACTED'])
                     for file_name in dir_list:
-                        source = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/extracted/" + file_name
-                        destination = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/files/" + file_name
+                        source = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\extracted\\" + file_name
+                        destination = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\files\\" + file_name
                         shutil.move(source, destination)
 
-                    oo2 = spacy_700(text2)
-
-                    for entity in entities:
-                        if entity in oo2.keys():
-                            values = oo2.get(entity)
-                            if (entity.replace(" ", "_").lower() in databaseattribute.keys()):
-                                databaseattribute.update({entity.replace(" ", "_").lower(): values})
-
-                    #print(databaseattribute)
-                    for key, values in databaseattribute.items():
-                        if (databaseattribute[key] == None):
-                            databaseattribute[key] = 'Null'
-                    
-
-
-                    cur.execute("INSERT INTO model(unknown,name,degree,skills,college_name,university,graduation_year,companies_worked_at,designation,years_of_experience,location,address,rewards_achievements,projects) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
-                            (databasevalue(databaseattribute.get('unknown')),databasevalue(databaseattribute.get('name')),databasevalue(databaseattribute.get('degree')),databasevalue(databaseattribute.get('skills')),databasevalue(databaseattribute.get('college_name')),databasevalue(databaseattribute.get('university')),databasevalue(databaseattribute.get('graduation_year')),databasevalue(databaseattribute.get('companies_worked_at')),databasevalue(databaseattribute.get('designation')),databasevalue(databaseattribute.get('years_of_experience')),databasevalue(databaseattribute.get('location')),databasevalue(databaseattribute.get('address')),databasevalue(databaseattribute.get('rewards_achievements')),databasevalue(databaseattribute.get('projects')),))
-                
-                    
-                    cur.execute("INSERT INTO list(email) VALUES (%s)",(mailid,))
-                    
-                    for key, values in databaseattribute.items():
-                        databaseattribute[key] = 'Null'
-                   
-
-
-                        
 
                 else:
                     filename = secure_filename(file.filename)
                     file.save(os.path.join(
                         app.config['UPLOAD_FOLDER'], filename))
                     # inserting path to save the file *********************************************************
-                    binary = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/files/" + filename
+                    binary = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\files\\" + filename
                     #file1 = "C:\\Users\\Yash\\PycharmProjects\\flask\\static\\files\\2021-12-08.png"
-                    x = binary.rindex("/")
+                    x = binary.rindex("\\")
                     y = binary.rindex(".")
 
                     num = str(val)
@@ -425,6 +451,9 @@ def upload():
                     print('------SPACY--------')
                     oo1 = spacy_700(text1)
                     oo2 = spacy_700(text2)
+                    print("------NAME--------")
+                    name_extracted = ner(text2, model_bert_ner, tokenizer_bert_ner)  # is a list
+                    print(name_extracted)
 
                     for entity in entities:
                         if entity in oo2.keys():
@@ -436,14 +465,15 @@ def upload():
                     for key, values in databaseattribute.items():
                         if (databaseattribute[key] == None):
                             databaseattribute[key] = 'Null'
+
                     
 
 
                     cur.execute("INSERT INTO model(unknown,name,degree,skills,college_name,university,graduation_year,companies_worked_at,designation,years_of_experience,location,address,rewards_achievements,projects) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
-                            (databasevalue(databaseattribute.get('unknown')),databasevalue(databaseattribute.get('name')),databasevalue(databaseattribute.get('degree')),databasevalue(databaseattribute.get('skills')),databasevalue(databaseattribute.get('college_name')),databasevalue(databaseattribute.get('university')),databasevalue(databaseattribute.get('graduation_year')),databasevalue(databaseattribute.get('companies_worked_at')),databasevalue(databaseattribute.get('designation')),databasevalue(databaseattribute.get('years_of_experience')),databasevalue(databaseattribute.get('location')),databasevalue(databaseattribute.get('address')),databasevalue(databaseattribute.get('rewards_achievements')),databasevalue(databaseattribute.get('projects')),))
+                            (databasevalue(databaseattribute.get('unknown')),name_extracted[0][0] ,databasevalue(databaseattribute.get('degree')),databasevalue(databaseattribute.get('skills')),databasevalue(databaseattribute.get('college_name')),databasevalue(databaseattribute.get('university')),databasevalue(databaseattribute.get('graduation_year')),databasevalue(databaseattribute.get('companies_worked_at')),databasevalue(databaseattribute.get('designation')),databasevalue(databaseattribute.get('years_of_experience')),databasevalue(databaseattribute.get('location')),databasevalue(databaseattribute.get('address')),databasevalue(databaseattribute.get('rewards_achievements')),databasevalue(databaseattribute.get('projects')),))
                 
                     
-                    cur.execute("INSERT INTO list(email) VALUES (%s)",(mailid,))
+                    cur.execute("INSERT INTO list(name,education,skills,experience,email) VALUES (%s,%s,%s,%s,%s)", (name_extracted[0][0],databaseattribute.get('degree'),databaseattribute.get('skills'),databaseattribute.get('years_of_experience'),mailid,))
 
                     for key, values in databaseattribute.items():
                         databaseattribute[key] = 'Null'
@@ -466,9 +496,7 @@ def upload():
                     # entities1 = predict(MODEL, TOKENIZER, idx2tag, tag2idx, DEVICE, text1)
                     # output_bert = clean_bert(entities1, tags_vals)
                     # print(output_bert)
-                    print("------NAME--------")
-                    name_extracted = ner(text2,model_bert_ner,tokenizer_bert_ner) #is a list
-                    print(name_extracted)
+
                     
                     #Linkdien
                     # if linkdedln != None:
@@ -478,9 +506,22 @@ def upload():
                     
     mysql.connection.commit()
     cur.close()
-    flash('File(s) successfully uploaded')
+    table_li = []
+
+    cur = mysql.connection.cursor()
+    result = cur.execute('SELECT * FROM list')
+    # name,education,skills,experience,email
+    print(result)
+    if result > 0:
+        row = cur.fetchall()
+        print(row)
+        for dict in row:
+            table_li.append(list(dict.values()))
+        print(table_li)
+
     # return redirect('/upload')
-    return render_template('table2.html')
+    return render_template('table2.html', row=table_li)
+
 
 
 @app.route("/delete")
@@ -489,15 +530,15 @@ def delete():
 
     for zipfileli in dirzip_list:
         os.remove(
-            "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/zip/" + zipfileli)
+            "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\zip\\" + zipfileli)
 
-    dirrar_list = os.listdir(app.config['EXTRACTED'])
+    #dirrar_list = os.listdir(app.config['EXTRACTED'])
 
-    for rarfileli in dirrar_list:
-        os.remove("/home/aiworkstation2/Music/ser/DeepBlue/flask/static/files/" + rarfileli)        
+    #for rarfileli in dirrar_list:
+     #   os.remove("C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\files\\" + rarfileli)
 
 
-    folder = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/files"
+    folder = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\files"
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
         try:
@@ -513,17 +554,20 @@ def delete():
 
 @app.route('/table', methods=["POST", "GET"])
 def table():
-    table_li = []
+    table_li=[]
 
     cur = mysql.connection.cursor()
     result = cur.execute('SELECT * FROM list')
-    # name,education,skills,experience,email
+    #name,education,skills,experience,email
+    print(result)
     if result > 0:
         row = cur.fetchall()
+        print(row)
         for dict in row:
             table_li.append(list(dict.values()))
+        print(table_li)
 
-    return render_template('table2.html', row=table_li)
+    return render_template('table2.html',row=table_li)
 
 @app.route('/compare', methods=["POST", "GET"])
 def compare():
@@ -532,7 +576,7 @@ def compare():
         candiatecomparelist = request.form.getlist('check')
         cur=mysql.connection.cursor()
         for i in candiatecomparelist:
-            compresult=cur.execute("Select linked_link,github_link,extra_link from datastore WHERE sr= %s ",(int(i),))
+            compresult=cur.execute("Select can_id,name,education,skills,experience,email from list WHERE can_id= %s ",(int(i),))
             if compresult>0:
                 row=cur.fetchall()
                 for dict in row:

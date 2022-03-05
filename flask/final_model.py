@@ -24,7 +24,7 @@ tagvalues_spacy = ['COLLEGE NAME', 'COMPANIES WORKED AT', 'DEGREE', 'DESIGNATION
 def spacy_700(text):
     o1 = {}
     spacy_700_list = []
-    model_spacy_path_all = '/home/aiworkstation2/Music/ser/DeepBlue/flask/models/new/'
+    model_spacy_path_all = 'C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\models\\new'
 
     model_spacy = spacy.load(model_spacy_path_all)
 

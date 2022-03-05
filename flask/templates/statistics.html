@@ -32,9 +32,13 @@
 
         {% set count.value = count.value + 1 %}
             <div class="block" id="{{block}}">
-            <p>Linkedin Link : <a>{{data[0]}}</a></p><br>
-            <p>github link : {{data[1]}}</p><br>
-            <p>extra link : {{data[2]}}</p>
+            <p>Candiate Id : {{data[0]}}</p><br>
+                <p>Name : {{data[1]}}</p><br>
+            <p>Education : {{data[2]}}</p><br>
+            <p>Skills : {{data[3]}}</p><br>
+            <p>experience : {{data[4]}}</p><br>
+            <p>emailid : {{data[5]}}</p><br>
+
         </div>
     {% endfor %}
 </div>

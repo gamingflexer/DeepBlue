@@ -5,7 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bcc1484b-e8db-4811-b25b-777e49f58759" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/binary_yash.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dataset-Scraping/Dataset-Scraping.rar" beforeDir="false" afterPath="$PROJECT_DIR$/../Dataset-Scraping/Dataset-Scraping.rar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/binary.py" beforeDir="false" afterPath="$PROJECT_DIR$/binary.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/final_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/static/files/resume1.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume10.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume11.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume12.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume13.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume14.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume15.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume16.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume17.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume18.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume19.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume2.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume20.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume21.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume22.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume23.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume3.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume4.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume5.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume6.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume7.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume8.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/resume9.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/statistic.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/statistic.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/table2.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/table2.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/statistics.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/statistics.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,12 +72,13 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Yash\OneDrive\Desktop\DeepBlue\flask" />
       <recent name="C:\Users\Yash\PycharmProjects\flask" />
       <recent name="C:\Users\Yash\PycharmProjects\flask\static\files" />
       <recent name="C:\Users\Yash\PycharmProjects" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.binary">
+  <component name="RunManager" selected="Python.binary_yash">
     <configuration name="binary" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="flask" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -61,6 +92,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/binary.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="binary_yash" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="flask" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/binary_yash.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -111,7 +163,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="fileconversion" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="linkedIn_main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="flask" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -123,28 +175,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fileconversion.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="preprocessing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="flask" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/preprocessing.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/linkedIn_main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -155,11 +186,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.binary_yash" />
         <item itemvalue="Python.binary" />
+        <item itemvalue="Python.linkedIn_main" />
         <item itemvalue="Python.deletefile" />
         <item itemvalue="Python.dnamictry" />
-        <item itemvalue="Python.preprocessing" />
-        <item itemvalue="Python.fileconversion" />
       </list>
     </recent_temporary>
   </component>
@@ -173,5 +204,16 @@
       <updated>1641293823531</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
