@@ -2,9 +2,11 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 import hashlib
 
 scrape_link = ""
+
 
 def linkedien_scrape(text):
     def emptyB():
@@ -66,6 +68,8 @@ def linkedien_scrape(text):
 
     # PATH to chrome driver
     PATH = '"C:\\chromedriver.exe"'
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
     ser = Service(PATH)
     op = webdriver.ChromeOptions()
     driver = webdriver.Chrome(service=ser, options=op)

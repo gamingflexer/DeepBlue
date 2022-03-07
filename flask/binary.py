@@ -30,6 +30,7 @@ from linkedIn_main import*
 from final_model import*
 from funcdatabse import databasevalue
 
+#model loading base model
 
 # BERT
 MAX_LEN = 500
