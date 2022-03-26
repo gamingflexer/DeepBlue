@@ -1,3 +1,4 @@
+from time import time
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -9,7 +10,7 @@ def removeWords():
     bad_words = ['Message', 'logo', 'See credential', 'Expiration Date', 'followers', 'See all', '�', 'comments',
                  '.pdf']
     for i in range(12):
-        with open(f'blocks/{str(i + 1)}bclean.txt') as oldfile, open(f'blocks/{str(i + 1)}b.txt', 'w') as newfile:
+        with open(f'BACKEND/WebScrapping/LinkedIn_Scrap/blocks/{str(i + 1)}bclean.txt') as oldfile, open(f'BACKEND/WebScrapping/LinkedIn_Scrap/blocks/{str(i + 1)}b.txt', 'w') as newfile:
             for line in oldfile:
                 if not any(bad_word in line for bad_word in bad_words):
                     newfile.write(line)
@@ -17,8 +18,8 @@ def removeWords():
 
 def removeDupes():
     for i in range(12):
-        inputFile = f'blocks/{str(i + 1)}b.txt'
-        outputFile = f'blocks/{str(i + 1)}bclean.txt'
+        inputFile = f'BACKEND/WebScrapping/LinkedIn_Scrap/blocks/{str(i + 1)}b.txt'
+        outputFile = f'BACKEND/WebScrapping/LinkedIn_Scrap/blocks/{str(i + 1)}bclean.txt'
         completed_lines_hash = set()
         output_file = open(outputFile, "w")
         for line in open(inputFile, "r"):
@@ -48,7 +49,7 @@ def currentWork():
 
 
 # PATH to chrome driver
-PATH = '/Users/cosmos/98'
+PATH = '/Users/acgawade/Documents/Software-Mac/chromedriver'
 ser = Service(PATH)
 op = webdriver.ChromeOptions()
 driver = webdriver.Chrome(service=ser, options=op)
@@ -117,62 +118,62 @@ except:
 
 finally:
     print('First Box :' + firstBox)
-    f = open("blocks/1b.txt", "a", encoding="utf-8")
+    f = open("BACKEND/WebScrapping/LinkedIn_Scrap/blocks/1b.txt", "a", encoding="utf-8")
     f.write(firstBox)
     f.close()
 
     print('Second Box :' + secondBox)
-    f = open("blocks/2b.txt", "a", encoding="utf-8")
+    f = open("BACKEND/WebScrapping/LinkedIn_Scrap/blocks/2b.txt", "a", encoding="utf-8")
     f.write(secondBox)
     f.close()
 
     print('Third Box :' + thirdBox)
-    f = open("blocks/3b.txt", "a", encoding="utf-8")
+    f = open("BACKEND/WebScrapping/LinkedIn_Scrap/blocks/3b.txt", "a", encoding="utf-8")
     f.write(thirdBox)
     f.close()
 
     print('Fourth Box :' + fourthBox)
-    f = open("blocks/4b.txt", "a", encoding="utf-8")
+    f = open("BACKEND/WebScrapping/LinkedIn_Scrap/blocks/4b.txt", "a", encoding="utf-8")
     f.write(fourthBox)
     f.close()
 
     print('Fifth Box :' + fifthBox)
-    f = open("blocks/5b.txt", "a", encoding="utf-8")
+    f = open("BACKEND/WebScrapping/LinkedIn_Scrap/blocks/5b.txt", "a", encoding="utf-8")
     f.write(fifthBox)
     f.close()
 
     print('Sixth Box :' + sixthBox)
-    f = open("blocks/6b.txt", "a", encoding="utf-8")
+    f = open("BACKEND/WebScrapping/LinkedIn_Scrap/blocks/6b.txt", "a", encoding="utf-8")
     f.write(sixthBox)
     f.close()
 
     print('Seventh Box :' + seventhBox)
-    f = open("blocks/7b.txt", "a", encoding="utf-8")
+    f = open("BACKEND/WebScrapping/LinkedIn_Scrap/blocks/7b.txt", "a", encoding="utf-8")
     f.write(seventhBox)
     f.close()
 
     print('Seventh Box :' + eighthBox)
-    f = open("blocks/8b.txt", "a", encoding="utf-8")
+    f = open("BACKEND/WebScrapping/LinkedIn_Scrap/blocks/8b.txt", "a", encoding="utf-8")
     f.write(eighthBox)
     f.close()
 
     print('ninthBox Box :' + ninthBox)
-    f = open("blocks/9b.txt", "a", encoding="utf-8")
+    f = open("BACKEND/WebScrapping/LinkedIn_Scrap/blocks/9b.txt", "a", encoding="utf-8")
     f.write(ninthBox)
     f.close()
 
     print('tenthBox Box :' + tenthBox)
-    f = open("blocks/10b.txt", "a", encoding="utf-8")
+    f = open("BACKEND/WebScrapping/LinkedIn_Scrap/blocks/10b.txt", "a", encoding="utf-8")
     f.write(tenthBox)
     f.close()
 
     print('eleventhBox Box :' + eleventhBox)
-    f = open("blocks/11b.txt", "a", encoding="utf-8")
+    f = open("BACKEND/WebScrapping/LinkedIn_Scrap/blocks/11b.txt", "a", encoding="utf-8")
     f.write(eleventhBox)
     f.close()
 
     print('twelvethBox Box :' + twelvethBox)
-    f = open("blocks/12b.txt", "a", encoding="utf-8")
+    f = open("BACKEND/WebScrapping/LinkedIn_Scrap/blocks/12b.txt", "a", encoding="utf-8")
     f.write(twelvethBox)
     f.close()
 
@@ -184,7 +185,7 @@ finally:
 
     my_dict = {}
     for i in range(14):
-        with open(f"blocks/{i + 1}b.txt", "r") as file:
+        with open(f"BACKEND/WebScrapping/LinkedIn_Scrap/blocks/{i + 1}b.txt", "r") as file:
             first_line = file.readline()
             for j in range(13):
                 if elements[j] in first_line:
