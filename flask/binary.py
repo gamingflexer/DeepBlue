@@ -34,30 +34,30 @@ from funcdatabse import databasevalue
 
 # BERT
 MAX_LEN = 500
-DEVICE = torch.device("cpu")
-MODEL_PATH = 'bert-base-uncased'
-STATE_DICT = torch.load(
-   '/home/aiworkstation2/Music/ser/DeepBlue/flask/models/model_e10.tar', map_location=DEVICE)
-TOKENIZER = BertTokenizerFast.from_pretrained(MODEL_PATH, lowercase=True)
-#TOKENIZER = Tokenizer(num_words=20000)  # SIMPLE
-MODEL = BertForTokenClassification.from_pretrained(
-   MODEL_PATH, state_dict=STATE_DICT['model_state_dict'], num_labels=12)
-model = MODEL
-MODEL.to(DEVICE);
-print('\nModel Loaded!\n')
-tags_vals = ["UNKNOWN", "O", "Name", "Degree","Skills","College Name","Email Address","Designation","Companies worked at","Graduation Year","Years of Experience","Location"]
-tag2idx = {t: i for i, t in enumerate(tags_vals)}
-idx2tag = {i:t for i, t in enumerate(tags_vals)}
-
-tokenizer_bert_ner = AutoTokenizer.from_pretrained("dslim/bert-base-NER")
-model_bert_ner = AutoModelForTokenClassification.from_pretrained("dslim/bert-base-NER")
-print('\n NER Model Loaded!\n')
-# flask
-
-o1={}
-o2={}
-o3={}
-o4={}
+# DEVICE = torch.device("cpu")
+# MODEL_PATH = 'bert-base-uncased'
+# STATE_DICT = torch.load(
+#    '/home/aiworkstation2/Music/ser/DeepBlue/flask/models/model_e10.tar', map_location=DEVICE)
+# TOKENIZER = BertTokenizerFast.from_pretrained(MODEL_PATH, lowercase=True)
+# #TOKENIZER = Tokenizer(num_words=20000)  # SIMPLE
+# MODEL = BertForTokenClassification.from_pretrained(
+#    MODEL_PATH, state_dict=STATE_DICT['model_state_dict'], num_labels=12)
+# model = MODEL
+# MODEL.to(DEVICE);
+# print('\nModel Loaded!\n')
+# tags_vals = ["UNKNOWN", "O", "Name", "Degree","Skills","College Name","Email Address","Designation","Companies worked at","Graduation Year","Years of Experience","Location"]
+# tag2idx = {t: i for i, t in enumerate(tags_vals)}
+# idx2tag = {i:t for i, t in enumerate(tags_vals)}
+#
+# tokenizer_bert_ner = AutoTokenizer.from_pretrained("dslim/bert-base-NER")
+# model_bert_ner = AutoModelForTokenClassification.from_pretrained("dslim/bert-base-NER")
+# print('\n NER Model Loaded!\n')
+# # flask
+#
+# o1={}
+# o2={}
+# o3={}
+# o4={}
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg',
                          'jpeg', 'docx', 'doc', 'rtf', 'odt', 'html', 'txt', 'zip'])
 
@@ -91,12 +91,12 @@ app.config['MYSQL_DB'] = 'deepbluecomp'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
 # db = SQLAlchemy(app)
-ZIPPED = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/zip"
+ZIPPED = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\zip"
 app.config['ZIPPED'] = ZIPPED
-EXTRACTED = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/extracted"
+EXTRACTED = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\extracted"
 app.config['EXTRACTED'] = EXTRACTED
 
-UPLOAD_FOLDER = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/files"
+UPLOAD_FOLDER = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\files"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 databaseattribute = {'unknown': None, 'name': None, 'degree': None, 'skills': None, 'college_name': None,
                          'university': None, 'graduation_year': None, 'companies_worked_at': None, 'designation': None,
@@ -161,7 +161,8 @@ print('\nFlask Started!\n')
 
 @app.route('/', methods=["POST", "GET"])
 def login():
-    return render_template('loginpage.html')
+
+    return render_template('loginpage.html',passconditions='False',conditions='False')
 
 
 @app.route('/signup', methods=["POST", "GET"])
@@ -192,10 +193,10 @@ def verify():
                 print("in if")
                 return render_template('Homepage.html')
             else:
-                return redirect('/')
+                return render_template('loginpage.html',passconditions='True')
 
-    else:
-        return redirect('/')
+        else:
+            return render_template('loginpage.html',conditions='True')
     mysql.connection.commit()
     cur.close()
 
@@ -207,13 +208,16 @@ def candiate():
         if request.method == 'POST':
                 email = request.form.get("emailid")
                 passw = request.form.get("pass")
-                # print(email)
-                # print(passw)
-
-                cur.execute("INSERT INTO login(emailid,password) VALUES (%s, %s)",(email, passw,))
-                mysql.connection.commit()
-                cur.close()
-                return redirect('/')
+                repassw=request.form.get("repass")
+                print(email,passw,repassw)
+                if(passw==repassw):
+                    print("underif")
+                    cur.execute("INSERT INTO login(emailid,password) VALUES (%s, %s)",(email, passw,))
+                    mysql.connection.commit()
+                    cur.close()
+                    return redirect('/')
+                else:
+                    return render_template('signup.html',repassconditions='True')
 
 
 
@@ -247,6 +251,7 @@ def upload():
             flash("No file part")
             return redirect(request.url)
         files = request.files.getlist('files[]')
+        print(files)
         val = 1
 
        # enumerate(list)
@@ -268,8 +273,8 @@ def upload():
                     dir_list = os.listdir(app.config['EXTRACTED'])
                     print(dir_list)
                     for i in dir_list:
-                        original = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/extracted/" + str(i)
-                        x = original.rindex("/")
+                        original = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\extracted\\" + str(i)
+                        x = original.rindex("\\")
                         y = original.rindex(".")
                         num = str(val)
                         val = val + 1
@@ -293,8 +298,8 @@ def upload():
 
                     dir_list = os.listdir(app.config['EXTRACTED'])
                     for file_name in dir_list:
-                        source = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/extracted/" + file_name
-                        destination = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/files/" + file_name
+                        source = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\extracted\\" + file_name
+                        destination = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\files\\" + file_name
                         shutil.move(source, destination)
 
                     oo2 = spacy_700(text2)
@@ -335,8 +340,8 @@ def upload():
 
                     dir_list = os.listdir(app.config['EXTRACTED'])
                     for i in dir_list:
-                        original = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/extracted/" + str(i)
-                        x = original.rindex("/")
+                        original = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\static\\extracted\\" + str(i)
+                        x = original.rindex("\\")
                         y = original.rindex(".")
                         num = str(val)
                         val = val + 1
@@ -359,11 +364,11 @@ def upload():
                         # moving on to final folder
                     dir_list = os.listdir(app.config['EXTRACTED'])
                     for file_name in dir_list:
-                        source = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/extracted/" + file_name
-                        destination = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/files/" + file_name
+                        source = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\static\\extracted\\" + file_name
+                        destination = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\static\\files\\" + file_name
                         shutil.move(source, destination)
 
-                    oo2 = spacy_700(text2)
+                    #oo2 = spacy_700(text2)
 
                     for entity in entities:
                         if entity in oo2.keys():
@@ -396,9 +401,9 @@ def upload():
                     file.save(os.path.join(
                         app.config['UPLOAD_FOLDER'], filename))
                     # inserting path to save the file *********************************************************
-                    binary = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/files/" + filename
+                    binary = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\files\\" + filename
                     #file1 = "C:\\Users\\Yash\\PycharmProjects\\flask\\static\\files\\2021-12-08.png"
-                    x = binary.rindex("/")
+                    x = binary.rindex("\\")
                     y = binary.rindex(".")
 
                     num = str(val)
@@ -424,7 +429,7 @@ def upload():
 
                     print("\n------MODELS--------\n")
                     print('------SPACY--------')
-                    oo1 = spacy_700(text1)
+                    #oo1 = spacy_700(text1)
                     oo2 = spacy_700(text2)
 
                     for entity in entities:
@@ -457,7 +462,7 @@ def upload():
                     # oo3 = spacy_edu(text1)
                     # oo4 = spacy_exp(text1)
                     # print(oo1)
-                    print(oo2)
+                    print(oo3)
                     # print(oo3)
                     # print(oo4)
                     #entities1 = predict(MODEL, TOKENIZER, idx2tag, tag2idx, DEVICE, text1)
@@ -468,8 +473,8 @@ def upload():
                     # output_bert = clean_bert(entities1, tags_vals)
                     # print(output_bert)
                     print("------NAME--------")
-                    name_extracted = ner(text2,model_bert_ner,tokenizer_bert_ner) #is a list
-                    print(name_extracted)
+                    #name_extracted = ner(text2,model_bert_ner,tokenizer_bert_ner) #is a list
+                    #print(name_extracted)
                     
                     #Linkdien
                     # if linkdedln != None:
@@ -481,7 +486,21 @@ def upload():
     cur.close()
     flash('File(s) successfully uploaded')
     # return redirect('/upload')
-    return render_template('table2.html')
+    table_li = []
+
+    cur = mysql.connection.cursor()
+    result = cur.execute('SELECT * FROM list')
+    # name,education,skills,experience,email
+    print(result)
+    if result > 0:
+        row = cur.fetchall()
+        print(row)
+        for dict in row:
+            table_li.append(list(dict.values()))
+        print(table_li)
+
+    # return redirect('/upload')
+    return render_template('table2.html', row=table_li)
 
 
 @app.route("/delete")
@@ -490,15 +509,15 @@ def delete():
 
     for zipfileli in dirzip_list:
         os.remove(
-            "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/zip/" + zipfileli)
+            "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\files\\zip\\" + zipfileli)
 
     dirrar_list = os.listdir(app.config['EXTRACTED'])
 
     for rarfileli in dirrar_list:
-        os.remove("/home/aiworkstation2/Music/ser/DeepBlue/flask/static/files/" + rarfileli)        
+        os.remove("C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\files\\" + rarfileli)
 
 
-    folder = "/home/aiworkstation2/Music/ser/DeepBlue/flask/static/files"
+    folder = "C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\static\\files\\"
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
         try:
@@ -534,14 +553,20 @@ def compare():
         cur=mysql.connection.cursor()
         for i in candiatecomparelist:
             compresult=cur.execute("Select linked_link,github_link,extra_link from datastore WHERE sr= %s ",(int(i),))
+            print(compresult)
             if compresult>0:
                 row=cur.fetchall()
+                print(row)
                 for dict in row:
                     table_data.append(list(dict.values()))
                 print(table_data)
 
 
-    return render_template('statistics.html', cont=table_data)
+    return render_template('compare.html', cont=table_data)
+
+@app.route('/statistic',methods=["POST","GET"])
+def statistic():
+    return render_template('statistic.html')
 
 
 

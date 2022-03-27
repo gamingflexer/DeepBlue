@@ -147,14 +147,14 @@ def ner(text, model, tokenizer):
             ' ##', '').replace(' .', '.')
         final_name_list.append([full_name])
 
-    if (len(final_name_list)) > 1:
-        final_name_list2 = str(final_name_list[0]) + str(final_name_list[1])
-    final_name_list2 = final_name_list2.replace("]", "")
-    final_name_list2 = final_name_list2.replace("[", "")
-    final_name_list2 = final_name_list2.replace("'", "")
+    # if (len(final_name_list)) > 1:
+    # final_name_list2 = str(final_name_list[0]) + str(final_name_list[1])
+    # final_name_list2 = final_name_list2.replace("]", "")
+    # final_name_list2 = final_name_list2.replace("[", "")
+    # final_name_list2 = final_name_list2.replace("'", "")
     #final_name_list2 = final_name_list2.replace("]","")
 
-    return final_name_list2
+    return final_name_list
 
     # clean spacy
     # if same in any dict delete

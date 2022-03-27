@@ -5,37 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bcc1484b-e8db-4811-b25b-777e49f58759" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/binary_yash.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Dataset-Scraping/Dataset-Scraping.rar" beforeDir="false" afterPath="$PROJECT_DIR$/../Dataset-Scraping/Dataset-Scraping.rar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/DeepBlue.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/binary.py" beforeDir="false" afterPath="$PROJECT_DIR$/binary.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/binary_yash.py" beforeDir="false" afterPath="$PROJECT_DIR$/binary_yash.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/final_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/final_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/Homepagecss.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/Homepagecss.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/files/resume1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/static/files/resume1.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume10.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume11.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume12.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume13.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume14.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume15.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume16.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume17.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume18.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume19.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume20.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume21.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume22.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume23.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume3.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume4.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume5.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume6.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume7.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume8.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/files/resume9.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/loginpage.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/loginpage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/signup.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/signup.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/statistic.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/statistic.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/table2.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/table2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/statistics.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/statistics.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Homepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/loginpage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/loginpage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/setting.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/setting.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/statistics.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/table2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/table2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/upload2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/upload2.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +54,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -142,7 +130,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="dnamictry" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="fileconversion" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="flask" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -154,7 +142,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dnamictry.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fileconversion.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -188,9 +176,9 @@
       <list>
         <item itemvalue="Python.binary_yash" />
         <item itemvalue="Python.binary" />
+        <item itemvalue="Python.fileconversion" />
         <item itemvalue="Python.linkedIn_main" />
         <item itemvalue="Python.deletefile" />
-        <item itemvalue="Python.dnamictry" />
       </list>
     </recent_temporary>
   </component>

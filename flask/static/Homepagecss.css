@@ -3,7 +3,7 @@
 *{
     margin:0;
     padding:0;
-    box-sizing:border-box;
+   
 }
 html{
     font-size: 62.6%;
@@ -23,7 +23,8 @@ body{
 p{
     font-size: 3rem;
     letter-spacing: 0.25rem;
-    
+    padding-bottom: 1rem;
+    padding-top: 1rem;
 }
 
 a{
@@ -33,27 +34,29 @@ a{
 li{
     list-style: none;
 }
+h2{
+    font-size: 2rem;
+}
 
-
-    
- p{
-     margin-top: 1rem;
+  
+ /*p{
+    margin-top: 1rem;
      font-size: 3.5rem;
     text-transform:uppercase ;
     text-align: center;
     position: relative;
     
-}
+}*/
 
 
 .logo{
     float: left;
-    position: fixed;
-    width: 6rem;
+    position: relative;
+    width: 2rem;
     background-color: white;
     box-shadow: 0.1rem 0.2rem 0.8rem black;
     height: 100%;
-    padding: 2rem;
+    padding: 2rem; 
     
     
  }
@@ -88,39 +91,49 @@ li{
 
 
 
-
-
-
-
-h2{
-    font-size: 3.1rem;
-    letter-spacing: 0.25rem;
-}
-
 .con{
-    position: absolute;
+   
     text-align: center;
-    float: right;
-    margin-top: 30rem;
-    margin-left: 50%;
-    transform: translate(-50%,-50%);
     
 }
+.pagehead{
+    display: inline-block;
+     /* border: 2px solid black;  */
+     position: absolute;
+     /* left: 50%;
+     margin-left: 10px; */
+   text-transform:uppercase ;
+    /* margin-top: 1rem; */
+   
+    left: 50%;
+    top: 4rem;
+   
+  transform: translate(-50%,-50%);   
+}
+
 .btn{
-    margin-top: 1.1rem;
+    /* margin-top: 1.1rem; */
     display: inline-block;
     color: blue;
     font-size: 1.5rem;
     font-weight: 500;
-    height: 5rem;
-    width: 12rem;
-   padding-top: 1.4rem;
+    /* height: 5rem;
+    width: 12rem; */
+   /* padding-top: 1.4rem; */
    text-align: center;
-   
+   padding: 1rem;
+   padding-left: 1.7rem;
+   padding-right: 1.7rem;
     background-color: white;
     border-radius: 50px;
 }
 
 .sub_con{
-    margin-top: 20rem;
+       
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    
 }

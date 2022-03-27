@@ -160,7 +160,8 @@ print('\nFlask Started!\n')
 
 @app.route('/', methods=["POST", "GET"])
 def login():
-    return render_template('loginpage.html')
+
+    return render_template('loginpage.html',passconditions='False',conditions='False')
 
 
 @app.route('/signup', methods=["POST", "GET"])
@@ -191,10 +192,10 @@ def verify():
                 print("in if")
                 return render_template('Homepage.html')
             else:
-                return redirect('/')
+                return render_template('loginpage.html',passconditions='True')
 
-    else:
-        return redirect('/')
+        else:
+            return render_template('loginpage.html',conditions='True')
     mysql.connection.commit()
     cur.close()
 
@@ -206,13 +207,16 @@ def candiate():
         if request.method == 'POST':
                 email = request.form.get("emailid")
                 passw = request.form.get("pass")
-                # print(email)
-                # print(passw)
-
-                cur.execute("INSERT INTO login(emailid,password) VALUES (%s, %s)",(email, passw,))
-                mysql.connection.commit()
-                cur.close()
-                return redirect('/')
+                repassw=request.form.get("repass")
+                print(email,passw,repassw)
+                if(passw==repassw):
+                    print("underif")
+                    cur.execute("INSERT INTO login(emailid,password) VALUES (%s, %s)",(email, passw,))
+                    mysql.connection.commit()
+                    cur.close()
+                    return redirect('/')
+                else:
+                    return render_template('signup.html',repassconditions='True')
 
 
 
@@ -452,6 +456,7 @@ def upload():
                     oo1 = spacy_700(text1)
                     oo2 = spacy_700(text2)
                     print("------NAME--------")
+
                     name_extracted = ner(text2, model_bert_ner, tokenizer_bert_ner)  # is a list
                     print(name_extracted)
 
@@ -584,9 +589,11 @@ def compare():
                 print(table_data)
 
 
-    return render_template('statistics.html', cont=table_data)
+    return render_template('compare.html', cont=table_data)
 
-
+@app.route('/statistic',methods=["POST","GET"])
+def statistic():
+    return render_template('statistic.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

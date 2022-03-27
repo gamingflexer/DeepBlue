@@ -29,6 +29,8 @@ body{
 }
 a{
     text-decoration: none;
+    color: #FFDB58;
+    text-align: center;
 }
 .setting1,.home ,.statistic,.candiate ,.account{
      
@@ -61,15 +63,18 @@ a{
  }
  .con{
      
-     background-color: #EBCBCB;
+     /* background-color: #EBCBCB; */
+     background: rgb(27,101,152);
+    background: linear-gradient(90deg, rgba(27,101,152,1) 12%, rgba(11,164,204,1) 51%, rgba(18,173,213,1) 100%);
      margin: 4rem;
      margin-left: 10rem;
-     float: left;
-     display: block;
+     /* float: left; */
+     display: inline-block;
      height: 90%;
      position: fixed;
      overflow:hidden;
      border-radius: 1.5rem;
+     color: white;
         
 }
  h1{
@@ -77,18 +82,19 @@ a{
     margin-left: 1rem;
 }
 .searcharea{
-    position: fixed;
+     /* position: relative;  */
+    /* border: 2px solid black; */
+    /* width: 80%; */
+    /* height: 2.5rem; */
     
-    width: 80%;
-    height: 2.5rem;
     
     
 }
 .search{
-    position: relative;
+    /* position: relative; */
     
     
-    width: 40%;
+    width: 35%;
     height: 2.5rem;
     border-radius: 0.5rem;
     margin-top: 2rem;
@@ -112,31 +118,53 @@ table{
     
 }
  th,td{
-    border: 1px solid black;
-}
+    
+       border: 1.5px solid lightgreen;  
+      
+}  
+     
+
+.thresume {
+    /* position:absolute;
+      border: 1.5px solid lightgreen; 
+      border-radius: 2rem;
+     */
+} 
 th{
    
     padding: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     text-align: center;
     width: 20rem;
-
+    /* background-color: #165693; */
+    background-color: #154777;
+    position: sticky;
+    top: 0; 
     
 }
+.thselect{
+    padding: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 10rem;
+    background-color: #154777;
 
+
+}
 .table_dis{
     display: block;
-     height: 500px;
+     height: 450px;
     overflow-y: scroll;
-    
+    padding: 2rem;
+    padding-top: 0rem;
    
 }
 tr{
-    font-size: 1rem;
+    font-size: 1.5rem;
     text-align: left;
 }
 td{
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     padding: 0.5rem;
 }
 
@@ -145,5 +173,49 @@ td{
     vertical-align: middle;
 }
 
-    
+ tr:nth-child(even){
+    /* background: #36c8bd; */
+    /* background: linear-gradient(90deg, rgba(83,223,169,1) 0%, rgba(54,200,189,1) 43%, rgba(18,173,213,1) 100%); */
+    /* background: background: linear-gradient(90deg, rgba(83,223,169,1) 0%, rgba(54,200,189,1) 43%, rgba(18,173,213,1) 100%);; */
+ }   
 
+.compbtn{
+    
+    position: relative;
+    left: 90%;
+    margin-bottom: -5rem;
+    display: inline-block;
+}
+.comp{
+    background-color: #0d59a1;
+    color: white;
+    font-size: 1.5rem;
+    padding: 0.7rem;
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+    border-radius: 0.8rem;
+}
+.export{
+    position: relative;
+    padding-top: 0.4rem;
+     margin-top: -1.9rem; 
+    left: 82%;
+    width: 7rem;
+}
+.buttons{
+    /* border: 2px solid black; */
+}
+.exp{
+    border: 1px solid black;
+    background-color: #0d59a1;
+    color: white;
+    font-size: 1.5rem;
+    padding: 1rem;
+    padding-left: 1.7rem;
+    padding-right: 1.7rem;
+    border-radius: 1rem;
+   
+}
+.scroll{
+    margin-top: -2rem;
+}
