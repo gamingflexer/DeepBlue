@@ -67,7 +67,7 @@ def linkedien_scrape(text):
             return data.text
 
     # PATH to chrome driver
-    PATH = '"C:\\chromedriver.exe"'
+    PATH = "/Users/cosmos/chromedriver"
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     ser = Service(PATH)

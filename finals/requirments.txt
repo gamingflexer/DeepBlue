@@ -49,3 +49,11 @@ nltk.download('stopwords')
 
 
 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
+
+python -m spacy download en_core_web_sm
+python -m nltk.downloader words
+python -m nltk.downloader stopwords
+pip install pytest
+pip install coverage
+pip install codecov
+pip install flake8

@@ -27,6 +27,11 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 #nltk.download('omw-1.4')
 from date_extractor import extract_dates
 import pyap
+from pdfminer.pdfpage import PDFPage
+from pdfminer.pdfparser import PDFSyntaxError
+
+
+
 extracted_dates = {}
 person_list = []
 person_names=person_list
@@ -259,3 +264,60 @@ def clean_bert(entities1,tags_vals):
     print(main)
     return main
 
+def get_number_of_pages(file_name):
+    try:
+        if isinstance(file_name, io.BytesIO):
+            # for remote pdf file
+            count = 0
+            for page in PDFPage.get_pages(
+                file_name,
+                caching=True,
+                check_extractable=True
+            ):
+                count += 1
+            return count
+        else:
+            # for local pdf file
+            if file_name.endswith('.pdf'):
+                count = 0
+                with open(file_name, 'rb') as fh:
+                    for page in PDFPage.get_pages(
+                        fh,
+                        caching=True,
+                        check_extractable=True
+                    ):
+                        count += 1
+                return count
+            else:
+                return None
+    except PDFSyntaxError:
+        return None
+    
+
+def extract_entity_sections_grad(text):
+    '''
+    Helper function to extract all the raw text from sections of resume
+    specifically for graduates and undergraduates
+
+    :param text: Raw text of resume
+    :return: dictionary of entities
+    '''
+    text_split = [i.strip() for i in text.split('\n')]
+    # sections_in_resume = [i for i in text_split if i.lower() in sections]
+    entities = {}
+    key = False
+    for phrase in text_split:
+        if len(phrase) == 1:
+            p_key = phrase
+        else:
+            p_key = set(phrase.lower().split()) & set(cs.RESUME_SECTIONS_GRAD)
+        try:
+            p_key = list(p_key)[0]
+        except IndexError:
+            pass
+        if p_key in cs.RESUME_SECTIONS_GRAD:
+            entities[p_key] = []
+            key = p_key
+        elif key and phrase.strip():
+            entities[key].append(phrase)
+    return entities
