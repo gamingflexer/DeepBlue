@@ -16,8 +16,13 @@ from transformers import AutoTokenizer, AutoModelForTokenClassification,pipeline
 import torch
 import pyperclip
 import re
+from autocorrect import Speller
+from simplet5 import SimpleT5
 from constants import *
 from config import *
+from preprocessing import *
+
+spell = Speller(fast=True,lang='en')
 
 def spacy_700(text):
     o1 = {}
@@ -202,3 +207,13 @@ def ner(text, model, tokenizer):
     #             main.remove(val)
 
     # print(main)
+
+def summary(text,model_summary):
+    #add pre-processed text (no hex one)
+    text_to_summarize=f"""summarize:{text}"""
+    summary = model_summary.predict(text_to_summarize)
+    summary_1 = summary[0]
+    summary_1 = remove_hexcode_rhc(summary_1)
+    summary_2 = spell(summary_1)
+    summary_2 = summary_clean(summary_2)
+    return summary_2

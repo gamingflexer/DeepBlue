@@ -19,6 +19,7 @@ from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfparser import PDFSyntaxError
 from constants import *
 
+
 extracted_dates = {}
 person_list = []
 person_names=person_list
@@ -308,6 +309,20 @@ def get_links(links):
     return (linkdedln,github,others)
 
 
+def summary_clean(text):
+    def remwithre(text):
+        there=re.compile(re.escape('.')+'.*')
+        return there.sub('', text)
+
+    l = []
+    m = text.split(" ")
+    for i in m:
+        k = remwithre(i)
+        l.append(k)
+
+    new_text = ' '.join(l)
+    return new_text
+
 
 #extras
 def extract_entity_sections_grad(text):
@@ -337,3 +352,4 @@ def extract_entity_sections_grad(text):
         elif key and phrase.strip():
             entities[key].append(phrase)
     return entities
+

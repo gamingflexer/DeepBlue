@@ -15,6 +15,9 @@ import mysql
 import mysql.connector
 from preprocessing import *
 from db import *
+from autocorrect import Speller
+
+spell = Speller(only_replacements=True,lang='en')
 
 def fileconversion1(filename, y):
     eid=""
@@ -45,6 +48,7 @@ def fileconversion1(filename, y):
              text = textract.process(filename)
              text = text.replace("\n", " ")
              text = text.replace("\t", " ")
+             text = spell(text)
              text, text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext = givedata(text)
           except:
               try:
@@ -52,6 +56,7 @@ def fileconversion1(filename, y):
                   text = text.decode()
                   text = text.replace("\n", " ")
                   text = text.replace("\t", " ")
+                  text = spell(text)
                   text, text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext = givedata(text)
               except:
                   text = "Text Not Extracted"
@@ -103,12 +108,14 @@ def fileconversion1(filename, y):
           pdf.output(name1)
           raw = parser.from_file(name1)
           text = raw['content']
+          text = spell(text)
           text, text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext = givedata(text)
       except:
           try:
               text = textract.process(filename)
               text = text.replace("\n", " ")
               text = text.replace("\t", " ")
+              text = spell(text)
               text, text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext = givedata(text)
           except:
               try:
@@ -116,6 +123,7 @@ def fileconversion1(filename, y):
                   text = text.decode()
                   text = text.replace("\n", " ")
                   text = text.replace("\t", " ")
+                  text = spell(text)
                   text, text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext = givedata(text)
               except:
                   text = "Text Not Extracted"
@@ -151,12 +159,14 @@ def fileconversion1(filename, y):
         pdf.output(name)
         raw = parser.from_file(name)
         text = raw['content']
+        text = spell(text)
         text, text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext = givedata(text)
       except:
           try:
               text = textract.process(filename)
               text = text.replace("\n", " ")
               text = text.replace("\t", " ")
+              text = spell(text)
               text, text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext = givedata(text)
           except:
               try:
@@ -164,6 +174,7 @@ def fileconversion1(filename, y):
                   text = text.decode()
                   text = text.replace("\n", " ")
                   text = text.replace("\t", " ")
+                  text = spell(text)
                   text, text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext = givedata(text)
               except:
                   text = "Text Not Extracted"
@@ -186,12 +197,14 @@ def fileconversion1(filename, y):
             pdfkit.from_file(f, name)
         raw = parser.from_file(name)
         text = raw['content']
+        text = spell(text)
         text, text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext = givedata(text)
        except:
            try:
                text = textract.process(filename)
                text = text.replace("\n", " ")
                text = text.replace("\t", " ")
+               text = spell(text)
                text, text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext = givedata(text)
            except:
                try:
@@ -199,6 +212,7 @@ def fileconversion1(filename, y):
                    text = text.decode()
                    text = text.replace("\n", " ")
                    text = text.replace("\t", " ")
+                   text = spell(text)
                    text, text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext = givedata(text)
                except:
                    text = "Text Not Extracted"
@@ -220,12 +234,14 @@ def fileconversion1(filename, y):
         try:
             raw = parser.from_file(filename)
             text = raw['content']
+            text = spell(text)
             text, text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext = givedata(text)
         except:
             try:
                 raw = parser.from_file(filename)
                 text = raw['content']
                 text = text.decode()
+                text = spell(text)
                 text, text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext = givedata(text)
             except:
                 text = "Text Not Extracted"
@@ -245,12 +261,14 @@ def fileconversion1(filename, y):
         try:
             raw = parser.from_file(filename)
             text = raw['content']
+            text = spell(text)
             text, text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext = givedata(text)
         except:
             try:
                 raw = parser.from_file(filename)
                 text = raw['content']
                 text = text.decode()
+                text = spell(text)
                 text, text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext = givedata(text)
             except:
                 text = "Text Not Extracted"
@@ -270,12 +288,14 @@ def fileconversion1(filename, y):
         try:
             raw = parser.from_file(filename)
             text = raw['content']
+            text = spell(text)
             text, text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext = givedata(text)
         except:
             try:
                 raw = parser.from_file(filename)
                 text = raw['content']
                 text = text.decode()
+                text = spell(text)
                 text, text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext = givedata(text)
             except:
                 text = "Text Not Extracted"
@@ -294,6 +314,7 @@ def fileconversion1(filename, y):
         try:
             raw = parser.from_file(filename)
             text = raw['content']
+            text = spell(text)
             text,text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext=givedata(text)
             print("underfile")
         except:
@@ -301,6 +322,7 @@ def fileconversion1(filename, y):
                 raw = parser.from_file(filename)
                 text = raw['content']
                 text=text.decode()
+                text = spell(text)
                 text, text1, scraplink, eid, phno, fdate, f_human_name, address, pincode, ftext = givedata(text)
             except:
                 text = "Text Not Extracted"

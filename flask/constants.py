@@ -4,7 +4,7 @@ o1={}
 o2={}
 o3={}
 o4={}
-
+docker = 0
 
 #FLASK
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg',

@@ -24,14 +24,20 @@ from werkzeug.utils import secure_filename
 import pyunpack
 import urllib.request
 from keras.preprocessing.sequence import pad_sequences
+from simplet5 import SimpleT5
 
 from fileconversion import fileconversion1
 from preprocessing import*
-from linkedIn import*
+from linkedIn import linkedien_scrape
 from model import*
 from db import *
 from flask_fun import * 
 
+if docker == 0:
+    os.system("docker run -d -p 9998:9998 logicalspark/docker-tikaserver")
+    docker = docker + 1
+else:
+    print("Docker already running")
 
 # BERT
 #STATE_DICT = torch.load(bert_dict_path, map_location=DEVICE)
@@ -43,9 +49,13 @@ from flask_fun import *
 # MODEL.to(DEVICE);
 print('\nModel Loaded!\n')
 
+# model_summary = SimpleT5()
+# model_summary.from_pretrained(model_type="t5", model_name="t5-large")
+# model_summary.load_model(summary_model, use_gpu=True)
+
 tokenizer_bert_ner = AutoTokenizer.from_pretrained("dslim/bert-base-NER")
 model_bert_ner = AutoModelForTokenClassification.from_pretrained("dslim/bert-base-NER")
-print('\n NER Model Loaded!\n')
+print('\n NER Model & Summary Loaded!\n')
 
 # flask
 app = Flask(__name__)
@@ -395,7 +405,10 @@ def delete():
     dirzip_list = os.listdir(app.config['ZIPPED'])
 
     for zipfileli in dirzip_list:
-        os.remove(z2 + zipfileli)
+        try:
+            os.remove(z2 + zipfileli)
+        except:
+            print("Cannot delete")
 
     dirrar_list = os.listdir(app.config['EXTRACTED'])
 
@@ -457,4 +470,4 @@ def statistic():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run('0.0.0.0', port=5001,debug=True,)

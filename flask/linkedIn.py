@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 import hashlib
 from constants import *
+from config import *
 
 
 def linkedien_scrape(text):
@@ -24,7 +25,7 @@ def linkedien_scrape(text):
 
     emptyB()
     emptyBClean()
-    print('clean Completed!')
+    print('clean Completed!\n')
 
     def removeWords():
         bad_words = ['Message', 'logo', 'See credential', 'Expiration Date', 'followers', 'See all', '�', 'comments',
@@ -66,7 +67,7 @@ def linkedien_scrape(text):
             return data.text
 
     # PATH to chrome driver
-    PATH = "/Users/cosmos/chromedriver"
+    PATH = driver_path
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     ser = Service(PATH)
@@ -219,3 +220,6 @@ def linkedien_scrape(text):
 
         driver.quit()
     return my_dict
+
+
+print(linkedien_scrape("https://www.linkedin.com/in/amit-gupta-0a91382/"))

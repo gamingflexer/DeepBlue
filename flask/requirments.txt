@@ -1,5 +1,6 @@
 tensorflow
 pandas
+autocorrect
 numpy
 tika
 selenium
