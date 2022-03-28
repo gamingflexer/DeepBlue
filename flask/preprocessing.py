@@ -1,55 +1,32 @@
-
 import nltk
-
-#nltk.download('punkt')
-import json
 import re
 import os
 import pandas as pd
 import nltk
 import string
-import tika
 from tika import parser
 import re
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nameparser.parser import HumanName
 from nltk import *
-#nltk.download('stopwords')
-#nltk.download('punkt')
-#nltk.download('averaged_perceptron_tagger')
-#nltk.download('maxent_ne_chunker')
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import wordnet
 from nltk.tokenize import sent_tokenize, word_tokenize
-#nltk.download('words')
-#nltk.download('wordnet')
-#nltk.download('omw-1.4')
 from date_extractor import extract_dates
 import pyap
 from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfparser import PDFSyntaxError
-
-
+from constants import *
 
 extracted_dates = {}
 person_list = []
 person_names=person_list
-
-words_stop = ["page 1 of 1","Resume", "page 1 of 2","page 1 of 3", "page 1 of 4",
-                "page 2 of 2","page 3 of 3","page 4 of 4","page 2 of 3",
-                "page 2 of 4","page 3 of 4","resume"]
-
-#def url(text):
- #   url = re.search("(?P<url>https?://[^\s]+)", text).group("url")
-  #  return(url)
-
 url1 =[]
 
 def url(text5):
     try:
      url= re.search("(?P<url>https?://[^\s]+)", text5).group("url")
-
 
     except:
         url=None
@@ -73,8 +50,6 @@ def url_func(text2):
 
     return url1
 
-#url_func(text1)
-
 
 def email(text):
     emails = re.findall(r"[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+", text)
@@ -91,8 +66,6 @@ def get_phone_numbers(string):
 def data_grabber(text):
     dates = extract_dates(text)
     return dates
-
-
 
 
 person_list = []
@@ -179,8 +152,6 @@ def pre_process1_rsw1(text):
     text = re.sub('#\S+', ' ', text)
     #text = re.sub('@\S+', ' ', text)
 
-    # for i in range (len(emails)): #removes emails
-    #   text = text.replace(emails[i],"")
 
     text = re.sub(r'(\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4})', '', text)  # removes phone numbers
     text = re.sub(r'[^\x00-\x7f]', ' ', text)
@@ -294,6 +265,51 @@ def get_number_of_pages(file_name):
         return None
     
 
+def get_links(links):
+    extras=""
+    git_link=""
+    lid_link=""
+    li = list(links.split(" "))
+
+    for i in li:
+        if 'linkedin' in i:
+            lid_link = lid_link + i +","
+        elif 'github' in i:
+            git_link = git_link + i +","
+        else:
+            extras = extras + i +","
+
+    l1=lid_link.split(",")
+    l2=git_link.split(",")
+    l3=extras.split(",")
+    linkdedln=""
+    github=""
+    others=""
+    for i in l1:
+        if (i == ""):
+            pass
+        else:
+            linkdedln=linkdedln+i+","
+
+    for i in l2:
+        if (i == ""):
+            pass
+        else:
+            github=github+i+","
+
+    for i in l3:
+        if (i == ""):
+            pass
+        else:
+            others=others+i+","
+    print(linkdedln)
+    print(github)
+    print(others)
+    return (linkdedln,github,others)
+
+
+
+#extras
 def extract_entity_sections_grad(text):
     '''
     Helper function to extract all the raw text from sections of resume

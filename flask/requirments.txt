@@ -27,3 +27,9 @@ flask
 date_extractor
 PyMuPDF 
 fitz
+pytest
+coverage
+codecov
+flake8
+pyunpack
+pyperclip

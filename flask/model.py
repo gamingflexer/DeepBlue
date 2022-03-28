@@ -12,20 +12,17 @@ import torch.nn.functional as F
 import torch.nn as nn
 import textract
 from tika import parser
-from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
+from transformers import AutoTokenizer, AutoModelForTokenClassification,pipeline
 import torch
 import pyperclip
 import re
-
-
-tagvalues_spacy = ['COLLEGE NAME', 'COMPANIES WORKED AT', 'DEGREE', 'DESIGNATION',
-                   'EMAIL ADDRESS', 'SKILLS', 'YEARS OF EXPERIENCE', 'LOCATION', 'NAME  ', '']  # add more
-
+from constants import *
+from config import *
 
 def spacy_700(text):
     o1 = {}
     spacy_700_list = []
-    model_spacy_path_all = 'C:\\Users\\Yash\\OneDrive\\Desktop\\DeepBlue\\flask\\models\\new'
+    model_spacy_path_all = spacy_700_path
 
     model_spacy = spacy.load(model_spacy_path_all)
 
@@ -42,11 +39,10 @@ def spacy_700(text):
 
 #spacy - skills
 
-
 def spacy_skills(text):
     o2 = {}
     spacy_skills_list = []
-    model_skills = '/home/aiworkstation2/Music/ser/DeepBlue/flask/models/Models-Seprate-700/SKILL/'
+    model_skills = spacy_skills_path
 
     model_spacy_s = spacy.load(model_skills)
 
@@ -62,11 +58,10 @@ def spacy_skills(text):
 
 #spacy - Edu
 
-
 def spacy_edu(text):
     o3 = {}
     spacy_edu_list = []
-    model_edu = '/home/aiworkstation2/Music/ser/DeepBlue/flask/models/Models-Seprate-700/EDU/'
+    model_edu = spacy_edu_path
 
     model_spacy_e = spacy.load(model_edu)
 
@@ -82,11 +77,10 @@ def spacy_edu(text):
 
 #spacy - Exp
 
-
 def spacy_exp(text):
     o4 = {}
     spacy_exp_list = []
-    model_exp = "/home/aiworkstation2/Music/ser/DeepBlue/flask/models/Models-Seprate-700/EXP/"
+    model_exp = spacy_exp_path
 
     model_spacy_exp = spacy.load(model_exp)
 
@@ -100,8 +94,8 @@ def spacy_exp(text):
         o4.update(val)
     return (o4)
 
-# Compare
 
+# Compare
 
 def comparemain(text):
 
@@ -147,12 +141,12 @@ def ner(text, model, tokenizer):
             ' ##', '').replace(' .', '.')
         final_name_list.append([full_name])
 
-    # if (len(final_name_list)) > 1:
-    # final_name_list2 = str(final_name_list[0]) + str(final_name_list[1])
-    # final_name_list2 = final_name_list2.replace("]", "")
-    # final_name_list2 = final_name_list2.replace("[", "")
-    # final_name_list2 = final_name_list2.replace("'", "")
-    #final_name_list2 = final_name_list2.replace("]","")
+    if (len(final_name_list)) > 1:
+        final_name_list2 = str(final_name_list[0]) + str(final_name_list[1])
+        final_name_list2 = final_name_list2.replace("]", "")
+        final_name_list2 = final_name_list2.replace("[", "")
+        final_name_list2 = final_name_list2.replace("'", "")
+        final_name_list2 = final_name_list2.replace("]","")
 
     return final_name_list
 

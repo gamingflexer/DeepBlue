@@ -4,8 +4,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 import hashlib
-
-scrape_link = ""
+from constants import *
 
 
 def linkedien_scrape(text):
@@ -88,7 +87,7 @@ def linkedien_scrape(text):
     driver.find_element(By.XPATH, "//button[@type='submit']").click()
 
     # GOTO REQUIRED PERSON PROFILE
-    driver.get(scrape_link)
+    driver.get(text)
 
     pagesource = driver.page_source
     soup = BeautifulSoup(pagesource, "html.parser").encode("utf-8")

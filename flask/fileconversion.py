@@ -14,7 +14,7 @@ from flask_mysqldb import MySQL, MySQLdb
 import mysql
 import mysql.connector
 from preprocessing import *
-from getdata import *
+from db import *
 
 def fileconversion1(filename, y):
     eid=""
@@ -27,8 +27,6 @@ def fileconversion1(filename, y):
     f_human_name=""
     pincode=""
     ftext=""
-    #y = str(count)
-    # filename = "C:\\Users\\Yash\\PycharmProjects\\firstprog\\resume.png"
     x = filename.rfind(".")
     extension = filename[x + 1:]
     if (extension == "docx"):
