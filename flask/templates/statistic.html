@@ -31,10 +31,15 @@
       <h2>Analysis</h2>
     </div>
     <div class="charts">
-      <!-- <div id="piechart" ></div> -->
-      <div id="chart_div1" ></div>
-      <div id="chart_div2" ></div>
-     
+      <div class="chart-box">
+         <div id="chart_div1" ></div> 
+      </div>
+      <div class="chart-box">
+         <div id="chart_div2" ></div> 
+      </div>
+      <!-- <div class="chart-box">
+         <div id="chart_div3" ></div> 
+      </div> -->
       <!-- <div id="chart_div3" style="width: 40%; height: 40%;"></div>  -->
 
     </div>
@@ -71,55 +76,76 @@ function drawBasic() {
           title: 'Candiates score'
         }
       };
+      var options = {
+           title: 'Company Performance',
+           hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+          // vAxis: {minValue: 0}
+          'padding':20,
+          'width':500,
+          'height':200
 
-      var chart = new google.visualization.BarChart(document.getElementById('chart_div2'));
+         };
+
+      var chart = new google.visualization.BarChart(document.getElementById('chart_div1'));
 
       chart.draw(data, options);
     }
 
-     google.charts.load('current', {'packages':['corechart']});
-       google.charts.setOnLoadCallback(drawChart);
+    google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
 
-     function drawChart() {
-       var data = google.visualization.arrayToDataTable([
-         ['Year', 'Web development', 'Andriod development'],
-         ['Candidate1',  10,      0],
-        ['Candidate2',  5,      5],
-        ['Candidate3',  7,       3],
-          ['Candidate4',  3,      7]
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
         ]);
 
         var options = {
-           title: 'Company Performance',
-           hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
-           vAxis: {minValue: 0}
-         };
+          title: 'My Daily Activities',
+          'width':500,
+          'height':200
+        };
 
-       var chart = new google.visualization.AreaChart(document.getElementById('chart_div1'));
-       chart.draw(data, options);
-       }
-    //   google.charts.load('current', {'packages':['corechart']});
-    //   google.charts.setOnLoadCallback(drawChart);
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div3'));
 
-    //   function drawChart() {
+        chart.draw(data, options);
+      }
 
-    //   var data = google.visualization.arrayToDataTable([
-    //     ['Task', 'Hours per Day'],
-    //        ['Work',     11],
-    //       ['Eat',      2],
-    //      ['Commute',  2],
-    //      ['Watch TV', 2],
-    //      ['Sleep',    7]
-    //     ]);
 
-    //     var options = {
-    //        title: 'My Daily Activities'
-    //      };
+      google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "Density", { role: "style" } ],
+        ["Web developer", 8.94, "#b87333"],
+        ["Andriod developer", 10.49, "silver"],
+        ["Java developer", 19.30, "gold"],
+        ["python developer", 21.45, "color: #e5e4e2"]
+      ]);
 
-    //    var chart = new google.visualization.PieChart(document.getElementById('chart_div3'));
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
 
-    //     chart.draw(data, options);
-    //    }
+      var options = {
+        title: "Number of candiates as per domain",
+        width: 500,
+        height: 200,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("chart_div2"));
+      chart.draw(view, options);
+  }
     </script>
 </body>
 </html>
