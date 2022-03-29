@@ -224,4 +224,4 @@ def linkedien_scrape(text):
         driver.quit()
     return my_dict
 
-#print(linkedien_scrape("https://www.linkedin.com/in/ankush-punj-61909ab/"))
+print(linkedien_scrape("https://www.linkedin.com/in/ankush-punj-61909ab/"))
