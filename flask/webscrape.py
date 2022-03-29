@@ -4,25 +4,22 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 import hashlib
+from constants import *
+from config import *
 
-
-# from constants import *
-# from config import *
-
-driver_path = "/Users/cosmos/chromedriver"
 
 def linkedien_scrape(text):
     def emptyB():
         for i in range(12):
             #print(i + 1)
-            f = open('blocks/' + str(i + 1) + "b.txt", "w")
+            f = open('flask/blocks/' + str(i + 1) + "b.txt", "w")
             f.write('')
             f.close()
 
     def emptyBClean():
         for i in range(12):
             #print(i + 1)
-            f = open('blocks/' + str(i + 1) + "bclean.txt", "w")
+            f = open('flask/blocks/' + str(i + 1) + "bclean.txt", "w")
             f.write('')
             f.close()
 
@@ -34,15 +31,15 @@ def linkedien_scrape(text):
         bad_words = ['Message', 'logo', 'See credential', 'Expiration Date', 'followers', 'See all', '�', 'comments',
                      '.pdf']
         for i in range(12):
-            with open(f'blocks/{str(i + 1)}bclean.txt') as oldfile, open(f'blocks/{str(i + 1)}b.txt', 'w') as newfile:
+            with open(f'flask/blocks/{str(i + 1)}bclean.txt') as oldfile, open(f'flask/blocks/{str(i + 1)}b.txt', 'w') as newfile:
                 for line in oldfile:
                     if not any(bad_word in line for bad_word in bad_words):
                         newfile.write(line)
 
     def removeDupes():
         for i in range(12):
-            inputFile = f'blocks/{str(i + 1)}b.txt'
-            outputFile = f'blocks/{str(i + 1)}bclean.txt'
+            inputFile = f'flask/blocks/{str(i + 1)}b.txt'
+            outputFile = f'flask/blocks/{str(i + 1)}bclean.txt'
             completed_lines_hash = set()
             output_file = open(outputFile, "w")
             for line in open(inputFile, "r"):
@@ -140,17 +137,17 @@ def linkedien_scrape(text):
 
     finally:
         print('First Box :' + firstBox)
-        f = open("blocks/1b.txt", "a", encoding="utf-8")
+        f = open("flask/blocks/1b.txt", "a", encoding="utf-8")
         f.write(firstBox)
         f.close()
 
         print('Second Box :' + secondBox)
-        f = open("blocks/2b.txt", "a", encoding="utf-8")
+        f = open("flask/blocks/2b.txt", "a", encoding="utf-8")
         f.write(secondBox)
         f.close()
 
         print('Third Box :' + thirdBox)
-        f = open("blocks/3b.txt", "a", encoding="utf-8")
+        f = open("flask/blocks/3b.txt", "a", encoding="utf-8")
         f.write(thirdBox)
         f.close()
 
@@ -209,7 +206,7 @@ def linkedien_scrape(text):
 
         my_dict = {}
         for i in range(14):
-            with open(f"blocks/{i + 1}b.txt", "r", encoding='utf-8') as file:
+            with open(f"blocks/{i + 1}b.txt", "r") as file:
                 first_line = file.readline()
                 for j in range(13):
                     if elements[j] in first_line:
@@ -224,4 +221,5 @@ def linkedien_scrape(text):
         driver.quit()
     return my_dict
 
-#print(linkedien_scrape("https://www.linkedin.com/in/ankush-punj-61909ab/"))
+
+#print(linkedien_scrape("https://www.linkedin.com/in/amit-gupta-0a91382/"))

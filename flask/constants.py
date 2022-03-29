@@ -1,4 +1,5 @@
 from nltk.corpus import stopwords
+from webscrape import *
 
 o1={}
 o2={}

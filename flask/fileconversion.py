@@ -17,7 +17,7 @@ from preprocessing import *
 from db import *
 from autocorrect import Speller
 
-spell = Speller(only_replacements=True,lang='en')
+spell = Speller(only_replacements=True)
 
 def fileconversion1(filename, y):
     eid=""

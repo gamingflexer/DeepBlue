@@ -17,6 +17,7 @@ fpdf
 nltk 
 torch
 pyap
+huggingface_hub==0.2.1
 nameparser
 spacy==2.2.4
 pytorch_pretrained_bert

@@ -28,18 +28,14 @@ from simplet5 import SimpleT5
 
 from fileconversion import fileconversion1
 from preprocessing import*
-from linkedIn import linkedien_scrape
+from linkedIn import *
 from model import*
 from db import *
 from flask_fun import * 
 
-if docker == 0:
-    os.system("docker run -d -p 9998:9998 logicalspark/docker-tikaserver")
-    docker = docker + 1
-else:
-    print("Docker already running")
 
 # BERT
+
 #STATE_DICT = torch.load(bert_dict_path, map_location=DEVICE)
 #TOKENIZER = BertTokenizerFast.from_pretrained(MODEL_PATH, lowercase=True)
 #TOKENIZER = Tokenizer(num_words=20000)  # SIMPLE
@@ -51,10 +47,10 @@ print('\nModel Loaded!\n')
 
 # model_summary = SimpleT5()
 # model_summary.from_pretrained(model_type="t5", model_name="t5-large")
-# model_summary.load_model(summary_model, use_gpu=True)
+# model_summary.load_model(summary_model, use_gpu=False)
 
-tokenizer_bert_ner = AutoTokenizer.from_pretrained("dslim/bert-base-NER")
-model_bert_ner = AutoModelForTokenClassification.from_pretrained("dslim/bert-base-NER")
+# tokenizer_bert_ner = AutoTokenizer.from_pretrained("dslim/bert-base-NER")
+# model_bert_ner = AutoModelForTokenClassification.from_pretrained("dslim/bert-base-NER")
 print('\n NER Model & Summary Loaded!\n')
 
 # flask
@@ -470,4 +466,4 @@ def statistic():
 
 
 if __name__ == "__main__":
-    app.run('0.0.0.0', port=5001,debug=True,)
+    app.run(debug=True)
