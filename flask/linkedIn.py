@@ -5,6 +5,20 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 import hashlib
 
+def emptyB():
+    for i in range(12):
+        print(i + 1)
+        f = open('blocks/'+str(i + 1) + "b.txt", "w")
+        f.write('')
+        f.close()
+
+
+def emptyBClean():
+    for i in range(12):
+        print(i + 1)
+        f = open('blocks/'+str(i + 1) + "bclean.txt", "w")
+        f.write('')
+        f.close()
 
 def getAbout(soup):
     link_About = soup.find('div', {"class": "display-flex ph5 pv3"})
@@ -46,6 +60,10 @@ def removeDupes():
 
 
 def linked_in_scrap(LINK):
+
+    emptyB()
+    emptyBClean()
+
     # PATH to chrome driver
     AD_CHROME_PATH = 'D:\\Softwares\\chromedriver.exe'
     ser = Service(AD_CHROME_PATH)
@@ -198,4 +216,6 @@ def linked_in_scrap(LINK):
         return my_dict
 
 
+emptyB()
+emptyBClean()
 print(linked_in_scrap('https://www.linkedin.com/in/aniruddh-achary-0090131b4/'))
