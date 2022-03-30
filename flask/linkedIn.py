@@ -1,79 +1,54 @@
+from time import time
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
 import hashlib
 
 
-# from constants import *
-# from config import *
+def getAbout(soup):
+    link_About = soup.find('div', {"class": "display-flex ph5 pv3"})
+    about = ''
+    for ab in link_About:
+        about = ab.text
+        print(ab.text)
 
-driver_path = "/Users/cosmos/chromedriver"
+    return about
 
-def linkedien_scrape(text):
-    def emptyB():
-        for i in range(12):
-            #print(i + 1)
-            f = open('blocks/' + str(i + 1) + "b.txt", "w")
-            f.write('')
-            f.close()
+def currentWork(soup):
+    current_work = soup.find('div', {"class": "text-body-medium break-words"})
+    for data in current_work:
+        print(data.text)
+        return data.text
 
-    def emptyBClean():
-        for i in range(12):
-            #print(i + 1)
-            f = open('blocks/' + str(i + 1) + "bclean.txt", "w")
-            f.write('')
-            f.close()
+def removeWords():
+    bad_words = ['Message', 'logo', 'See credential', 'Expiration Date', 'followers', 'See all', '�', 'comments',
+                 '.pdf']
+    for i in range(12):
+        with open(f'blocks/{str(i + 1)}bclean.txt', 'r', encoding='utf-8') as oldfile, open(f'blocks/{str(i + 1)}b.txt','w', encoding='utf-8') as newfile:
+            for line in oldfile:
+                if not any(bad_word in line for bad_word in bad_words):
+                    newfile.write(line)
 
-    emptyB()
-    emptyBClean()
-    print('clean Completed!\n')
 
-    def removeWords():
-        bad_words = ['Message', 'logo', 'See credential', 'Expiration Date', 'followers', 'See all', '�', 'comments',
-                     '.pdf']
-        for i in range(12):
-            with open(f'blocks/{str(i + 1)}bclean.txt') as oldfile, open(f'blocks/{str(i + 1)}b.txt', 'w') as newfile:
-                for line in oldfile:
-                    if not any(bad_word in line for bad_word in bad_words):
-                        newfile.write(line)
+def removeDupes():
+    for i in range(12):
+        inputFile = f'blocks/{str(i + 1)}b.txt'
+        outputFile = f'blocks/{str(i + 1)}bclean.txt'
+        completed_lines_hash = set()
+        output_file = open(outputFile, "w", encoding='utf-8')
+        for line in open(inputFile, "r", encoding='utf-8'):
+            hashValue = hashlib.md5(line.rstrip().encode('utf-8')).hexdigest()
+            if hashValue not in completed_lines_hash:
+                output_file.write(line)
+                completed_lines_hash.add(hashValue)
+        output_file.close()
 
-    def removeDupes():
-        for i in range(12):
-            inputFile = f'blocks/{str(i + 1)}b.txt'
-            outputFile = f'blocks/{str(i + 1)}bclean.txt'
-            completed_lines_hash = set()
-            output_file = open(outputFile, "w")
-            for line in open(inputFile, "r"):
-                hashValue = hashlib.md5(
-                    line.rstrip().encode('utf-8')).hexdigest()
-                if hashValue not in completed_lines_hash:
-                    output_file.write(line)
-                    completed_lines_hash.add(hashValue)
-            output_file.close()
 
-    def getAbout():
-        link_About = soup.find_all('div', {"class": "display-flex ph5 pv3"})
-        about = ''
-        for ab in link_About:
-            about = ab.text
-            print(ab.text)
-
-        return about
-
-    def currentWork():
-        current_work = soup.find_all(
-            'div', {"class": "text-body-medium break-words"})
-        for data in current_work:
-            print(data.text)
-            return data.text
-
+def linked_in_scrap(LINK):
     # PATH to chrome driver
-    PATH = driver_path
-    chrome_options = Options()
-    chrome_options.add_argument("--headless")
-    ser = Service(PATH)
+    AD_CHROME_PATH = 'D:\\Softwares\\chromedriver.exe'
+    ser = Service(AD_CHROME_PATH)
     op = webdriver.ChromeOptions()
     driver = webdriver.Chrome(service=ser, options=op)
 
@@ -91,7 +66,7 @@ def linkedien_scrape(text):
     driver.find_element(By.XPATH, "//button[@type='submit']").click()
 
     # GOTO REQUIRED PERSON PROFILE
-    driver.get(text)
+    driver.get(LINK)
 
     pagesource = driver.page_source
     soup = BeautifulSoup(pagesource, "html.parser").encode("utf-8")
@@ -110,8 +85,7 @@ def linkedien_scrape(text):
     twelvethBox = ''
 
     try:
-        firstBox = driver.find_element_by_xpath(
-            '/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[2]').text
+        firstBox = driver.find_element_by_xpath('/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[2]').text
         secondBox = driver.find_element_by_xpath(
             '/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[3]').text
         thirdBox = driver.find_element_by_xpath(
@@ -134,6 +108,7 @@ def linkedien_scrape(text):
             '/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[12]').text
         twelvethBox = driver.find_element_by_xpath(
             '/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/section[13]').text
+
 
     except:
         print('error')
@@ -201,8 +176,6 @@ def linkedien_scrape(text):
 
         removeDupes()
         removeWords()
-        getAbout()
-        currentWork()
 
         elements = ['Highlights', 'About', 'Activity', 'Education', 'Experience', 'Licenses & certifications', 'Skills',
                     'Projects', 'Honors & awards', 'Languages', 'Interests', 'Causes', 'Featured']
@@ -222,6 +195,7 @@ def linkedien_scrape(text):
         print(my_dict)
 
         driver.quit()
-    return my_dict
+        return my_dict
 
-print(linkedien_scrape("https://www.linkedin.com/in/ankush-punj-61909ab/"))
+
+print(linked_in_scrap('https://www.linkedin.com/in/aniruddh-achary-0090131b4/'))
