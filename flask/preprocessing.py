@@ -53,6 +53,7 @@ def url_func(text2):
 
 
 def email(text):
+    text = pre_process1_rsw1(text)
     emails = re.findall(r"[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+", text)
     emails=set(emails)
     return(emails)
@@ -144,6 +145,8 @@ def dob_grabber(text, ents):
 
 
 def pre_process1_rsw1(text):
+    text = p0(text)
+    text = clean_text(text)
     text = "".join(text.split('\n'))  # remove whitespaces
     text = text.lower()
 
@@ -158,6 +161,7 @@ def pre_process1_rsw1(text):
     text = re.sub(r'[^\x00-\x7f]', ' ', text)
     text = re.sub('\s+', ' ', text)
     text = re.sub("\n", " ", text)
+
 
     # remove uncessary stop words
     for i in range(len(words_stop)):  # removes emails
@@ -184,6 +188,22 @@ def remove_hexcode_rhc(text):
     return text
 
 url1.clear()
+
+#new functions
+def p0(new_text):
+    req = ''
+    for line in new_text.split('\n'):
+        ll = re.sub(r'[^0-9a-zA-Z]+', ' ',line)
+        req += ll + '\n'
+        new_text = req
+    return new_text
+
+def clean_text(val):
+    result = list()
+    for each in val:
+        out = re.sub(r'[^0-9a-zA-Z]+', ' ', each)   
+        result.append(out)      
+    return result
 
 
 def clean_bert(entities1,tags_vals):

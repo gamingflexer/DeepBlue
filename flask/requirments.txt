@@ -35,3 +35,6 @@ codecov
 flake8
 pyunpack
 pyperclip
+fuzzywuzzy
+spacy_langdetect
+phonenumbers

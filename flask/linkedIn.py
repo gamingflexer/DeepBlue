@@ -7,7 +7,7 @@ import hashlib
 
 def emptyB():
     for i in range(12):
-        print(i + 1)
+        #print(i + 1)
         f = open('blocks/'+str(i + 1) + "b.txt", "w")
         f.write('')
         f.close()
@@ -15,7 +15,7 @@ def emptyB():
 
 def emptyBClean():
     for i in range(12):
-        print(i + 1)
+        #print(i + 1)
         f = open('blocks/'+str(i + 1) + "bclean.txt", "w")
         f.write('')
         f.close()
@@ -65,7 +65,7 @@ def linked_in_scrap(LINK):
     emptyBClean()
 
     # PATH to chrome driver
-    AD_CHROME_PATH = 'D:\\Softwares\\chromedriver.exe'
+    AD_CHROME_PATH = '/Users/cosmos/chromedriver'
     ser = Service(AD_CHROME_PATH)
     op = webdriver.ChromeOptions()
     driver = webdriver.Chrome(service=ser, options=op)
@@ -216,6 +216,8 @@ def linked_in_scrap(LINK):
         return my_dict
 
 
-emptyB()
-emptyBClean()
-print(linked_in_scrap('https://www.linkedin.com/in/aniruddh-achary-0090131b4/'))
+
+# emptyB()
+# emptyBClean()
+# linked_in_scrap(link)
+# github_scrape(link)

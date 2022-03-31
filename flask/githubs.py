@@ -37,4 +37,3 @@ def github_scrape(userURL):
 
     return final
 
-github_scrape("https://github.com/gamingflexer")
